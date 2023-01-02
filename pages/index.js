@@ -123,8 +123,8 @@ export default function Home() {
 
       <section className={styles.sectionEContainer}>
         <div className={styles.sectionEContentWrapper}>
-          <h2 className='contentTextTitle'>Let's Get Started 🚀</h2>
-          <p className='contentText'>Ready to build the software of your dreams? Schedule a free consultation today using our online consultation scheduler.</p>
+          <h2 className={styles.sectionETitle}>Let's Get Started 🚀</h2>
+          <p className={styles.sectionEContentText}>Ready to build the software of your dreams? Schedule a free consultation today using our online consultation scheduler.</p>
           <Link href='/scheduleConsultation'>
             <button className='contentButton primaryButton'>Schedule a Consultation</button>
           </Link>

@@ -12,7 +12,7 @@ body {
 }
 
 .pageHeaderContainer {
-  padding: 100px 100px;
+  padding: 100px;
   width: 100%;
   box-sizing: border-box;
   background-color: var(--background-color);
@@ -25,6 +25,18 @@ body {
   font-size: 48px;
   margin: 0px;
   /* padding-left: 60px; */
+}
+
+@media(max-width: 700px) {
+  .pageHeaderContainer {
+    padding: 100px 25px 50px 25px;
+  }
+
+  .pageHeaderContainer > h1 {
+    text-align: center;
+    justify-self: center;
+    font-size: 40px;
+  }
 }
 
 .primaryButton {
@@ -50,4 +62,10 @@ body {
 
 .contentButton {
   min-width: 200px;
+}
+
+@media(max-width: 900px) {
+  .contentTextTitle {
+    font-size: 40px;
+  }
 }
