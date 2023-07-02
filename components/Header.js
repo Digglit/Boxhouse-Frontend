@@ -3,9 +3,12 @@ import styles from './Header.module.css'
 import Logo from '../public/boxhouse-wordmark.svg'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import MobileBurgerMenu from './MobileBurgerMenu'
+import { AnimatePresence } from 'framer-motion'
 
 const Header = () => {
-  const [headerClassName, setHeaderClassName] = useState(styles.headerContainer)
+  const [scrolled, setScrolled] = useState(false)
+  const [burgerMenuOpen, setBurgerMenuOpen] = useState(false)
   const router = useRouter()
 
   const getSelectedLink = () => {
@@ -25,27 +28,38 @@ const Header = () => {
 
   const [selectedLink, setSelectedLink] = useState(getSelectedLink())
 
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY !== 0) {
-        setHeaderClassName(styles.scrolledHeaderContainer)
-      } else {
-        setHeaderClassName(styles.headerContainer)
-      }
+  const handleScroll = () => {
+    if (window.scrollY !== 0) {
+      setScrolled(true)
+    } else {
+      setScrolled(false)
     }
-
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }
 
   useEffect(() => {
+    if (router.pathname.includes('/ourWork/')) {
+      setScrolled(true);
+    } else {
+      window.addEventListener('scroll', handleScroll)
+      setScrolled(false);
+    }
     setSelectedLink(getSelectedLink())
+    return () => window.removeEventListener('scroll', handleScroll)
   }, [router.pathname])
 
+  const toggleBurgerMenu = (e) => {
+    e.stopPropagation()
+    if (!burgerMenuOpen) {
+      setBurgerMenuOpen(true)
+    } else {
+      setBurgerMenuOpen(false)
+    }
+  }
+
   return (
-    <header className={headerClassName}>
+    <header className={scrolled ? styles.scrolledHeaderContainer : styles.headerContainer}>
       <Link href="/" style={{display: 'inline-block', width: 'fit-content'}}>
-        <img src={Logo.src} className={styles.headerLogo}/>
+        <img src={Logo.src} className={styles.headerLogo} alt={"Boxhouse Logo"}/>
       </Link>
       <Link href="/" className={styles.linkContainer}>
         <span className={selectedLink === 0 ? styles.selectedLink : null}>Home</span>
@@ -62,6 +76,18 @@ const Header = () => {
       <Link href="/scheduleConsultation" className={styles.linkContainer}>
         <button className='primaryButton'>Schedule a Consultation</button>
       </Link>
+      <button aria-label="Expand Navigation Menu" className={styles.burgerButton} onClick={toggleBurgerMenu}>
+        <div className={scrolled ? styles.scrolledBurgerIcon : styles.burgerIcon} />
+      </button>
+      <AnimatePresence mode="wait">
+        {burgerMenuOpen &&
+          <MobileBurgerMenu
+            selectedLink={selectedLink}
+            toggleMenu={toggleBurgerMenu}
+            key={'Mobile Burger Menu'}
+          />
+        }
+      </AnimatePresence>
     </header>
   )
 }

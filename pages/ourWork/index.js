@@ -1,21 +1,35 @@
-import styles from '../styles/OurWork.module.css'
-import CCSCasesImage from '../public/CCS-Mockup.png'
-import MCQCDMImage from '../public/MCQCDM-Mockup.png'
-import BigMImage from '../public/BigM-Mockup.png'
-import UltrasoundCardsImage from '../public/UltrasoundCards-Mockup.png'
-import USCMarketingImage from '../public/USC-Marketing-Mockup.png'
+import styles from '../../styles/OurWork.module.css'
+import CCSCasesImage from '../../public/CCS-Mockup.png'
+import MCQCDMImage from '../../public/MCQCDM-Mockup.png'
+import BigMImage from '../../public/BigM-Mockup.png'
+import UltrasoundCardsImage from '../../public/UltrasoundCards-Mockup.png'
+import USCMarketingImage from '../../public/USC-Marketing-Mockup.png'
+import SnowBackdrop from '../../components/SnowBackdrop'
+// import PageTransition from '../../components/PageTransition'
+import Head from 'next/head'
+import Link from 'next/link'
 
-const OurWork = () => {
+const OurWork = (props, ref) => {
   return (
     <>
+      <Head>
+        <title>Our Work</title>
+        <meta name="description" content="Boxhouse Consulting is a for-hire software team specializing in web-based application development" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#FFFFFE" />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
       <div className='pageHeaderContainer'>
+        <SnowBackdrop factor={4} opacity={0.4}/>
         <h1>Our Work</h1>
       </div>
       <div className={styles.workSectionContainer}>
         <div className={styles.workSectionContentWrapper}>
           <h1 className={styles.workSectionTitle}>CCS Cases</h1>
           <p className={styles.workSectionText}>CCS Cases is an industry-leading software platform used to prepare med school students for the CCS Cases portion of the step 3 exam. This exam is considered a right of passage for doctors as they work to complete their residency programs. After completing the step 3 USMLE exam, students are eligible to obtain their medical license.<br /><br />The software we helped to develop allows students to prepare for their exam by simulating a variety of different cases. These cases are medical environments in which students must order the correct exams and medications to successfully treat the patient. After completing the simulation, students receive feedback and a case grade which they can use to evaluate their performance.</p>
-          <button className={styles.workSectionButton}>Case Study Coming Soon...</button>
+          <Link href="/ourWork/CCSCasesCaseStudy">
+            <button className={'primaryButton'}>View Case Study</button>
+          </Link>
         </div>
         <img className={styles.workSectionImage} src={CCSCasesImage.src}/>
       </div>

@@ -1,0 +1,94 @@
+
+
+.pageContainer {
+    background-color: #f8f8f8;
+}
+
+.pageContentWrapper {
+    max-width: 800px;
+    margin: auto;
+    padding: 75px 25px;
+    display: grid;
+    justify-items: center;
+}
+
+.title {
+    text-align: center;
+    font-weight: 400;
+    font-size: 40px;
+    margin: 0px;
+    margin-bottom: 20px;
+}
+
+.inputWrapper {
+    display: grid;
+    max-width: 400px;
+    width: 100%;
+    row-gap: 5px;
+}
+
+.inputLabel {
+    font-size: 14px;
+}
+
+.dateInput::-webkit-calendar-picker-indicator{
+    width: 20px;
+    height: 20px;
+}
+
+.textInput, .dateInput, .selectDropdown, .textArea {
+    height: 40px;
+    margin-bottom: 20px;
+    border: 0px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.35);
+    padding: 0px 5px;
+    border-radius: 0px;
+    width: 100%;
+    color: black;
+    box-sizing: border-box;
+    background-color: white;
+    font-size: 14px;
+}
+
+.dateInput {
+    padding-right: 5px;
+}
+
+.selectDropdown {
+
+}
+
+.textArea {
+    height: 125px;
+    resize: none;
+    padding-top: 5px;
+}
+
+.buttonWrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.continueButton, .backButton {
+    height: 40px;
+    width: 100%;
+    max-width: 400px;
+    border: 0px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.35);
+}
+
+.backButton {
+    background-color: white;
+    color: black;
+}
+
+.continueButton {
+    background-color: var(--primary-color);
+    color: white;
+}

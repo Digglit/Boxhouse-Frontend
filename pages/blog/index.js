@@ -3,11 +3,21 @@ import styles from '../../styles/BlogOverview.module.css';
 import placeholderImage from '../../public/placeholderImage.jpg';
 import placeholderImage2 from '../../public/placeholderImage2.jpg';
 import placeholderImage3 from '../../public/placeholderImage3.jpg';
+import Head from 'next/head';
+import PageTransition from '../../components/PageTransition';
 
-const Blog = (props) => {
+const Blog = (props, ref) => {
   return (
     <>
       <div className='pageHeaderContainer'>
+        <Head>
+          <title>Blog</title>
+          <meta name="description" content="Boxhouse Consulting is a for-hire software team specializing in web-based application development" />
+          <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#FFFFFE" />
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+
         <h1>Boxhouse Blog</h1>
         <input className={styles.searchInput} type='text' placeholder='Search...' />
         <div className={styles.latestBlogsWrapper}>
@@ -83,7 +93,7 @@ const Blog = (props) => {
           </div>
         </Link>
       </div>
-      <ul>
+      {/* <ul>
         {props.routes.map((route) => (
           <li key={route}>
             <Link href={`/blog/${route}`}>
@@ -91,21 +101,21 @@ const Blog = (props) => {
             </Link>
           </li>
         ))}
-      </ul>
+      </ul> */}
     </>
   )
 }
 
-export async function getStaticProps() {
-  // Fetch the list of routes from the API
-  const res = await fetch('http://localhost:3000/blogPosts.json')
-  const routes = await res.json()
+// export async function getStaticProps() {
+//   // Fetch the list of routes from the API
+//   const res = await fetch('http://localhost:3000/blogPosts.json')
+//   const routes = await res.json()
 
-  return {
-    props: {
-      routes,
-    },
-  }
-}
+//   return {
+//     props: {
+//       routes,
+//     },
+//   }
+// }
 
 export default Blog
