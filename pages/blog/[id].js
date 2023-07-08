@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import blogPosts from '../../public/blogPosts.json'
 import MoreBlogPostsSection from '../../components/MoreBlogPostsSection'
+import CaseStudyConsultFooter from '../../components/CaseStudyConsultFooter'
+import BlogHeaderImage from '../../public/placeholderImage.jpg'
 
 const BlogPost = ({blogData}) => {
   return (
@@ -13,22 +15,34 @@ const BlogPost = ({blogData}) => {
 
       {/* Post Content Wrapper */}
 
-      <div className='m-auto w-[95%] max-w-[768px]'>
+      <div className='m-auto w-[90%] max-w-[768px]'>
         <Link href='/blog'>
-          <button className='primaryButton mb-8'>
+          <button className='primaryButton mb-8 !px-[60px]'>
             Back to Blog
           </button>
         </Link>
-        <h1 className='text-4xl'>{blogData.title}</h1>
-        <p className='text-sm pb-4'>{blogData.author} - {blogData.date} | Read Time: 8 Minutes</p>
-        <p>{blogData.content}</p>
-        {/* <img src={blogData.image} style={{height: 400, width: 400}} /> */}
-        <Link href='/blog'>
-          <button className='primaryButton'>
-            Back to Blog
-          </button>
-        </Link>
+        <img src={BlogHeaderImage.src} className='h-[150px] md:h-[250px] w-[100%] object-cover mb-[30px] shadow-xl'/>
+        <h1 className='text-2xl md:text-3xl'>{blogData.title}</h1>
+        <p className='text-sm'>{blogData.author} - {blogData.date} | Read Time: 8 Minutes</p>
+        {blogData.content.map((contentSection, index) => (
+          <div className='mt-8' key={`${blogData.slug} - contentSections - ${index}`}>
+            <div className='grid grid-cols-[10px_1fr] items-center mb-[20px]'>
+              <div className='w-[3px] h-[30px] bg-[#004BFA] mr-[5px]' />
+              <h2 className='text-xl md:text-2xl font-medium'>{contentSection.title}</h2>
+            </div>
+            <p className='text-sm whitespace-pre-line'>{contentSection.text}</p>
+            {contentSection.note &&
+              <p className='text-sm mt-8'>{contentSection.note}</p>
+            }
+          </div>
+        ))}
+        <CaseStudyConsultFooter />
         <MoreBlogPostsSection posts={blogPosts} />
+        <Link href='/blog'>
+          <button className='primaryButton mb-4 !px-[60px]'>
+            Back to Blog
+          </button>
+        </Link>
       </div>
       {/* End Post Content Wrapper */}
 

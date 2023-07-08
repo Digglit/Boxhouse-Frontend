@@ -4,10 +4,10 @@ import placeholderImage from '../public/placeholderImage.jpg';
 import placeholderImage2 from '../public/placeholderImage2.jpg';
 import placeholderImage3 from '../public/placeholderImage3.jpg';
 
-const MoreBlogPostsSection = ({ posts }) => {
+const MoreBlogPostsSection = ({ posts, containerStyles = "" }) => {
   const images = [placeholderImage, placeholderImage2, placeholderImage3];
   return(
-    <div className={styles.oldBlogPostsWrapper}>
+    <div className={`${containerStyles} md:py-[25px] box-border`}>
       <h2 className={styles.oldPostsTitle}>Older Posts</h2>
       <ul>
         {posts.map((props) => (

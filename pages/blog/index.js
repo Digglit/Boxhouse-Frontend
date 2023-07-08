@@ -22,7 +22,7 @@ const Blog = (props, ref) => {
         <h1>Boxhouse Blog</h1>
         <input className={styles.searchInput} type='text' placeholder='Search...' />
         <div className={styles.latestBlogsWrapper}>
-          <Link href="/" className={styles.latestBlogPrimaryLinkWrapper}>
+          <Link href={`/blog/${props.posts[0].slug}`} className={styles.latestBlogPrimaryLinkWrapper}>
             <div className={styles.latestBlogPrimaryContainer}>
               <img className={styles.latestBlogPrimaryImage} src={placeholderImage.src} />
               <div className={styles.latestBlogPrimaryContentWrapper}>
@@ -32,7 +32,7 @@ const Blog = (props, ref) => {
               </div>
             </div>
           </Link>
-          <Link href="/" className={styles.latestBlogSecondaryLinkWrapper}>
+          <Link href={`/blog/${props.posts[1].slug}`} className={styles.latestBlogSecondaryLinkWrapper}>
             <div className={styles.latestBlogSecondaryContainer}>
               <img className={styles.latestBlogSecondaryImage} src={placeholderImage2.src} />
               <div className={styles.latestBlogSecondaryContentWrapper}>
@@ -41,7 +41,7 @@ const Blog = (props, ref) => {
               </div>
             </div>
           </Link>
-          <Link href="/" className={styles.latestBlogSecondaryLinkWrapper}>
+          <Link href={`/blog/${props.posts[2].slug}`} className={styles.latestBlogSecondaryLinkWrapper}>
             <div className={styles.latestBlogSecondaryContainer}>
               <img className={styles.latestBlogSecondaryImage} src={placeholderImage3.src} />
               <div className={styles.latestBlogSecondaryContentWrapper}>
@@ -61,7 +61,7 @@ const Blog = (props, ref) => {
           </Link>
         </div>
       </div>
-      <MoreBlogPostsSection posts={props.posts} />
+      <MoreBlogPostsSection posts={props.posts} containerStyles={'px-[25px] md:px-[75px] pt-[50px]'} />
     </>
   )
 }

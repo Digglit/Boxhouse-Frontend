@@ -3,6 +3,7 @@ import CaseStudyImageText from '../../components/CaseStudyImageText';
 import PsychQBImage from '../../public/PsychQB-Mockup.png'
 import OverviewMockup from '../../public/PsychQBOverviewMockup.png'
 import GradingMockup from '../../public/PsychQBGradingMockup.png'
+import AccountSettingsMockup from '../../public/PsychQBAccountSettingsMockup.png'
 import Link from 'next/link';
 import CaseStudyConsultFooter from '../../components/CaseStudyConsultFooter';
 
@@ -46,8 +47,15 @@ const PsychQBCaseStudy = (props, ref) => {
           imagePosition='left'
         />
         <CaseStudyImageText
+          image={AccountSettingsMockup.src}
+          title='Account Settings'
+          body={<p className='text-sm whitespace-pre-line'>The account settings page enables users to manage their account all within the application. We enabled users to manage their subscriptions and receipt history all within this page.<br /><br />Additionally, we added a link for users to submit feedback or bug reports, allowing our client to collect and monitor any information that could be damaging user&apos;s experiences.</p>}
+          imagePosition='right'
+        />
+        <CaseStudyImageText
           title='Final Thoughts'
           body={<p className='text-sm whitespace-pre-line'>PsychQB has been an insightful application for us to work on here at Boxhouse. It was an opportunity for us to refine our skillset, and work on pivoting off some already established code. Ultimately, we&apos;re grateful for the opportunity to have built and shipped PsychQB.<br/><br/>If you&apos;d like to learn more about developing your own web-based applications, give us a call today at xxx-xxx-xxxx or schedule a free consultation through our online consultation scheduler! If you&apos;d like to view the software live for yourself, you can do so by visiting <a className='text-[#004BFA] underline' target="_blank" rel="noreferrer" href="https://app.psychqb.com">app.psychqb.com</a> and creating a demo account from there.</p>}
+          className='!my-[80px]'
         />
         <CaseStudyConsultFooter />
         <Link href='/ourWork'>
