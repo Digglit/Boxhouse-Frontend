@@ -1,6 +1,6 @@
 import styles from '../../styles/OurWork.module.css'
 import CCSCasesImage from '../../public/CCS-Mockup.png'
-import MCQCDMImage from '../../public/MCQCDM-Mockup.png'
+import PsychQBImage from '../../public/PsychQB-Mockup.png'
 import BigMImage from '../../public/BigM-Mockup.png'
 import UltrasoundCardsImage from '../../public/UltrasoundCards-Mockup.png'
 import USCMarketingImage from '../../public/USC-Marketing-Mockup.png'
@@ -34,11 +34,13 @@ const OurWork = (props, ref) => {
         <img className={styles.workSectionImage} src={CCSCasesImage.src}/>
       </div>
       <div className={styles.workSectionContainer}>
-        <img className={styles.workSectionImage} src={MCQCDMImage.src}/>
+        <img className={styles.workSectionImage} src={PsychQBImage.src}/>
         <div className={styles.workSectionContentWrapper}>
-          <h1 className={styles.workSectionTitle}>MCQCDM</h1>
-          <p className={styles.workSectionText}>MCQCDM is an application used by med school students to study for the Clinical Decision Making (CDM) portion of the COMLEX exam.<br /><br />The software we helped build allows students to track and monitor their progress while preparing for the exam. They are shown metrics of their overall performance in addition to receiving feedback on every practice test.</p>
-          <button className={styles.workSectionButton}>Case Study Coming Soon...</button>
+          <h1 className={styles.workSectionTitle}>PsychQB</h1>
+          <p className={styles.workSectionText}>PsychQB is an application used by med school students to study for the Clinical Decision Making portion of the COMLEX exam.<br /><br />The software we helped build allows students to track and monitor their progress while preparing for the exam. They are shown metrics of their overall performance in addition to receiving feedback on every practice test.</p>
+          <Link href="/ourWork/PsychQBCaseStudy">
+            <button className={'primaryButton'}>View Case Study</button>
+          </Link>
         </div>
       </div>
       <div className={styles.workSectionContainer}>

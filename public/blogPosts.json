@@ -1,4 +1,26 @@
 [
-    "Test1",
-    "Test2"
+    {
+        "id": "1",
+        "slug": "what-is-jamstack",
+        "title": "What Is Jamstack?",
+        "author": "Joseph Marella",
+        "date": "July 5th, 2023",
+        "image": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+    },
+    {
+        "id": "2",
+        "slug": "test-post-2",
+        "title": "Test post 2",
+        "author": "Joseph Marella",
+        "date": "July 5th, 2023",
+        "image": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+    },
+    {
+        "id": "3",
+        "slug": "test-post-3",
+        "title": "Test post 3",
+        "author": "Joseph Marella",
+        "date": "July 5th, 2023",
+        "image": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+    }
 ]

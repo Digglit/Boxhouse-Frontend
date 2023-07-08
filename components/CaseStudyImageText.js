@@ -1,5 +1,6 @@
 {/* eslint-disable @next/next/no-img-element */}
 import { Swiper, SwiperSlide } from 'swiper/react'
+import { Pagination } from 'swiper';
 
 import 'swiper/css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,17 +29,17 @@ const CaseStudyImageText = (props, ref) => {
       grid
       grid-rows-[auto_1fr] md:grid-rows-1
       ${props.imagePosition === 'left' ? 'md:grid-cols-[auto_1fr]' : 'md:grid-cols-[1fr_auto]'}
+      ${props.imagePosition === 'left' ? 'lg:relative lg:-left-10' : ''}
       w-[100%]
       mt-[30px] md:mt-0
       ${props.className ? props.className : '' }
       `}
     >
       {imageToEnlarge &&
-        <div className='fixed top-0 left-0 w-[100%] h-[100vh] bg-black bg-opacity-50 z-[1000]'  onClick={() => setImageToEnlarge(null)}>
+        <div className='fixed top-0 left-0 w-[100%] h-[100vh] bg-white z-[1000]'  onClick={() => setImageToEnlarge(null)}>
           <div className='absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] w-[100%] overflow-visible'>
             <QuickPinchZoom
               onUpdate={onImageZoomUpdate}
-              minZoom={1}
               maxZoom={3}
               overflowVisible={true}
             >
@@ -58,8 +59,9 @@ const CaseStudyImageText = (props, ref) => {
               slidesPerView: 2,
             }
           }}
-          pagination={{ clickable: true }}
-          className='!px-[30px] w-[100%]'
+          modules={[Pagination]}
+          pagination={true}
+          className='!p-[30px] w-[100%]'
         >
           {props.image.map((image, index) => (
             <SwiperSlide key={index} className='py-[30px] select-none'>
@@ -76,7 +78,8 @@ const CaseStudyImageText = (props, ref) => {
         </Swiper>
       : props.image &&
         <div
-          className={`justify-self-center
+          className={`
+          justify-self-center
           self-center
           row-start-1
           ${props.imagePosition === 'left' ? 'col-start-1' : 'md:col-start-2'}
@@ -92,7 +95,23 @@ const CaseStudyImageText = (props, ref) => {
             object-cover
             `}
           />
-          <button className='absolute top-[10px] right-[10px] h-[40px] w-[40px] bg-white border-[1px] shadow-xl border-[#004BFA] grid items-center justify-items-center' onClick={() => setImageToEnlarge(props.image)}>
+          <button
+            className='
+            absolute
+            top-[10px]
+            right-[10px]
+            h-[35px] md:h-[40px]
+            w-[35px] md:w-[40px]
+            bg-white
+            border-[1px]
+            shadow-xl
+            border-[#004BFA]
+            grid
+            items-center
+            justify-items-center
+            '
+            onClick={() => setImageToEnlarge(props.image)}
+          >
             <FontAwesomeIcon icon={faMagnifyingGlassPlus} className="text-xl text-[#004BFA]" />
           </button>
         </div>
@@ -111,7 +130,7 @@ const CaseStudyImageText = (props, ref) => {
           <div className='w-[3px] h-[30px] bg-[#004BFA] mr-[5px]' />
           <h2 className='text-2xl font-medium'>{props.title}</h2>
         </div>
-        <p className='text-sm' style={{whiteSpace: 'pre-wrap'}}>{props.body}</p>
+        {props.body}
       </div>
     </div>
   );

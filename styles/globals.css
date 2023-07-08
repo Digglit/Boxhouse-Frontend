@@ -74,13 +74,13 @@ body {
 }
 
 .contentTextTitle {
-  font-size: 48px;
+  font-size: 40px;
   margin: 0px;
   font-weight: 400;
 }
 
 .contentTextParagraph {
-  font-size: 16px;
+  font-size: 14px;
   margin: 20px 0px;
 }
 
@@ -90,11 +90,11 @@ body {
 
 @media(max-width: 900px) {
   .contentTextTitle {
-    font-size: 36px;
+    font-size: 32px;
   }
 
   .contentTextParagraph {
-    font-size: 15px;
+    font-size: 14px;
   }
 
   .primaryButton, .secondaryButton {
@@ -105,4 +105,8 @@ body {
 body {
   max-width: 1750px;
   margin: auto;
+}
+
+.kvfysmfp {
+  overflow: visible !important;
 }

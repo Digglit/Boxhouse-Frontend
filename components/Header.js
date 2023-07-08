@@ -37,7 +37,7 @@ const Header = () => {
   }
 
   useEffect(() => {
-    if (router.pathname.includes('/ourWork/')) {
+    if (router.pathname.includes('/ourWork/') || router.pathname.includes('/blog/')) {
       setScrolled(true);
     } else {
       window.addEventListener('scroll', handleScroll)

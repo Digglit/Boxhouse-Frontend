@@ -5,6 +5,7 @@ import placeholderImage2 from '../../public/placeholderImage2.jpg';
 import placeholderImage3 from '../../public/placeholderImage3.jpg';
 import Head from 'next/head';
 import PageTransition from '../../components/PageTransition';
+import MoreBlogPostsSection from '../../components/MoreBlogPostsSection';
 
 const Blog = (props, ref) => {
   return (
@@ -60,62 +61,21 @@ const Blog = (props, ref) => {
           </Link>
         </div>
       </div>
-      <div className={styles.oldBlogPostsWrapper}>
-        <h2 className={styles.oldPostsTitle}>Older Posts</h2>
-        <Link href="/" className={styles.blogPostLinkWrapper}>
-          <div className={styles.blogPostWrapper}>
-            <div className={styles.blogPostContentWrapper}>
-              <h3 className={styles.blogPostHeader}>What Are Progressive Web Apps?</h3>
-              <p className={styles.blogPostMeta}>Joseph Marella - October 19th, 2022</p>
-              <p className={styles.blogPostText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl.</p>
-            </div>
-            <img className={styles.blogPostImage} src={placeholderImage2.src} />
-          </div>
-        </Link>
-        <Link href="/" className={styles.blogPostLinkWrapper}>
-          <div className={styles.blogPostWrapper}>
-            <div className={styles.blogPostContentWrapper}>
-              <h3 className={styles.blogPostHeader}>Case Study: Applications of Three.js</h3>
-              <p className={styles.blogPostMeta}>Joseph Marella - October 19th, 2022</p>
-              <p className={styles.blogPostText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl.</p>
-            </div>
-            <img className={styles.blogPostImage} src={placeholderImage3.src} />
-          </div>
-        </Link>
-        <Link href="/" className={styles.blogPostLinkWrapper}>
-          <div className={styles.blogPostWrapper}>
-            <div className={styles.blogPostContentWrapper}>
-              <h3 className={styles.blogPostHeader}>Case Study: Advancements in Artificial Intelligence</h3>
-              <p className={styles.blogPostMeta}>Joseph Marella - October 19th, 2022</p>
-              <p className={styles.blogPostText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl.</p>
-            </div>
-            <img className={styles.blogPostImage} src={placeholderImage.src} />
-          </div>
-        </Link>
-      </div>
-      {/* <ul>
-        {props.routes.map((route) => (
-          <li key={route}>
-            <Link href={`/blog/${route}`}>
-              <span>{route}</span>
-            </Link>
-          </li>
-        ))}
-      </ul> */}
+      <MoreBlogPostsSection posts={props.posts} />
     </>
   )
 }
 
-// export async function getStaticProps() {
-//   // Fetch the list of routes from the API
-//   const res = await fetch('http://localhost:3000/blogPosts.json')
-//   const routes = await res.json()
+export async function getStaticProps() {
+  // Fetch the list of routes from the API
+  const res = await fetch('http://localhost:3000/blogPosts.json')
+  const posts = await res.json()
 
-//   return {
-//     props: {
-//       routes,
-//     },
-//   }
-// }
+  return {
+    props: {
+      posts,
+    },
+  }
+}
 
 export default Blog
