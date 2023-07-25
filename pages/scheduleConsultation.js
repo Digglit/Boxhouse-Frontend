@@ -195,7 +195,7 @@ class ConsultationScheduler extends Component {
                 </select>
               </div>
               <div className={styles.buttonWrapper}>
-                <button className={styles.backButton} type="button" onClick={() => this.changePage(e, 2)}>Back</button>
+                <button className={styles.backButton} type="button" onClick={(e) => this.changePage(e, 2)}>Back</button>
                 <button className={styles.continueButton} type="submit">Submit</button>
               </div>
             </form>

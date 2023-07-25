@@ -1,81 +1,157 @@
-import Link from 'next/link';
-import styles from '../../styles/BlogOverview.module.css';
-import placeholderImage from '../../public/placeholderImage.jpg';
-import placeholderImage2 from '../../public/placeholderImage2.jpg';
-import placeholderImage3 from '../../public/placeholderImage3.jpg';
-import Head from 'next/head';
-import PageTransition from '../../components/PageTransition';
-import MoreBlogPostsSection from '../../components/MoreBlogPostsSection';
+import Link from "next/link";
+import styles from "../../styles/BlogOverview.module.css";
+import placeholderImage from "../../public/placeholderImage.jpg";
+import placeholderImage2 from "../../public/placeholderImage2.jpg";
+import placeholderImage3 from "../../public/placeholderImage3.jpg";
+import Head from "next/head";
+import PageTransition from "../../components/PageTransition";
+import MoreBlogPostsSection from "../../components/MoreBlogPostsSection";
+import { useQuery } from "@apollo/client";
+import postsQuery from "../../graphql/getBlogPosts.gql";
+import dateFormatter from "../../util/dateFormatter";
 
 const Blog = (props, ref) => {
+  const { loading, error, data } = useQuery(postsQuery);
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    console.log(error);
+    return <div>Error occurred: {error.message}</div>;
+  }
+
+  const { blogposts } = data;
+  const finalBlogposts = blogposts.data.map((post) => post.attributes);
+  console.log(finalBlogposts);
+
+  const mappableBlogposts = finalBlogposts.slice(4);
+
   return (
     <>
-      <div className='pageHeaderContainer'>
+      <div className="pageHeaderContainer">
         <Head>
           <title>Blog</title>
-          <meta name="description" content="Boxhouse Consulting is a for-hire software team specializing in web-based application development" />
+          <meta
+            name="description"
+            content="Boxhouse Consulting is a for-hire software team specializing in web-based application development"
+          />
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta name="theme-color" content="#FFFFFE" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
         <h1>Boxhouse Blog</h1>
-        <input className={styles.searchInput} type='text' placeholder='Search...' />
+        <input
+          className={styles.searchInput}
+          type="text"
+          placeholder="Search..."
+        />
         <div className={styles.latestBlogsWrapper}>
-          <Link href={`/blog/${props.posts[0].slug}`} className={styles.latestBlogPrimaryLinkWrapper}>
+          <Link
+            href={`/blog/${finalBlogposts[0].Slug}`}
+            className={styles.latestBlogPrimaryLinkWrapper}
+          >
             <div className={styles.latestBlogPrimaryContainer}>
-              <img className={styles.latestBlogPrimaryImage} src={placeholderImage.src} />
+              <img
+                className={styles.latestBlogPrimaryImage}
+                src={`http://localhost:1337${finalBlogposts[0].Image.data.attributes.url}`}
+              />
               <div className={styles.latestBlogPrimaryContentWrapper}>
-                <h3 className={styles.latestBlogPrimaryHeader}>What is JAMSTACK?</h3>
-                <p className={styles.latestBlogPrimaryMeta}>Joseph Marella - October 19th, 2022</p>
-                <p className={styles.latestBlogPrimaryText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl.</p>
+                <h3 className={styles.latestBlogPrimaryHeader}>
+                  {finalBlogposts[0].Title}
+                </h3>
+                <p className={styles.latestBlogPrimaryMeta}>
+                  {finalBlogposts[0].Author} -{" "}
+                  {dateFormatter(finalBlogposts[0].DateWritten, "mm/dd/yyyy")}
+                </p>
+                <p className={styles.latestBlogPrimaryText}>
+                  {finalBlogposts[0].BlogContent[0].Body}
+                </p>
               </div>
             </div>
           </Link>
-          <Link href={`/blog/${props.posts[1].slug}`} className={styles.latestBlogSecondaryLinkWrapper}>
+          <Link
+            href={`/blog/${finalBlogposts[1].Slug}`}
+            className={styles.latestBlogSecondaryLinkWrapper}
+          >
             <div className={styles.latestBlogSecondaryContainer}>
-              <img className={styles.latestBlogSecondaryImage} src={placeholderImage2.src} />
+              <img
+                className={styles.latestBlogSecondaryImage}
+                src={`http://localhost:1337${finalBlogposts[1].Image.data.attributes.url}`}
+              />
               <div className={styles.latestBlogSecondaryContentWrapper}>
-                <h3 className={styles.latestBlogSecondaryHeader}>What Are Progressive Web Apps?</h3>
-                <p className={styles.latestBlogSecondaryMeta}>Joseph Marella - October 19th, 2022</p>
+                <h3 className={styles.latestBlogSecondaryHeader}>
+                  {finalBlogposts[1].Title}
+                </h3>
+                <p className={styles.latestBlogSecondaryMeta}>
+                  {finalBlogposts[1].Author} -{" "}
+                  {dateFormatter(finalBlogposts[1].DateWritten, "mm/dd/yyyy")}
+                </p>
               </div>
             </div>
           </Link>
-          <Link href={`/blog/${props.posts[2].slug}`} className={styles.latestBlogSecondaryLinkWrapper}>
+          <Link
+            href={`/blog/${finalBlogposts[2].Slug}`}
+            className={styles.latestBlogSecondaryLinkWrapper}
+          >
             <div className={styles.latestBlogSecondaryContainer}>
-              <img className={styles.latestBlogSecondaryImage} src={placeholderImage3.src} />
+              <img
+                className={styles.latestBlogSecondaryImage}
+                src={`http://localhost:1337${finalBlogposts[2].Image.data.attributes.url}`}
+              />
               <div className={styles.latestBlogSecondaryContentWrapper}>
-                <h3 className={styles.latestBlogSecondaryHeader}>Case Study: Applications of Three.js</h3>
-                <p className={styles.latestBlogSecondaryMeta}>Joseph Marella - October 19th, 2022</p>
+                <h3 className={styles.latestBlogSecondaryHeader}>
+                  {finalBlogposts[2].Title}
+                </h3>
+                <p className={styles.latestBlogSecondaryMeta}>
+                  {finalBlogposts[2].Author} -{" "}
+                  {dateFormatter(finalBlogposts[2].DateWritten, "mm/dd/yyyy")}
+                </p>
               </div>
             </div>
           </Link>
-          <Link href="/" className={styles.latestBlogSecondaryLinkWrapper}>
+          <Link
+            href={`/blog/${finalBlogposts[3].Slug}`}
+            className={styles.latestBlogSecondaryLinkWrapper}
+          >
             <div className={styles.latestBlogSecondaryContainer}>
-              <img className={styles.latestBlogSecondaryImage} src={placeholderImage.src} />
+              <img
+                className={styles.latestBlogSecondaryImage}
+                src={`http://localhost:1337${finalBlogposts[3].Image.data.attributes.url}`}
+              />
               <div className={styles.latestBlogSecondaryContentWrapper}>
-                <h3 className={styles.latestBlogSecondaryHeader}>GPT-4: The future of Artificial Intelligence</h3>
-                <p className={styles.latestBlogSecondaryMeta}>Joseph Marella - October 19th, 2022</p>
+                <h3 className={styles.latestBlogSecondaryHeader}>
+                  {finalBlogposts[3].Title}
+                </h3>
+                <p className={styles.latestBlogSecondaryMeta}>
+                  {finalBlogposts[3].Author} -{" "}
+                  {dateFormatter(finalBlogposts[3].DateWritten, "mm/dd/yyyy")}
+                </p>
               </div>
             </div>
           </Link>
         </div>
       </div>
-      <MoreBlogPostsSection posts={props.posts} containerStyles={'px-[25px] md:px-[75px] pt-[50px]'} />
+      <MoreBlogPostsSection
+        posts={mappableBlogposts}
+        containerStyles={"px-[25px] md:px-[75px] pt-[50px]"}
+      />
     </>
-  )
-}
+  );
+};
 
 export async function getStaticProps() {
   // Fetch the list of routes from the API
-  const res = await fetch('http://localhost:3000/blogPosts.json')
-  const posts = await res.json()
+  const res = await fetch("http://localhost:3000/blogPosts.json");
+  const posts = await res.json();
 
   return {
     props: {
       posts,
     },
-  }
+  };
 }
 
-export default Blog
+export default Blog;

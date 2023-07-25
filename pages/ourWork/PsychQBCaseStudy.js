@@ -1,6 +1,6 @@
 {/* eslint-disable @next/next/no-img-element */}
 import CaseStudyImageText from '../../components/CaseStudyImageText';
-import PsychQBImage from '../../public/PsychQB-Mockup.png'
+import PsychQBImage from '../../public/PsychQB-Mockup.jpeg'
 import OverviewMockup from '../../public/PsychQBOverviewMockup.png'
 import GradingMockup from '../../public/PsychQBGradingMockup.png'
 import AccountSettingsMockup from '../../public/PsychQBAccountSettingsMockup.png'
@@ -31,7 +31,7 @@ const PsychQBCaseStudy = (props, ref) => {
         />
         <CaseStudyImageText
           title='Initial State of the Project'
-          body={<p className='text-sm whitespace-pre-line'>Upon getting started on this project, there was some groundwork laid but ultimately the initial attempt to get the project going had failed. Boxhouse was tasked with taking the current code, designing a user interface for the application, and building out the product through to completion.</p>}
+          body={<p className='text-sm whitespace-pre-line'>Upon getting started on this project, there was some groundwork laid but ultimately the initial attempt to get the project going had failed. Boxhouse was tasked with taking the current code, designing a user interface for the application, our client was responsible for the web server, database and hosting needs of the platform. Together we sought to build out the product through to completion.</p>}
           className='!my-[80px]'
         />
         <CaseStudyImageText
@@ -49,7 +49,7 @@ const PsychQBCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={AccountSettingsMockup.src}
           title='Account Settings'
-          body={<p className='text-sm whitespace-pre-line'>The account settings page enables users to manage their account all within the application. We enabled users to manage their subscriptions and receipt history all within this page.<br /><br />Additionally, we added a link for users to submit feedback or bug reports, allowing our client to collect and monitor any information that could be damaging user&apos;s experiences.</p>}
+          body={<p className='text-sm whitespace-pre-line'>The account settings page enables users to manage their account from within the application. We enabled users to manage their subscriptions and receipt history all within this page.<br /><br />Additionally, we added a link for users to submit feedback or bug reports, allowing our client to collect and monitor any information that could be impact users&apos; experiences.</p>}
           imagePosition='right'
         />
         <CaseStudyImageText

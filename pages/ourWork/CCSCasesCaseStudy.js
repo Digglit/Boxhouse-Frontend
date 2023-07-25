@@ -35,7 +35,7 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={[OldCaseList, OldGrading]}
           title='Initial State of the Project'
-          body={<p className='text-sm whitespace-pre-line'>When starting this project, the basic UI design of the project had already been laid out. However, it lacked many of the essential functional requirements necessary to facilitate the move to the web based platform. To kick things off, we worked to address the technical limitations of the present implementation and alleviate problems with responsiveness for supporting mobile platforms.<br /><br />After carrying out our plan, our client successfully shipped the product and began encouraging users to transition from the java platform onto the new web platform. The product was well received, and was quickly preferred over the java-based platform.</p>}
+          body={<p className='text-sm whitespace-pre-line'>When starting this project, the basic UI design of the project had already been laid out. However, it lacked many of the essential functional requirements necessary to facilitate the move to the web based platform. To kick things off, we worked to address the technical limitations of the present implementation and alleviated problems with responsiveness for supporting mobile platforms.<br /><br />After carrying out our plan, our client successfully shipped the product and began encouraging users to transition from the java platform onto the new web platform. The product was well received, and was quickly preferred over the java-based platform.</p>}
           className='md:mt-[50px] md:mb-[50px]'
         />
         <CaseStudyImageText

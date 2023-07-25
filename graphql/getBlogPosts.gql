@@ -1,0 +1,26 @@
+query blogposts($slugEq: String, $slugNe: String, $page: Int, $pageSize: Int) {
+  blogposts(
+    pagination: { page: $page, pageSize: $pageSize }
+    filters: { Slug: { ne: $slugNe, eq: $slugEq } }
+  ) {
+    data {
+      attributes {
+        Title
+        Slug
+        Author
+        DateWritten
+        Image {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        BlogContent {
+          Header
+          Body
+        }
+      }
+    }
+  }
+}

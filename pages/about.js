@@ -17,7 +17,7 @@ const About = (props, ref) => {
       </Head>
 
       <div className='pageHeaderContainer'>
-        <SnowBackdrop factor={4} opacity={0.4}/>
+        {/* <SnowBackdrop factor={4} opacity={0.4}/> */}
         <h1>About Us</h1>
       </div>
       <div className={styles.pageWrapper}>

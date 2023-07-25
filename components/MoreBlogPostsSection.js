@@ -1,26 +1,38 @@
 import Link from "next/link";
-import styles from '../styles/BlogOverview.module.css';
-import placeholderImage from '../public/placeholderImage.jpg';
-import placeholderImage2 from '../public/placeholderImage2.jpg';
-import placeholderImage3 from '../public/placeholderImage3.jpg';
+import styles from "../styles/BlogOverview.module.css";
+import placeholderImage from "../public/placeholderImage.jpg";
+import placeholderImage2 from "../public/placeholderImage2.jpg";
+import placeholderImage3 from "../public/placeholderImage3.jpg";
+import dateFormatter from "../util/dateFormatter";
 
 const MoreBlogPostsSection = ({ posts, containerStyles = "" }) => {
   const images = [placeholderImage, placeholderImage2, placeholderImage3];
-  return(
+  return (
     <div className={`${containerStyles} md:py-[25px] box-border`}>
       <h2 className={styles.oldPostsTitle}>Older Posts</h2>
       <ul>
-        {posts.map((props) => (
-          <li key={`BlogPostsRoutes - ${props.id}`}>
-            <Link href={`/blog/${props.slug}`} className={styles.blogPostLinkWrapper}>
+        {posts.map((post) => (
+          <li key={`BlogPostsRoutes - ${post.Slug}`}>
+            <Link
+              href={`/blog/${post.Slug}`}
+              className={styles.blogPostLinkWrapper}
+            >
               <div className={styles.blogPostWrapper}>
                 <div className={styles.blogPostContentWrapper}>
                   {/* <h3 className={styles.blogPostHeader}>What Are Progressive Web Apps?</h3> */}
-                  <h3 className={styles.blogPostHeader}>{props.title}</h3>
-                  <p className={styles.blogPostMeta}>{props.author} - {props.date}</p>
-                  <p className={styles.blogPostText}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl. Sed euismod, nisl sit amet aliquam aliquam, nisl nisl aliquam nisl, sit amet aliquam nisl nisl sit amet nisl.</p>
+                  <h3 className={styles.blogPostHeader}>{post.Title}</h3>
+                  <p className={styles.blogPostMeta}>
+                    {post.Author} -{" "}
+                    {dateFormatter(post.DateWritten, "mm/dd/yyyy")}
+                  </p>
+                  <p className={styles.blogPostText}>
+                    {post.BlogContent[0].Body}
+                  </p>
                 </div>
-                <img className={styles.blogPostImage} src={images[props.id - 1].src} />
+                <img
+                  className={styles.blogPostImage}
+                  src={`http://localhost:1337${post.Image.data.attributes.url}`}
+                />
               </div>
             </Link>
           </li>
@@ -28,6 +40,6 @@ const MoreBlogPostsSection = ({ posts, containerStyles = "" }) => {
       </ul>
     </div>
   );
-}
+};
 
 export default MoreBlogPostsSection;

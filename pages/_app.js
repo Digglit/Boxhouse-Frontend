@@ -1,9 +1,11 @@
-import Layout from '../layouts/default'
-import '../styles/globals.css'
-import SnowBackdrop from '../components/SnowBackdrop'
+import Layout from "../layouts/default";
+import "../styles/globals.css";
+import { ApolloProvider } from "@apollo/client";
+import client from "../apolloClient";
 
-import { AnimatePresence } from 'framer-motion'
-import { useRouter } from 'next/router'
+import SnowBackdrop from "../components/SnowBackdrop";
+import { AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
 
 // export default function App({ Component, pageProps }) {
 // 	const router = useRouter();
@@ -19,11 +21,14 @@ import { useRouter } from 'next/router'
 // 	)
 // }
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
-    // <SnowBackdrop />
-  )
+    <ApolloProvider client={client}>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ApolloProvider>
+  );
 }
+
+export default App;
