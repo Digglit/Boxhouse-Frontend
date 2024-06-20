@@ -43,20 +43,26 @@ const Blog = (props, ref) => {
         </Head>
 
         <h1>Boxhouse Blog</h1>
-        <input
+        {/* <input
           className={styles.searchInput}
           type="text"
           placeholder="Search..."
-        />
-        <div className={styles.latestBlogsWrapper}>
+        /> */}
+        <div className="grid grid-cols-1 grid-rows-[repeat(4,auto)] md:grid-cols-[40%_60%] md:grid-rows-3 gap-[20px] md:w-[calc(100%-20px)] mt-4">
           <Link
             href={`/blog/${finalBlogposts[0].Slug}`}
+            // grid-row-start: 1;
+            // grid-row-end: 4;
+            // grid-column: 1;
+            // color: black;
+            // text-decoration: none;
             className={styles.latestBlogPrimaryLinkWrapper}
           >
             <div className={styles.latestBlogPrimaryContainer}>
               <img
                 className={styles.latestBlogPrimaryImage}
-                src={`http://localhost:1337${finalBlogposts[0].Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogposts[0].Image.data.attributes.url}`}
+                alt={finalBlogposts[0].Image.data.attributes.alternativeText}
               />
               <div className={styles.latestBlogPrimaryContentWrapper}>
                 <h3 className={styles.latestBlogPrimaryHeader}>
@@ -79,7 +85,8 @@ const Blog = (props, ref) => {
             <div className={styles.latestBlogSecondaryContainer}>
               <img
                 className={styles.latestBlogSecondaryImage}
-                src={`http://localhost:1337${finalBlogposts[1].Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogposts[1].Image.data.attributes.url}`}
+                alt={finalBlogposts[1].Image.data.attributes.alternativeText}
               />
               <div className={styles.latestBlogSecondaryContentWrapper}>
                 <h3 className={styles.latestBlogSecondaryHeader}>
@@ -99,7 +106,8 @@ const Blog = (props, ref) => {
             <div className={styles.latestBlogSecondaryContainer}>
               <img
                 className={styles.latestBlogSecondaryImage}
-                src={`http://localhost:1337${finalBlogposts[2].Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogposts[2].Image.data.attributes.url}`}
+                alt={finalBlogposts[2].Image.data.attributes.alternativeText}
               />
               <div className={styles.latestBlogSecondaryContentWrapper}>
                 <h3 className={styles.latestBlogSecondaryHeader}>
@@ -119,7 +127,8 @@ const Blog = (props, ref) => {
             <div className={styles.latestBlogSecondaryContainer}>
               <img
                 className={styles.latestBlogSecondaryImage}
-                src={`http://localhost:1337${finalBlogposts[3].Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogposts[3].Image.data.attributes.url}`}
+                alt={finalBlogposts[3].Image.data.attributes.alternativeText}
               />
               <div className={styles.latestBlogSecondaryContentWrapper}>
                 <h3 className={styles.latestBlogSecondaryHeader}>
@@ -142,16 +151,16 @@ const Blog = (props, ref) => {
   );
 };
 
-export async function getStaticProps() {
-  // Fetch the list of routes from the API
-  const res = await fetch("http://localhost:3000/blogPosts.json");
-  const posts = await res.json();
+// export async function getStaticProps() {
+//   // Fetch the list of routes from the API
+//   const res = await fetch("http://localhost:3000/blogPosts.json");
+//   const posts = await res.json();
 
-  return {
-    props: {
-      posts,
-    },
-  };
-}
+//   return {
+//     props: {
+//       posts,
+//     },
+//   };
+// }
 
 export default Blog;

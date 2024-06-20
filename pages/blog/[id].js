@@ -9,6 +9,7 @@ import { useQuery } from "@apollo/client";
 import postsQuery from "../../graphql/getBlogPosts.gql";
 import { useRouter } from "next/router";
 import dateFormatter from "../../util/dateFormatter";
+import readingTime from "reading-time";
 
 const BlogPost = ({ blogData }) => {
   // Get the current slug from the router
@@ -46,6 +47,19 @@ const BlogPost = ({ blogData }) => {
   console.log(postData);
   let finalBlogData = postData.blogposts.data[0].attributes;
 
+  const stringifiedBlogData = finalBlogData.BlogContent.map((contentSection) =>
+    contentSection.Body.split("\\n").join(" ")
+  ).join(" ");
+
+  const { minutes } = readingTime(stringifiedBlogData);
+  // ->
+  // stats: {
+  //   text: '1 min read',
+  //   minutes: 1,
+  //   time: 60000,
+  //   words: 200
+  // }
+
   return (
     <div className="pt-[100px]">
       <Head>
@@ -61,14 +75,15 @@ const BlogPost = ({ blogData }) => {
           </button>
         </Link>
         <img
-          src={`http://localhost:1337${finalBlogData.Image.data.attributes.url}`}
+          src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogData.Image.data.attributes.url}`}
           className="h-[150px] md:h-[250px] w-[100%] object-cover mb-[30px] shadow-xl"
+          alt={finalBlogData.Image.data.attributes.alternativeText}
         />
         <h1 className="text-2xl md:text-3xl">{finalBlogData.Title}</h1>
         <p className="text-sm">
           {finalBlogData.Author} -{" "}
           {dateFormatter(finalBlogData.DateWritten, "mm/dd/yyyy")} | Read Time:
-          8 Minutes
+          {` ${Math.ceil(minutes)}`} Minutes
         </p>
         {finalBlogData.BlogContent.map((contentSection, index) => (
           <div

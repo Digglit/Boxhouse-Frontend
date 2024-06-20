@@ -10,8 +10,13 @@ const dateFormatter = (dateString, formatMode) => {
       return `${day}/${month}/${year}`;
     case "mm/dd/yyyy":
       return `${month}/${day}/${year}`;
+    // Return month (with the name of the month) day, year
+    case "mm dd, yyyy":
+      return `${date.toLocaleString("default", {
+        month: "long",
+      })} ${day}, ${year}`;
     default:
-      return `${day}/${month}/${year}`;
+      return `${month}/${day}/${year}`;
   }
 };
 

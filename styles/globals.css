@@ -4,14 +4,14 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #004BFA;
-  --background-color: #00123B;
+  --primary-color: #004bfa;
+  --background-color: #00123b;
 }
 
 body {
   padding: 0px;
   margin: 0px;
-  font-family: 'Good Pro', sans-serif;
+  font-family: "Good Pro", sans-serif;
 }
 
 .pageHeaderContainer {
@@ -31,7 +31,7 @@ body {
   /* padding-left: 60px; */
 }
 
-@media(max-width: 700px) {
+@media (max-width: 700px) {
   .pageHeaderContainer {
     padding: 100px 25px 50px 25px;
   }
@@ -88,7 +88,7 @@ body {
   min-width: 200px;
 }
 
-@media(max-width: 900px) {
+@media (max-width: 900px) {
   .contentTextTitle {
     font-size: 32px;
   }
@@ -97,7 +97,8 @@ body {
     font-size: 14px;
   }
 
-  .primaryButton, .secondaryButton {
+  .primaryButton,
+  .secondaryButton {
     font-size: 14px;
   }
 }
@@ -109,4 +110,11 @@ body {
 
 .kvfysmfp {
   overflow: visible !important;
+}
+
+@layer utilities {
+  .clamp-grid {
+    display: grid;
+    grid-template-columns: clamp(400px, 50%, 1fr) auto;
+  }
 }

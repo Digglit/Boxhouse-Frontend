@@ -13,6 +13,7 @@ query blogposts($slugEq: String, $slugNe: String, $page: Int, $pageSize: Int) {
           data {
             attributes {
               url
+              alternativeText
             }
           }
         }
