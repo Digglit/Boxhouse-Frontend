@@ -14,7 +14,7 @@ class ConsultationScheduler extends Component {
       pageDisplayed: 1,
       timeZone: "-5",
       preferredConsultationDate: "",
-      time: "",
+      time: "9:00 AM",
       name: "",
       company: "",
       industry: "",
@@ -32,10 +32,16 @@ class ConsultationScheduler extends Component {
   };
 
   changePage = (e, newPage) => {
-    if (this.state.pageDisplayed === 1) {
+    e.preventDefault();
+    if (this.state.pageDisplayed === 2 && newPage === 3) {
+      // Validate that an industry has been selected
+      if (this.state.industry === "")
+        return window.alert("Please select an industry");
+      // Validate that the email matches the confirm email
+      else if (this.state.email !== this.state.confirmEmail)
+        return window.alert("Emails do not match");
     }
 
-    e.preventDefault();
     if (newPage === 4) {
       this.submitConsultationHandler();
     } else {
@@ -105,6 +111,7 @@ class ConsultationScheduler extends Component {
                       .toISOString()
                       .split("T")[0]
                   }
+                  required
                   value={this.state.preferredConsultationDate}
                   onChange={this.handleDateChange}
                 />
@@ -144,6 +151,7 @@ class ConsultationScheduler extends Component {
                   className={styles.textInput}
                   type="text"
                   autoFocus
+                  required
                   value={this.state.name}
                   onChange={(e) => this.setState({ name: e.target.value })}
                 />
@@ -153,6 +161,7 @@ class ConsultationScheduler extends Component {
                 <input
                   className={styles.textInput}
                   type="text"
+                  required
                   value={this.state.company}
                   onChange={(e) => this.setState({ company: e.target.value })}
                 />
