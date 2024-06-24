@@ -13,22 +13,22 @@ class ConsultationScheduler extends Component {
     this.state = {
       pageDisplayed: 1,
       timeZone: "-5",
-      date: "",
+      preferredConsultationDate: "",
       time: "",
       name: "",
       company: "",
       industry: "",
       email: "",
       confirmEmail: "",
-      currentProjectStage: "",
+      currentProjectStage: "Just Getting Started",
       idealCompletionDate: "",
       projectDescription: "",
-      whereDidYouHearAboutUs: "",
+      referrer: "Google",
     };
   }
 
   handleDateChange = (e) => {
-    this.setState({ date: e.target.value });
+    this.setState({ preferredConsultationDate: e.target.value });
   };
 
   changePage = (e, newPage) => {
@@ -44,6 +44,7 @@ class ConsultationScheduler extends Component {
   };
 
   submitConsultationHandler = () => {
+    console.log(this.state);
     window.alert("Consultation scheduled!");
   };
 
@@ -68,11 +69,13 @@ class ConsultationScheduler extends Component {
             <form
               className={styles.pageContentWrapper}
               onSubmit={(e) => this.changePage(e, 2)}
+              key="consultation scheduler page 1"
             >
               <h2 className={styles.title}>Let us know when works for you.</h2>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>Time Zone</label>
                 <select
+                  autoFocus
                   className={styles.selectDropdown}
                   value={this.state.timeZone}
                   onChange={(e) => this.setState({ timeZone: e.target.value })}
@@ -86,7 +89,9 @@ class ConsultationScheduler extends Component {
                 </select>
               </div>
               <div className={styles.inputWrapper}>
-                <label className={styles.inputLabel}>Date</label>
+                <label className={styles.inputLabel}>
+                  Preferred Consultation Date
+                </label>
                 <input
                   className={styles.dateInput}
                   type="date"
@@ -100,22 +105,26 @@ class ConsultationScheduler extends Component {
                       .toISOString()
                       .split("T")[0]
                   }
-                  value={this.state.date}
+                  value={this.state.preferredConsultationDate}
                   onChange={this.handleDateChange}
                 />
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>Time</label>
-                <select className={styles.selectDropdown}>
+                <select
+                  className={styles.selectDropdown}
+                  value={this.state.time}
+                  onChange={(e) => this.setState({ time: e.target.value })}
+                >
                   <option value="9:00 AM">9:00 AM</option>
-                  <option value="9:00 AM">10:00 AM</option>
-                  <option value="9:00 AM">11:00 AM</option>
-                  <option value="9:00 AM">12:00 PM</option>
-                  <option value="9:00 AM">1:00 PM</option>
-                  <option value="9:00 AM">2:00 PM</option>
-                  <option value="9:00 AM">3:00 PM</option>
-                  <option value="9:00 AM">4:00 PM</option>
-                  <option value="9:00 AM">5:00 PM</option>
+                  <option value="10:00 AM">10:00 AM</option>
+                  <option value="11:00 AM">11:00 AM</option>
+                  <option value="12:00 PM">12:00 PM</option>
+                  <option value="1:00 PM">1:00 PM</option>
+                  <option value="2:00 PM">2:00 PM</option>
+                  <option value="3:00 PM">3:00 PM</option>
+                  <option value="4:00 PM">4:00 PM</option>
+                  <option value="5:00 PM">5:00 PM</option>
                 </select>
               </div>
               <button className={styles.continueButton} type="submit">
@@ -126,34 +135,67 @@ class ConsultationScheduler extends Component {
             <form
               className={styles.pageContentWrapper}
               onSubmit={(e) => this.changePage(e, 3)}
+              key="consultation scheduler page 2"
             >
               <h2 className={styles.title}>Tell us a bit about you.</h2>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>Name</label>
-                <input className={styles.textInput} type="text" tabIndex="1" />
+                <input
+                  className={styles.textInput}
+                  type="text"
+                  autoFocus
+                  value={this.state.name}
+                  onChange={(e) => this.setState({ name: e.target.value })}
+                />
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>Company</label>
-                <input className={styles.textInput} type="text" />
+                <input
+                  className={styles.textInput}
+                  type="text"
+                  value={this.state.company}
+                  onChange={(e) => this.setState({ company: e.target.value })}
+                />
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>Industry</label>
-                <select className={styles.selectDropdown}>
+                <select
+                  className={styles.selectDropdown}
+                  value={this.state.industry}
+                  onChange={(e) => this.setState({ industry: e.target.value })}
+                >
                   <option hidden>Select An Industry</option>
                   {industries.map((value) => (
                     <option value={value} key={value}>
                       {value}
                     </option>
                   ))}
+                  <option value={"Other"} key={"Other"}>
+                    Other
+                  </option>
                 </select>
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>Email</label>
-                <input className={styles.textInput} type="text" />
+                <input
+                  className={styles.textInput}
+                  type="email"
+                  required
+                  value={this.state.email}
+                  onChange={(e) => this.setState({ email: e.target.value })}
+                />
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>Confirm Email</label>
-                <input className={styles.textInput} type="text" />
+                <input
+                  className={styles.textInput}
+                  type="email"
+                  required
+                  value={this.state.confirmEmail}
+                  onChange={(e) =>
+                    this.setState({ confirmEmail: e.target.value })
+                  }
+                />
               </div>
               <div className={styles.buttonWrapper}>
                 <button
@@ -172,20 +214,34 @@ class ConsultationScheduler extends Component {
             <form
               className={styles.pageContentWrapper}
               onSubmit={(e) => this.changePage(e, 4)}
+              key="consultation scheduler page 3"
             >
               <h2 className={styles.title}>How can we help?</h2>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>
                   Current Project Stage
                 </label>
-                <select className={styles.selectDropdown} tabIndex="1">
-                  <option value="">Just getting started</option>
-                  <option value="">Partial design completion</option>
-                  <option value="">Partial development completion</option>
-                  <option value="">
+                <select
+                  className={styles.selectDropdown}
+                  autoFocus
+                  value={this.state.currentProjectStage}
+                  onChange={(e) =>
+                    this.setState({ currentProjectStage: e.target.value })
+                  }
+                >
+                  <option value="Just Getting Started">
+                    Just getting started
+                  </option>
+                  <option value="Partial Design Completion">
+                    Partial design completion
+                  </option>
+                  <option value="Partial Development Completion">
+                    Partial development completion
+                  </option>
+                  <option value="In Production, Need Feature Expansion">
                     In production, need feature expansion
                   </option>
-                  <option value="">Other</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <div className={styles.inputWrapper}>
@@ -200,26 +256,39 @@ class ConsultationScheduler extends Component {
                       .toISOString()
                       .split("T")[0]
                   }
-                  value={this.state.date}
-                  onChange={this.handleDateChange}
+                  value={this.state.idealCompletionDate}
+                  onChange={(e) =>
+                    this.setState({ idealCompletionDate: e.target.value })
+                  }
                 />
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>
                   A brief description of your project
                 </label>
-                <textarea className={styles.textArea} type="text" />
+                <textarea
+                  className={styles.textArea}
+                  type="text"
+                  value={this.state.projectDescription}
+                  onChange={(e) =>
+                    this.setState({ projectDescription: e.target.value })
+                  }
+                />
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>
                   Where did you hear about us?
                 </label>
-                <select className={styles.selectDropdown}>
-                  <option value="">Google</option>
-                  <option value="">Facebook</option>
-                  <option value="">Word of Mouth</option>
-                  <option value="">LinkedIn</option>
-                  <option value="">Other</option>
+                <select
+                  className={styles.selectDropdown}
+                  value={this.state.referrer}
+                  onChange={(e) => this.setState({ referrer: e.target.value })}
+                >
+                  <option value="Google">Google</option>
+                  <option value="Facebook">Facebook</option>
+                  <option value="Word of Mouth">Word of Mouth</option>
+                  <option value="LinkedIn">LinkedIn</option>
+                  <option value="Other">Other</option>
                 </select>
               </div>
               <div className={styles.buttonWrapper}>
