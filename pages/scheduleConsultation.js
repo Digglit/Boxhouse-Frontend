@@ -12,9 +12,9 @@ class ConsultationScheduler extends Component {
     super();
     this.state = {
       pageDisplayed: 1,
-      timeZone: "-5",
+      timeZone: "Eastern Standard Time",
       preferredConsultationDate: "",
-      time: "9:00 AM",
+      preferredConsultationTime: "09:00:00.000",
       name: "",
       company: "",
       industry: "",
@@ -50,8 +50,34 @@ class ConsultationScheduler extends Component {
   };
 
   submitConsultationHandler = () => {
-    console.log(this.state);
-    window.alert("Consultation scheduled!");
+    fetch("http://192.168.1.65:1337/api/consultations", {
+      body: JSON.stringify({
+        data: {
+          TimeZone: this.state.timeZone,
+          PreferredConsultationDate: this.state.preferredConsultationDate,
+          PreferredConsultationTime: this.state.preferredConsultationTime,
+          Name: this.state.name,
+          Company: this.state.company,
+          Industry: this.state.industry,
+          Email: this.state.email,
+          CurrentStage: this.state.currentProjectStage,
+          IdealCompletionDate: this.state.idealCompletionDate,
+          ProjectDescription: this.state.projectDescription,
+          Referrer: this.state.referrer,
+        },
+      }),
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=utf-8",
+      },
+    })
+      .then(() => {
+        window.alert("Consultation scheduled!");
+      })
+      .catch((error) => {
+        window.alert("Failed to schedule consultation");
+        console.log(error);
+      });
   };
 
   render(props, ref) {
@@ -86,12 +112,24 @@ class ConsultationScheduler extends Component {
                   value={this.state.timeZone}
                   onChange={(e) => this.setState({ timeZone: e.target.value })}
                 >
-                  <option value="-5">GMT -5 Eastern Standard Time</option>
-                  <option value="-6">GMT -6 Central Standard Time</option>
-                  <option value="-7">GMT -7 Mountain Standard Time</option>
-                  <option value="-8">GMT -8 Pacific Standard Time</option>
-                  <option value="-9">GMT -9 Alaska Standard Time</option>
-                  <option value="-10">GMT -10 Hawaii Standard Time</option>
+                  <option value="Eastern Standard Time">
+                    GMT -5 Eastern Standard Time
+                  </option>
+                  <option value="Central Standard Time">
+                    GMT -6 Central Standard Time
+                  </option>
+                  <option value="Mountain Standard Time">
+                    GMT -7 Mountain Standard Time
+                  </option>
+                  <option value="Pacific Standard Time">
+                    GMT -8 Pacific Standard Time
+                  </option>
+                  <option value="Alaska Standard Time">
+                    GMT -9 Alaska Standard Time
+                  </option>
+                  <option value="Hawaii Standard Time">
+                    GMT -10 Hawaii Standard Time
+                  </option>
                 </select>
               </div>
               <div className={styles.inputWrapper}>
@@ -120,18 +158,20 @@ class ConsultationScheduler extends Component {
                 <label className={styles.inputLabel}>Time</label>
                 <select
                   className={styles.selectDropdown}
-                  value={this.state.time}
-                  onChange={(e) => this.setState({ time: e.target.value })}
+                  value={this.state.preferredConsultationTime}
+                  onChange={(e) =>
+                    this.setState({ preferredConsultationTime: e.target.value })
+                  }
                 >
-                  <option value="9:00 AM">9:00 AM</option>
-                  <option value="10:00 AM">10:00 AM</option>
-                  <option value="11:00 AM">11:00 AM</option>
-                  <option value="12:00 PM">12:00 PM</option>
-                  <option value="1:00 PM">1:00 PM</option>
-                  <option value="2:00 PM">2:00 PM</option>
-                  <option value="3:00 PM">3:00 PM</option>
-                  <option value="4:00 PM">4:00 PM</option>
-                  <option value="5:00 PM">5:00 PM</option>
+                  <option value="09:00:00.000">9:00 AM</option>
+                  <option value="10:00:00.000">10:00 AM</option>
+                  <option value="11:00:00.000">11:00 AM</option>
+                  <option value="12:00:00.000">12:00 PM</option>
+                  <option value="13:00:00.000">1:00 PM</option>
+                  <option value="14:00:00.000">2:00 PM</option>
+                  <option value="15:00:00.000">3:00 PM</option>
+                  <option value="16:00:00.000">4:00 PM</option>
+                  <option value="17:00:00.000">5:00 PM</option>
                 </select>
               </div>
               <button className={styles.continueButton} type="submit">
@@ -150,6 +190,7 @@ class ConsultationScheduler extends Component {
                 <input
                   className={styles.textInput}
                   type="text"
+                  maxLength={128}
                   autoFocus
                   required
                   value={this.state.name}
@@ -161,6 +202,7 @@ class ConsultationScheduler extends Component {
                 <input
                   className={styles.textInput}
                   type="text"
+                  maxLength={256}
                   required
                   value={this.state.company}
                   onChange={(e) => this.setState({ company: e.target.value })}
@@ -189,6 +231,7 @@ class ConsultationScheduler extends Component {
                 <input
                   className={styles.textInput}
                   type="email"
+                  maxLength={256}
                   required
                   value={this.state.email}
                   onChange={(e) => this.setState({ email: e.target.value })}
@@ -199,6 +242,7 @@ class ConsultationScheduler extends Component {
                 <input
                   className={styles.textInput}
                   type="email"
+                  maxLength={256}
                   required
                   value={this.state.confirmEmail}
                   onChange={(e) =>
@@ -273,9 +317,11 @@ class ConsultationScheduler extends Component {
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>
-                  A brief description of your project
+                  A brief description of your project (
+                  {this.state.projectDescription.length} / 2,048 characters)
                 </label>
                 <textarea
+                  maxLength={2048}
                   className={styles.textArea}
                   type="text"
                   value={this.state.projectDescription}
