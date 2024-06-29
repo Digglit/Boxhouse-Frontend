@@ -1,9 +1,10 @@
-import { Component } from "react";
+import { Component, createRef } from "react";
 import styles from "../styles/ScheduleConsultation.module.css";
 import Head from "next/head";
 import PageTransition from "../components/PageTransition";
 import { industries } from "../public/industries.json";
 import DatePicker from "react-datepicker";
+import ReCAPTCHA from "react-google-recaptcha";
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -24,7 +25,10 @@ class ConsultationScheduler extends Component {
       idealCompletionDate: "",
       projectDescription: "",
       referrer: "Google",
+      industryError: null,
     };
+
+    this.recaptchaRef = createRef();
   }
 
   handleDateChange = (e) => {
@@ -36,7 +40,7 @@ class ConsultationScheduler extends Component {
     if (this.state.pageDisplayed === 2 && newPage === 3) {
       // Validate that an industry has been selected
       if (this.state.industry === "")
-        return window.alert("Please select an industry");
+        return this.setState({ industryError: "Please select an industry" });
       // Validate that the email matches the confirm email
       else if (this.state.email !== this.state.confirmEmail)
         return window.alert("Emails do not match");
@@ -49,7 +53,8 @@ class ConsultationScheduler extends Component {
     }
   };
 
-  submitConsultationHandler = () => {
+  submitConsultationHandler = async () => {
+    const captchaToken = await this.recaptchaRef.current.executeAsync();
     fetch("http://192.168.1.65:1337/api/consultations", {
       body: JSON.stringify({
         data: {
@@ -64,6 +69,7 @@ class ConsultationScheduler extends Component {
           IdealCompletionDate: this.state.idealCompletionDate,
           ProjectDescription: this.state.projectDescription,
           Referrer: this.state.referrer,
+          ReCaptcha: captchaToken,
         },
       }),
       method: "POST",
@@ -71,14 +77,20 @@ class ConsultationScheduler extends Component {
         "Content-Type": "application/json; charset=utf-8",
       },
     })
-      .then(() => {
-        window.alert("Consultation scheduled!");
+      .then(async (res) => {
+        if (res.ok) window.alert("Consultation scheduled!");
+        else {
+          const responseMessage = await res.json();
+          throw new Error(responseMessage.message);
+        }
       })
       .catch((error) => {
-        window.alert("Failed to schedule consultation");
-        console.log(error);
+        window.alert(`Failed to schedule consultation: ${error}`);
+        console.error(error);
       });
   };
+
+  handleReCAPTCHAChange = (e) => {};
 
   render(props, ref) {
     return (
@@ -209,11 +221,27 @@ class ConsultationScheduler extends Component {
                 />
               </div>
               <div className={styles.inputWrapper}>
-                <label className={styles.inputLabel}>Industry</label>
+                <label
+                  className={`text-[14px] ${
+                    this.state.industryError ? "text-red-700" : ""
+                  }`}
+                >
+                  Industry
+                </label>
                 <select
                   className={styles.selectDropdown}
                   value={this.state.industry}
-                  onChange={(e) => this.setState({ industry: e.target.value })}
+                  onChange={(e) =>
+                    this.setState({
+                      industry: e.target.value,
+                      industryError: null,
+                    })
+                  }
+                  style={{
+                    color: this.state.industryError
+                      ? "rgb(185, 28, 28)"
+                      : "black",
+                  }}
                 >
                   <option hidden>Select An Industry</option>
                   {industries.map((value) => (
@@ -225,6 +253,11 @@ class ConsultationScheduler extends Component {
                     Other
                   </option>
                 </select>
+                {/* {this.state.industryError && (
+                  <p className="mb-[20px] mt-[0px] text-[14px] text-red-700">
+                    {this.state.industryError}
+                  </p>
+                )} */}
               </div>
               <div className={styles.inputWrapper}>
                 <label className={styles.inputLabel}>Email</label>
@@ -305,7 +338,7 @@ class ConsultationScheduler extends Component {
                   className={styles.dateInput}
                   type="date"
                   min={
-                    new Date(new Date().setDate(new Date().getDate() + 1))
+                    new Date(this.state.preferredConsultationDate)
                       .toISOString()
                       .split("T")[0]
                   }
@@ -360,6 +393,12 @@ class ConsultationScheduler extends Component {
               </div>
             </form>
           )}
+          <ReCAPTCHA
+            ref={this.recaptchaRef}
+            size="invisible"
+            sitekey="6LfaJgMqAAAAANyWndVdVYRluGbn4jE3taJSdYko"
+            onChange={this.handleReCAPTCHAChange}
+          />
         </div>
       </>
     );
