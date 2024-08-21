@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "slug": "what-is-jamstack",
+        "title": "What Is Jamstack?",
+        "author": "Joseph Marella",
+        "date": "January 12th, 2023",
+        "image": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+    },
+    {
+        "id": "2",
+        "slug": "what-are-progressive-webapps",
+        "title": "What Are Progressive Web Apps?",
+        "author": "Joseph Marella",
+        "date": "July 5th, 2023",
+        "image": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+    },
+    {
+        "id": "3",
+        "slug": "case-study-applications-of-threejs",
+        "title": "Case Study: Applications of Threejs",
+        "author": "Joseph Marella",
+        "date": "July 5th, 2023",
+        "image": "https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"
+    }
+]

@@ -1,0 +1,359 @@
+
+
+.heroContainer {
+    background-color: var(--background-color);
+    height: 700px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: auto;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+}
+
+@media(max-width: 900px) {
+    .heroContainer {
+        height: 600px;
+        padding: 0px 25px;
+    }
+}
+
+.heroTextContainer {
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+    max-width: 450px;
+    justify-items: center;
+    display: grid;
+    z-index: 1;
+}
+
+.heroTextTitle {
+    color: white;
+    font-size: 50px;
+    margin: 0px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.heroTextTitleHighlighted {
+    color: var(--primary-color);
+}
+
+.heroText {
+    color: white;
+    margin: 20px 0px;
+    margin-bottom: 30px;
+    /* font-size: 14px; */
+    text-align: center;
+}
+
+.sectionAContainer {
+    /* padding: 50px 0px; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+@media(max-width: 900px) {
+    .heroTextTitle {
+        font-size: 32px;
+    }
+
+    .heroText {
+        font-size: 14px;
+    }
+}
+
+.sectionAImage {
+    width: 90%;
+    justify-self: center;
+    position: relative;
+    top: -50px;
+    align-self: center;
+}
+
+.sectionATextContainer {
+    padding: 50px 0px;
+    width: 90%;
+    max-width: 500px;
+    justify-self: center;
+    align-self: center;
+}
+
+@media(max-width: 1000px) {
+    .sectionAImage {
+        top: 0px;
+    }
+}
+
+@media(max-width: 900px) {
+    .sectionAContainer {
+        grid-template-columns: 1fr;
+        height: fit-content;
+        grid-template-rows: auto auto;
+    }
+
+    .sectionAImage {
+        max-height: 300px;
+        padding-top: 50px;
+    }
+}
+
+.sectionBContainer {
+    background-color: var(--background-color);
+    height: 400px;
+    width: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 50px;
+    align-items: center;
+    justify-items: center;
+}
+
+.sectionBContainerWrapper {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    row-gap: 10px;
+    justify-items: center;
+    height: fit-content;
+    width: 100%;
+    max-width: 250px;
+}
+
+.sectionBIcon {
+    color: white;
+    height: 65px;
+    margin-bottom: 10px;
+}
+
+.sectionBTitle {
+    color: white;
+    margin: 0px;
+    font-size: 24px;
+}
+
+.sectionBText {
+    color: white;
+    opacity: 0.85;
+    font-size: 14px;
+    text-align: center;
+    margin: 0px;
+}
+
+@media(max-width: 900px) {
+    .sectionBContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        row-gap: 50px;
+        height: fit-content;
+        padding: 50px 25px;
+    }
+
+    .sectionBContainerWrapper {
+        grid-template-rows: auto auto;
+        grid-template-columns: auto 1fr;
+        justify-items: start;
+        align-items: center;
+        column-gap: 30px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .sectionBIcon {
+        grid-row-start: 1;
+        grid-row-end: 3;
+        height: auto;
+        width: 60px;
+    }
+
+    .sectionBText {
+        text-align: left;
+    }
+}
+
+.sectionCContainer {
+    background-color: #f8f8f8;
+    padding: 75px 0px;
+}
+
+.sectionCContentWrapper {
+    width: 95%;
+    max-width: 1000px;
+    display: grid;
+    margin: auto;
+    grid-template-rows: auto auto auto;
+    row-gap: 30px;
+    justify-items: center;
+}
+
+.sectionCItemsWrapper {
+    display: grid;
+    grid-template-rows: repeat(5, 1fr);
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+    row-gap: 10px;
+}
+
+.sectionCItem {
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.35);
+    padding: 13px 30px;
+}
+
+.sectionCItemTitle {
+    margin: 0px;
+    text-align: center;
+    font-size: 14px;
+}
+
+@media(max-width: 900px) {
+    .sectionCItemsWrapper {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(10, 1fr);
+    }
+}
+
+.sectionDContainer {
+    background-color: #f8f8f8;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: 30px;
+    padding: 0px 100px;
+    width: 100%;
+    box-sizing: border-box;
+    column-gap: 50px;
+    padding-bottom: 100px;
+}
+
+.sectionDTitle {
+    grid-column-start: 1;
+    grid-column-end: 4;
+    font-size: 40px;
+    margin: 0px;
+    font-weight: 400;
+}
+
+.sectionDBlogContainer {
+    background-color: white;
+    box-shadow: 2px 2px 16px rgba(0, 0, 0, 0.25);
+    /* height: 400px; */
+    width: 100%;
+    display: grid;
+    align-items: center;
+    cursor: pointer;
+    grid-template-rows: auto 1fr;
+}
+
+.sectionDBlogImage {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+.sectionDBlogContentWrapper {
+    padding: 20px 10px;
+    display: grid;
+    row-gap: 10px;
+}
+
+.sectionDBlogTitle {
+    margin: 0px;
+    font-weight: 400;
+    font-size: 24px;
+}
+
+.sectionDBlogMeta {
+    margin: 0px;
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.sectionDBlogText {
+    margin: 0px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+@media(max-width: 900px) {
+    .sectionDContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+        row-gap: 35px;
+        padding: 0px 25px;
+        padding-bottom: 50px;
+    }
+
+    .sectionDTitle {
+        grid-column-end: 2;
+        text-align: center;
+        font-size: 32px;
+    }
+
+    .sectionDBlogContainer {
+        max-width: 500px;
+        margin: auto;
+    }
+
+    .sectionDBlogContentWrapper {
+        row-gap: 3px;
+    }
+
+    .sectionDBlogImage {
+        max-height: 175px;
+    }
+
+    .sectionDBlogTitle {
+        font-size: 20px;
+    }
+
+    .sectionDBlogMeta {
+        font-size: 12px;
+    }
+
+    .sectionDBlogText {
+        font-size: 15px;
+        -webkit-line-clamp: 2;
+        margin-top: 7px;
+    }
+}
+
+.sectionEContainer {
+    background-color: var(--background-color);
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    padding: 150px 0px;
+}
+
+.sectionEContentWrapper {
+    color: white;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    row-gap: 10px;
+}
+
+.sectionETitle {
+    font-size: 48px;
+    margin: 0px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.sectionEContentText {
+    text-align: center;
+}
+
+@media(max-width: 900px) {
+    .sectionEContainer {
+        padding: 150px 25px;
+    }
+
+    .sectionETitle {
+        font-size: 36px;
+    }
+}

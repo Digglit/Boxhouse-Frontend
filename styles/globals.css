@@ -1,0 +1,120 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Good+Pro:wght@400;700&display=swap'); */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #004bfa;
+  --background-color: #00123b;
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+  font-family: "Good Pro", sans-serif;
+}
+
+.pageHeaderContainer {
+  padding: 100px;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: var(--background-color);
+  display: grid;
+  align-items: center;
+  position: relative;
+}
+
+.pageHeaderContainer > h1 {
+  color: white;
+  font-size: 48px;
+  margin: 0px;
+  /* padding-left: 60px; */
+}
+
+@media (max-width: 700px) {
+  .pageHeaderContainer {
+    padding: 100px 25px 50px 25px;
+  }
+
+  .pageHeaderContainer > h1 {
+    text-align: center;
+    justify-self: center;
+    font-size: 36px;
+  }
+}
+
+.primaryButton {
+  background-color: var(--primary-color);
+  color: white;
+  border: 0px;
+  height: 35px;
+  font-size: 14px;
+  padding: 0px 40px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.secondaryButton {
+  background-color: white;
+  color: black;
+  border: 0px;
+  height: 35px;
+  font-size: 14px;
+  padding: 0px 40px;
+  cursor: pointer;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.snowBackdrop {
+  position: absolute;
+  z-index: 0;
+  height: 100%;
+  width: 100%;
+  /* background-color: black; */
+}
+
+.contentTextTitle {
+  font-size: 40px;
+  margin: 0px;
+  font-weight: 400;
+}
+
+.contentTextParagraph {
+  font-size: 14px;
+  margin: 20px 0px;
+}
+
+.contentButton {
+  min-width: 200px;
+}
+
+@media (max-width: 900px) {
+  .contentTextTitle {
+    font-size: 32px;
+  }
+
+  .contentTextParagraph {
+    font-size: 14px;
+  }
+
+  .primaryButton,
+  .secondaryButton {
+    font-size: 14px;
+  }
+}
+
+body {
+  max-width: 1750px;
+  margin: auto;
+}
+
+.kvfysmfp {
+  overflow: visible !important;
+}
+
+@layer utilities {
+  .clamp-grid {
+    display: grid;
+    grid-template-columns: clamp(400px, 50%, 1fr) auto;
+  }
+}

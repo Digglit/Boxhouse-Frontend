@@ -1,0 +1,149 @@
+
+
+.pageWrapper {
+    background-color: #f8f8f8;
+    padding: 0px 20px;
+}
+
+.pageContentWrapper {
+    max-width: 800px;
+    margin: auto;
+    padding: 50px 0px;
+}
+
+.contentTextTitle {
+    text-align: center;
+    font-size: 48px;
+    font-weight: 400;
+    margin-top: 0px;
+}
+
+.checklist {
+    list-style-type: none;
+    display: grid;
+    row-gap: 25px;
+    padding: 0px;
+}
+  
+.checklist li::before {
+    content: "";
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-color: #004BFA;
+    margin-right: 10px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+    align-self: center;
+}
+
+.checklist li {
+    display: grid;
+    grid-template-columns: 25px auto;
+    grid-template-rows: auto auto;
+    row-gap: 5px;
+    column-gap: 5px;
+}
+
+.checklistItemTitle {
+    margin: 0px;
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.checklistItemText {
+    margin: 0px;
+    font-size: 14px;
+}
+
+.aboutMeContainer {
+    display: grid;
+    grid-template-columns: 250px auto;
+    background-color: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.35);
+    margin: 50px 0px;
+}
+
+.aboutMeImage {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+.aboutMeTextWrapper {
+    padding: 50px;
+}
+
+.aboutMeTitle {
+    font-weight: 400;
+    font-size: 26px;
+}
+
+.aboutMeText {
+    font-size: 14px;
+}
+
+@media(max-width: 675px) {
+    .contentTextTitle {
+        font-size: 40px;
+    }
+
+    .aboutMeTextWrapper {
+        padding: 10px 20px;
+    }
+}
+
+@media(max-width: 550px) {
+    .aboutMeContainer {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        max-width: 350px;
+        margin: auto;
+        margin-top: 50px;
+    }
+
+    .aboutMeImage {
+        height: 400px;
+    }
+}
+
+.getStartedContainer {
+    height: 400px;
+    background-color: var(--background-color);
+    display: grid;
+    justify-items: center;
+    align-items: center;
+}
+
+.getStartedContentWrapper {
+    display: grid;
+    row-gap: 25px;
+    width: 90%
+}
+
+.getStartedTitle {
+    font-size: 48px;
+    color: white;
+    font-weight: 400;
+    margin: 0px;
+    text-align: center;
+}
+
+.getStartedButtonWrapper {
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: center;
+    column-gap: 10px;
+}
+
+@media(max-width: 675px) {
+    .getStartedTitle {
+        font-size: 36px;
+    }
+
+    .getStartedButtonWrapper {
+        grid-auto-flow: row;
+        row-gap: 10px;
+        justify-items: center;
+    }
+}
