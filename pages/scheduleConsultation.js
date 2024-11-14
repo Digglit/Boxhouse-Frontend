@@ -14,7 +14,11 @@ class ConsultationScheduler extends Component {
     this.state = {
       pageDisplayed: 1,
       timeZone: "Eastern Standard Time",
-      preferredConsultationDate: "",
+      preferredConsultationDate: new Date(
+        new Date().setDate(new Date().getDate() + 1)
+      )
+        .toISOString()
+        .split("T")[0],
       preferredConsultationTime: "09:00:00.000",
       name: "",
       company: "",
@@ -55,7 +59,8 @@ class ConsultationScheduler extends Component {
 
   submitConsultationHandler = async () => {
     const captchaToken = await this.recaptchaRef.current.executeAsync();
-    fetch("http://192.168.1.65:1337/api/consultations", {
+    const route = process.env.REACT_APP_NODE_ENDPOINT;
+    fetch(`route/api/consultations`, {
       body: JSON.stringify({
         data: {
           TimeZone: this.state.timeZone,

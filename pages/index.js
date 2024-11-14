@@ -8,9 +8,9 @@ import placeholderImage3 from "../public/placeholderImage3.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
-  faLaptopMobile,
+  faMobileScreen,
   faLock,
-} from "@fortawesome/sharp-solid-svg-icons";
+} from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import SnowEffect from "../components/SnowBackdrop";
 import PageTransition from "../components/PageTransition";
@@ -113,7 +113,7 @@ export default function Home(props, ref) {
         </div>
         <div className={styles.sectionBContainerWrapper}>
           <FontAwesomeIcon
-            icon={faLaptopMobile}
+            icon={faMobileScreen}
             className={styles.sectionBIcon}
           />
           <h3 className={styles.sectionBTitle}>Responsiveness</h3>
