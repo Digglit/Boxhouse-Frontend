@@ -170,7 +170,7 @@ export default function Home(props, ref) {
               {/* <img className={styles.sectionDBlogImage} src={placeholderImage.src}/> */}
               <Image
                 className={styles.sectionDBlogImage}
-                src={`${process.env.NEXT_NODE_ENDPOINT}${post.Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${post.Image.data.attributes.url}`}
                 height={145}
                 width={200}
                 alt={post.Image.data.attributes.alternativeText}

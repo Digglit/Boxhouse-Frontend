@@ -61,7 +61,7 @@ const Blog = (props, ref) => {
             <div className={styles.latestBlogPrimaryContainer}>
               <img
                 className={styles.latestBlogPrimaryImage}
-                src={`${process.env.NEXT_NODE_ENDPOINT}${finalBlogposts[0].Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogposts[0].Image.data.attributes.url}`}
                 alt={finalBlogposts[0].Image.data.attributes.alternativeText}
               />
               <div className={styles.latestBlogPrimaryContentWrapper}>
@@ -85,7 +85,7 @@ const Blog = (props, ref) => {
             <div className={styles.latestBlogSecondaryContainer}>
               <img
                 className={styles.latestBlogSecondaryImage}
-                src={`${process.env.NEXT_NODE_ENDPOINT}${finalBlogposts[1].Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogposts[1].Image.data.attributes.url}`}
                 alt={finalBlogposts[1].Image.data.attributes.alternativeText}
               />
               <div className={styles.latestBlogSecondaryContentWrapper}>
@@ -106,7 +106,7 @@ const Blog = (props, ref) => {
             <div className={styles.latestBlogSecondaryContainer}>
               <img
                 className={styles.latestBlogSecondaryImage}
-                src={`${process.env.NEXT_NODE_ENDPOINT}${finalBlogposts[2].Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogposts[2].Image.data.attributes.url}`}
                 alt={finalBlogposts[2].Image.data.attributes.alternativeText}
               />
               <div className={styles.latestBlogSecondaryContentWrapper}>
@@ -127,7 +127,7 @@ const Blog = (props, ref) => {
             <div className={styles.latestBlogSecondaryContainer}>
               <img
                 className={styles.latestBlogSecondaryImage}
-                src={`${process.env.NEXT_NODE_ENDPOINT}${finalBlogposts[3].Image.data.attributes.url}`}
+                src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogposts[3].Image.data.attributes.url}`}
                 alt={finalBlogposts[3].Image.data.attributes.alternativeText}
               />
               <div className={styles.latestBlogSecondaryContentWrapper}>

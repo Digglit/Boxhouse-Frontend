@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const client = new ApolloClient({
-  uri: `${process.env.NEXT_NODE_ENDPOINT}/graphql`, // Replace with your Strapi GraphQL endpoint
+  uri: `${process.env.NEXT_PUBLIC_CMS_ENDPOINT}/graphql`, // Replace with your Strapi GraphQL endpoint
   cache: new InMemoryCache(),
 });
 
