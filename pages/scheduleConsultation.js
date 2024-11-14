@@ -59,7 +59,7 @@ class ConsultationScheduler extends Component {
 
   submitConsultationHandler = async () => {
     const captchaToken = await this.recaptchaRef.current.executeAsync();
-    const route = process.env.REACT_APP_NODE_ENDPOINT;
+    const route = process.env.NEXT_NODE_ENDPOINT;
     fetch(`route/api/consultations`, {
       body: JSON.stringify({
         data: {
