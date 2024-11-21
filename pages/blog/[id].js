@@ -75,7 +75,11 @@ const BlogPost = ({ blogData }) => {
           </button>
         </Link>
         <img
-          src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${finalBlogData.Image.data.attributes.url}`}
+          src={`${
+            process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
+              ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
+              : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
+          }${finalBlogData.Image.data.attributes.url}`}
           className="h-[150px] md:h-[250px] w-[100%] object-cover mb-[30px] shadow-xl"
           alt={finalBlogData.Image.data.attributes.alternativeText}
         />

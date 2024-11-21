@@ -31,7 +31,11 @@ const MoreBlogPostsSection = ({ posts, containerStyles = "" }) => {
                 </div>
                 <img
                   className={styles.blogPostImage}
-                  src={`${process.env.NEXT_PUBLIC_CMS_ENDPOINT}${post.Image.data.attributes.url}`}
+                  src={`${
+                    process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
+                      ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
+                      : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
+                  }${post.Image.data.attributes.url}`}
                   alt={post.Image.data.attributes.alternativeText}
                 />
               </div>

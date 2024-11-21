@@ -59,7 +59,10 @@ class ConsultationScheduler extends Component {
 
   submitConsultationHandler = async () => {
     const captchaToken = await this.recaptchaRef.current.executeAsync();
-    const route = process.env.NEXT_PUBLIC_CMS_ENDPOINT;
+    const route =
+      process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
+        ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
+        : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT;
     fetch(`route/api/consultations`, {
       body: JSON.stringify({
         data: {
