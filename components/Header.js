@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 import MobileBurgerMenu from "./MobileBurgerMenu";
 import { AnimatePresence } from "framer-motion";
+import { sendGTMEvent } from "@next/third-parties/google";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -81,7 +82,16 @@ const Header = () => {
             Home
           </span>
         </Link>
-        <Link href="/ourWork" className={styles.linkContainer}>
+        <Link
+          href="/ourWork"
+          className={styles.linkContainer}
+          onClick={() =>
+            sendGTMEvent({
+              event: "buttonClicked",
+              value: "pageLink - Our Work",
+            })
+          }
+        >
           <span className={selectedLink === 1 ? styles.selectedLink : null}>
             Our Work
           </span>
