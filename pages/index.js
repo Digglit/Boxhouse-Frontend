@@ -55,8 +55,6 @@ export default function Home(props, ref) {
             Building Tomorrow&apos;s Web{" "}
             <span className={styles.heroTextTitleHighlighted}>Today.</span>
           </h1>
-          {/* <p className={styles.heroText}>Experience the future of web technology with Boxhouse Consulting - delivering powerful web software solutions that drive business growth.</p> */}
-          {/* <p className={styles.heroText}>Delivering powerful web software solutions that drive business growth.</p> */}
           <p className={styles.heroText}>
             Boxhouse delivers powerful web software solutions that drive
             business growth.

@@ -7,7 +7,7 @@ import { Pagination } from "swiper";
 import "swiper/css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlassPlus } from "@fortawesome/free-solid-svg-icons";
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useEffect } from "react";
 import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
 
 const CaseStudyImageText = (props, ref) => {
@@ -24,6 +24,18 @@ const CaseStudyImageText = (props, ref) => {
       img.style.setProperty("transform", value);
     }
   }, []);
+
+  useEffect(() => {
+    if (imageToEnlarge) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [imageToEnlarge]);
 
   return (
     <div
@@ -60,6 +72,9 @@ const CaseStudyImageText = (props, ref) => {
               />
             </QuickPinchZoom>
           </div>
+          <p className="absolute bottom-[0px] left-[50%] translate-x-[-50%] w-[100%] bg-white py-[10px] text-center">
+            Select anywhere to close
+          </p>
         </div>
       )}
       {props.image && shouldCarouselDisplay ? (
