@@ -5,6 +5,7 @@
 
 :root {
   --primary-color: #004bfa;
+  --primary-color-hovered: #0045e7;
   --background-color: #00123b;
 }
 
@@ -47,11 +48,15 @@ body {
   background-color: var(--primary-color);
   color: white;
   border: 0px;
-  height: 35px;
+  height: 40px;
   font-size: 14px;
-  padding: 0px 40px;
+  padding: 0px 30px;
   cursor: pointer;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+
+  &:hover {
+    background-color: var(--primary-color-hovered);
+  }
 }
 
 .secondaryButton {

@@ -62,7 +62,9 @@ export default function Home(props, ref) {
             business growth.
           </p>
           <Link href="/scheduleConsultation">
-            <button className="primaryButton">Schedule a Consultation</button>
+            <button className="primaryButton">
+              Schedule a Free Consultation
+            </button>
           </Link>
         </div>
         <div className={"snowBackdrop"}>
@@ -156,7 +158,7 @@ export default function Home(props, ref) {
           </div>
           <Link href="/scheduleConsultation">
             <button className="contentButton primaryButton">
-              Schedule a Consultation
+              Schedule a Free Consultation
             </button>
           </Link>
         </div>
@@ -203,7 +205,7 @@ export default function Home(props, ref) {
           </p>
           <Link href="/scheduleConsultation">
             <button className="contentButton primaryButton">
-              Schedule a Consultation
+              Schedule a Free Consultation
             </button>
           </Link>
         </div>

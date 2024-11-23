@@ -47,7 +47,7 @@ const Footer = () => {
             Our Work
           </Link>
           <Link className={styles.footerLink} href="/scheduleConsultation">
-            Schedule a Consultation
+            Schedule a Free Consultation
           </Link>
           <Link className={styles.footerLink} href="/about">
             About Us

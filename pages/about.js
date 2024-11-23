@@ -56,7 +56,9 @@ const About = (props, ref) => {
           <h2 className={styles.getStartedTitle}>Ready to get started?</h2>
           <div className={styles.getStartedButtonWrapper}>
             <Link href="/scheduleConsultation">
-              <button className="primaryButton">Schedule a Consultation</button>
+              <button className="primaryButton">
+                Schedule a Free Consultation
+              </button>
             </Link>
           </div>
         </div>

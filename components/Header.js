@@ -52,7 +52,7 @@ const Header = () => {
   }, [router.pathname]);
 
   const toggleBurgerMenu = (e) => {
-    e.stopPropagation();
+    if (e) e.stopPropagation();
     if (!burgerMenuOpen) {
       setBurgerMenuOpen(true);
     } else {
@@ -107,7 +107,9 @@ const Header = () => {
           </span>
         </Link>
         <Link href="/scheduleConsultation" className={styles.linkContainer}>
-          <button className="primaryButton">Schedule a Consultation</button>
+          <button className="primaryButton">
+            Schedule a Free Consultation
+          </button>
         </Link>
         <button
           aria-label="Expand Navigation Menu"
