@@ -1,26 +1,27 @@
+"use client";
 import Link from "next/link";
 import styles from "./Header.module.css";
 import Logo from "../public/boxhouse-wordmark.svg";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import MobileBurgerMenu from "./MobileBurgerMenu";
 import { AnimatePresence } from "framer-motion";
 import { sendGTMEvent } from "@next/third-parties/google";
+import Image from "next/image";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
-  const router = useRouter();
+  const pathname = usePathname();
 
   const getSelectedLink = () => {
-    const path = router.pathname;
-    if (path === "/") {
+    if (pathname === "/") {
       return 0;
-    } else if (path === "/ourWork") {
+    } else if (pathname === "/ourWork") {
       return 1;
-    } else if (path === "/about") {
+    } else if (pathname === "/about") {
       return 2;
-    } else if (path === "/blog") {
+    } else if (pathname === "/blog") {
       return 3;
     } else {
       return 4;
@@ -38,10 +39,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    if (
-      router.pathname.includes("/ourWork/") ||
-      router.pathname.includes("/blog/")
-    ) {
+    if (pathname.includes("/ourWork/") || pathname.includes("/blog/")) {
       setScrolled(true);
     } else {
       window.addEventListener("scroll", handleScroll);
@@ -49,7 +47,7 @@ const Header = () => {
     }
     setSelectedLink(getSelectedLink());
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [router.pathname]);
+  }, [pathname]);
 
   const toggleBurgerMenu = (e) => {
     if (e) e.stopPropagation();
@@ -71,11 +69,14 @@ const Header = () => {
           href="/"
           style={{ display: "inline-block", width: "fit-content" }}
         >
-          <img
-            src={Logo.src}
-            className={styles.headerLogo}
-            alt={"Boxhouse Logo"}
-          />
+          <div className={styles.headerLogoWrapper}>
+            <Image
+              src={Logo.src}
+              className={styles.headerLogo}
+              fill
+              alt={"Boxhouse Logo"}
+            />
+          </div>
         </Link>
         <Link href="/" className={styles.linkContainer}>
           <span className={selectedLink === 0 ? styles.selectedLink : null}>

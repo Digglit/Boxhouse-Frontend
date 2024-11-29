@@ -7,23 +7,14 @@ import { Pagination } from "swiper";
 import "swiper/css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlassPlus } from "@fortawesome/free-solid-svg-icons";
-import { useState, useRef, useCallback, useEffect } from "react";
-import QuickPinchZoom, { make3dTransformValue } from "react-quick-pinch-zoom";
+import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 const CaseStudyImageText = (props, ref) => {
   const [imageToEnlarge, setImageToEnlarge] = useState(null);
   const shouldCarouselDisplay = Array.isArray(props.image);
   const imgRef = useRef();
-
-  const onImageZoomUpdate = useCallback(({ x, y, scale }) => {
-    const { current: img } = imgRef;
-
-    if (img) {
-      const value = make3dTransformValue({ x, y, scale });
-
-      img.style.setProperty("transform", value);
-    }
-  }, []);
 
   useEffect(() => {
     if (imageToEnlarge) {
@@ -55,24 +46,29 @@ const CaseStudyImageText = (props, ref) => {
     >
       {imageToEnlarge && (
         <div
-          className="fixed top-0 left-0 w-[100%] h-[100vh] bg-white z-[1000]"
+          className="fixed top-0 left-0 w-[100%] h-[100vh] bg-white z-[1000] touch-none grid grid-rows-[1fr_auto]"
           onClick={() => setImageToEnlarge(null)}
         >
-          <div className="absolute top-[50%] translate-y-[-50%] left-[50%] translate-x-[-50%] w-[100%] overflow-visible">
-            <QuickPinchZoom
-              onUpdate={onImageZoomUpdate}
-              maxZoom={3}
-              overflowVisible={true}
-            >
-              <img
-                src={imageToEnlarge}
-                alt={"zooming in on this"}
-                ref={imgRef}
-                className="w-[100%] h-[100%] object-contain"
-              />
-            </QuickPinchZoom>
-          </div>
-          <p className="absolute bottom-[0px] left-[50%] translate-x-[-50%] w-[100%] bg-white py-[10px] text-center">
+          <TransformWrapper wheel={{ smoothStep: 0.02 }}>
+            <TransformComponent>
+              <div className="h-[calc(100vh-44px)] w-[100vw] bg-white grid items-center">
+                <div className="relative w-[100vw] aspect-[16/9] m-auto">
+                  <Image
+                    src={imageToEnlarge}
+                    alt={"zooming in on this"}
+                    ref={imgRef}
+                    fill
+                    style={{
+                      objectFit: "cover",
+                      objectPosition: "center",
+                    }}
+                    sizes={"100vw"}
+                  />
+                </div>
+              </div>
+            </TransformComponent>
+          </TransformWrapper>
+          <p className="w-[100%] bg-white py-[10px] text-center">
             Select anywhere to close
           </p>
         </div>
@@ -84,7 +80,7 @@ const CaseStudyImageText = (props, ref) => {
             0: {
               slidesPerView: 1,
             },
-            768: {
+            900: {
               slidesPerView: 2,
             },
           }}
@@ -93,9 +89,12 @@ const CaseStudyImageText = (props, ref) => {
           className="!p-[30px] w-[100%]"
         >
           {props.image.map((image, index) => (
-            <SwiperSlide key={index} className="py-[30px] select-none">
+            <SwiperSlide
+              key={index}
+              className="py-[30px] select-none relative w-[100%] aspect-[16/9]"
+            >
               <button
-                className="absolute top-[10px] right-[10px] h-[30px] w-[30px] bg-white border-[1px] shadow-xl border-[#004BFA] grid items-center justify-items-center select-none"
+                className="absolute top-[10px] right-[10px] h-[30px] w-[30px] bg-white border-[1px] shadow-xl border-[#004BFA] grid items-center justify-items-center select-none z-20"
                 onClick={() => setImageToEnlarge(image.src)}
               >
                 <FontAwesomeIcon
@@ -103,10 +102,17 @@ const CaseStudyImageText = (props, ref) => {
                   className="text-lg text-[#004BFA]"
                 />
               </button>
-              <img
+              <Image
                 src={image.src}
                 alt={`${props.title} ${index}`}
                 className="shadow-lg"
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  aspectRatio: "4/3",
+                }}
+                sizes={"(max-width: 900px) 100vw, 50vw"}
               />
             </SwiperSlide>
           ))}
@@ -115,22 +121,28 @@ const CaseStudyImageText = (props, ref) => {
         props.image && (
           <div
             className={`
-          justify-self-center
-          self-center
-          row-start-1
-          ${props.imagePosition === "left" ? "col-start-1" : "md:col-start-2"}
-          relative
-          `}
-          >
-            <img
-              src={props.image}
-              alt={props.title}
-              className={`
+            justify-self-center
+            self-center
+            row-start-1
+            ${props.imagePosition === "left" ? "col-start-1" : "md:col-start-2"}
+            relative
             w-[100%] md:w-[40vw] lg:w-[50vw]
             max-w-[650px]
-            object-cover
             `}
-            />
+          >
+            <div className="relative w-[100%] aspect-[4/3] m-auto">
+              <Image
+                src={props.image}
+                alt={props.title}
+                fill
+                style={{
+                  layout: "fill",
+                  objectFit: "cover",
+                  objectPosition: "center",
+                }}
+                sizes={"(max-width: 768px) 100vw, 50vw"}
+              />
+            </div>
             <button
               className="
             absolute

@@ -1,8 +1,9 @@
+"use client";
 import { Component, createRef } from "react";
-import styles from "../styles/ScheduleConsultation.module.css";
+import styles from "../../styles/ScheduleConsultation.module.css";
 import Head from "next/head";
-import PageTransition from "../components/PageTransition";
-import { industries } from "../public/industries.json";
+import PageTransition from "../../components/PageTransition";
+import { industries } from "../../public/industries.json";
 import DatePicker from "react-datepicker";
 import ReCAPTCHA from "react-google-recaptcha";
 

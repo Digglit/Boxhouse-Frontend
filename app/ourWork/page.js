@@ -4,10 +4,10 @@ import PsychQBImage from "../../public/PsychQB-Mockup.jpeg";
 import BigMImage from "../../public/BigM-Mockup.png";
 import UltrasoundCardsImage from "../../public/UltrasoundCards-Mockup.png";
 import USCMarketingImage from "../../public/USC-Marketing-Mockup.png";
-import SnowBackdrop from "../../components/SnowBackdrop";
 // import PageTransition from '../../components/PageTransition'
 import Head from "next/head";
 import Link from "next/link";
+import Image from "next/image";
 
 const OurWork = (props, ref) => {
   return (
@@ -23,7 +23,6 @@ const OurWork = (props, ref) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="pageHeaderContainer">
-        {/* <SnowBackdrop factor={4} opacity={0.4}/> */}
         <h1>Our Work</h1>
       </div>
       <div className={styles.workSectionContainer}>
@@ -48,10 +47,34 @@ const OurWork = (props, ref) => {
             <button className={"primaryButton"}>View Case Study</button>
           </Link>
         </div>
-        <img className={styles.workSectionImage} src={CCSCasesImage.src} />
+        <div className="relative [@media(max-width:900px)]:row-start-1">
+          <Image
+            src={CCSCasesImage.src}
+            fill
+            style={{
+              layout: "fill",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+            alt="CCS Cases collage of many screenshots of the application"
+            sizes={"(max-width: 900px) 100vw, 50vw"}
+          />
+        </div>
       </div>
       <div className={styles.workSectionContainer}>
-        <img className={styles.workSectionImage} src={PsychQBImage.src} />
+        <div className="relative [@media(max-width:900px)]:row-start-1">
+          <Image
+            src={PsychQBImage.src}
+            fill
+            style={{
+              layout: "fill",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+            alt="Psych QB collage of many screenshots of the application"
+            sizes={"(max-width: 900px) 100vw, 50vw"}
+          />
+        </div>
         <div className={styles.workSectionContentWrapper}>
           <h1 className={styles.workSectionTitle}>PsychQB</h1>
           <p className={styles.workSectionText}>
@@ -89,13 +112,36 @@ const OurWork = (props, ref) => {
             Case Study Coming Soon...
           </button>
         </div>
-        <img
-          className={styles.workSectionImage}
-          src={UltrasoundCardsImage.src}
-        />
+        <div className="relative [@media(max-width:900px)]:row-start-1">
+          <Image
+            className={styles.workSectionImage}
+            src={UltrasoundCardsImage.src}
+            fill
+            style={{
+              layout: "fill",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+            alt="Ultrasound Cards collage of many screenshots of the application"
+            sizes={"(max-width: 900px) 100vw, 50vw"}
+          />
+        </div>
       </div>
       <div className={styles.workSectionContainer}>
-        <img className={styles.workSectionImage} src={USCMarketingImage.src} />
+        <div className="relative [@media(max-width:900px)]:row-start-1">
+          <Image
+            className={styles.workSectionImage}
+            src={USCMarketingImage.src}
+            fill
+            style={{
+              layout: "fill",
+              objectFit: "cover",
+              objectPosition: "center",
+            }}
+            alt="Ultrasound Cards Marketing collage of many screenshots of the application"
+            sizes={"(max-width: 900px) 100vw, 50vw"}
+          />
+        </div>
         <div className={styles.workSectionContentWrapper}>
           <h1 className={styles.workSectionTitle}>UltrasoundCards Marketing</h1>
           <p className={styles.workSectionText}>

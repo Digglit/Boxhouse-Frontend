@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 import { motion } from "framer-motion";
 import { useEffect } from "react";
+import Image from "next/image";
 
 const MobileBurgerMenu = ({ selectedLink, toggleMenu }) => {
   useEffect(() => {
@@ -54,7 +55,13 @@ const MobileBurgerMenu = ({ selectedLink, toggleMenu }) => {
           href="/"
           className="inline-block w-fit justify-self-center"
         >
-          <img src={Logo.src} className={"h-10 mt-3"} alt={"Boxhouse Logo"} />
+          <Image
+            src={Logo.src}
+            className={"mt-3"}
+            height={40}
+            width={128}
+            alt={"Boxhouse Logo"}
+          />
         </Link>
         <Link
           onClick={toggleMenu}

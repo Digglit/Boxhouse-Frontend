@@ -1,8 +1,6 @@
-import styles from "../styles/AboutUs.module.css";
-import JosephJPG from "../public/Joseph-Photo-Square.jpeg";
+import styles from "../../styles/AboutUs.module.css";
+import JosephJPG from "../../public/Joseph-Photo-Square.jpeg";
 import Link from "next/link";
-import SnowBackdrop from "../components/SnowBackdrop";
-import PageTransition from "../components/PageTransition";
 import Head from "next/head";
 import Image from "next/image";
 
@@ -21,7 +19,6 @@ const About = (props, ref) => {
       </Head>
 
       <div className="pageHeaderContainer">
-        {/* <SnowBackdrop factor={4} opacity={0.4}/> */}
         <h1>About Us</h1>
       </div>
       <div className="grid grid-rows-[auto_auto] clamp-grid sm:grid-rows-[1fr]">

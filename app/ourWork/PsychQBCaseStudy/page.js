@@ -1,22 +1,32 @@
+"use client";
 {
   /* eslint-disable @next/next/no-img-element */
 }
-import CaseStudyImageText from "../../components/CaseStudyImageText";
-import PsychQBImage from "../../public/PsychQB-Mockup.jpeg";
-import OverviewMockup from "../../public/PsychQBOverviewMockup.png";
-import GradingMockup from "../../public/PsychQBGradingMockup.png";
-import AccountSettingsMockup from "../../public/PsychQBAccountSettingsMockup.png";
+import CaseStudyImageText from "../../../components/CaseStudyImageText";
+import PsychQBImage from "../../../public/PsychQB-Mockup.jpeg";
+import OverviewMockup from "../../../public/PsychQBOverviewMockup.png";
+import GradingMockup from "../../../public/PsychQBGradingMockup.png";
+import AccountSettingsMockup from "../../../public/PsychQBAccountSettingsMockup.png";
 import Link from "next/link";
-import CaseStudyConsultFooter from "../../components/CaseStudyConsultFooter";
+import CaseStudyConsultFooter from "../../../components/CaseStudyConsultFooter";
+import Image from "next/image";
 
 const PsychQBCaseStudy = (props, ref) => {
   return (
     <div className="overflow-hidden">
-      <img
-        src={PsychQBImage.src}
-        alt="CCS Cases Case Study"
-        className="w-[100%] h-[200px] md:h-[250px] object-cover shadow-inner"
-      />
+      <div className="relative w-[100%] h-[200px] md:h-[250px] shadow-inner">
+        <Image
+          src={PsychQBImage.src}
+          alt="Psych QB Collage of many screenshots of the platform"
+          fill
+          style={{
+            layout: "fill",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+          sizes={"100vw"}
+        />
+      </div>
 
       {/* Case Study Body */}
       <div className="px-[5%] md:px-[10%] m-auto">

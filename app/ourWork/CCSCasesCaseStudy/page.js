@@ -1,25 +1,35 @@
+"use client";
 {
   /* eslint-disable @next/next/no-img-element */
 }
-import CaseStudyImageText from "../../components/CaseStudyImageText";
-import CCSCasesImage from "../../public/CCS-Mockup.png";
-import CaseListMockup from "../../public/CCS-Cases-Case-List-Device-Mockup.png";
-import ReportCardMockup from "../../public/CCS-Cases-Report-Card-Device-Mockup.png";
-import GradingFeedbackMockup from "../../public/CCS-Cases-Grading-Feedback-Device-Mockup.png";
-import AccountSettingsMockup from "../../public/CCS-Cases-AccountSettings-Device-Mockup.png";
-import OldCaseList from "../../public/Old-Case-List.png";
-import OldGrading from "../../public/Old-Grading.png";
+import CaseStudyImageText from "../../../components/CaseStudyImageText";
+import CCSCasesImage from "../../../public/CCS-Mockup.png";
+import CaseListMockup from "../../../public/CCS-Cases-Case-List-Device-Mockup.png";
+import ReportCardMockup from "../../../public/CCS-Cases-Report-Card-Device-Mockup.png";
+import GradingFeedbackMockup from "../../../public/CCS-Cases-Grading-Feedback-Device-Mockup.png";
+import AccountSettingsMockup from "../../../public/CCS-Cases-AccountSettings-Device-Mockup.png";
+import OldCaseList from "../../../public/Old-Case-List.png";
+import OldGrading from "../../../public/Old-Grading.png";
 import Link from "next/link";
-import CaseStudyConsultFooter from "../../components/CaseStudyConsultFooter";
+import CaseStudyConsultFooter from "../../../components/CaseStudyConsultFooter";
+import Image from "next/image";
 
 const CCSCasesCaseStudy = (props, ref) => {
   return (
     <div className="overflow-hidden">
-      <img
-        src={CCSCasesImage.src}
-        alt="CCS Cases Case Study"
-        className="w-[100%] h-[200px] md:h-[250px] object-cover shadow-inner"
-      />
+      <div className="relative w-[100%] h-[200px] md:h-[250px] shadow-inner">
+        <Image
+          src={CCSCasesImage.src}
+          alt="CCS Cases Collage of many screenshots of the platform"
+          fill
+          style={{
+            layout: "fill",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+          sizes={"100vw"}
+        />
+      </div>
 
       {/* Case Study Body */}
       <div className="px-[5%] md:px-[10%] m-auto">

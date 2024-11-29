@@ -1,12 +1,9 @@
 import Link from "next/link";
-import styles from "../styles/BlogOverview.module.css";
-import placeholderImage from "../public/placeholderImage.jpg";
-import placeholderImage2 from "../public/placeholderImage2.jpg";
-import placeholderImage3 from "../public/placeholderImage3.jpg";
-import dateFormatter from "../util/dateFormatter";
+import styles from "../../styles/BlogOverview.module.css";
+import dateFormatter from "../../utils/dateFormatter";
+import Image from "next/image";
 
 const MoreBlogPostsSection = ({ posts, containerStyles = "" }) => {
-  const images = [placeholderImage, placeholderImage2, placeholderImage3];
   return (
     <div className={`${containerStyles} md:py-[25px] box-border`}>
       <h2 className={styles.oldPostsTitle}>Older Posts</h2>
@@ -29,15 +26,23 @@ const MoreBlogPostsSection = ({ posts, containerStyles = "" }) => {
                     {post.BlogContent[0].Body}
                   </p>
                 </div>
-                <img
-                  className={styles.blogPostImage}
-                  src={`${
-                    process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
-                      ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
-                      : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-                  }${post.Image.data.attributes.url}`}
-                  alt={post.Image.data.attributes.alternativeText}
-                />
+                <div className="relative h-[150px] [@media(max-width:900px)]:row-start-1">
+                  <Image
+                    src={`${
+                      process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
+                        ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
+                        : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
+                    }${post.Image.data.attributes.url}`}
+                    alt={post.Image.data.attributes.alternativeText}
+                    fill
+                    style={{
+                      layout: "fill",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                    }}
+                    sizes={"(max-width: 900px) 100vw, 250px"}
+                  />
+                </div>
               </div>
             </Link>
           </li>

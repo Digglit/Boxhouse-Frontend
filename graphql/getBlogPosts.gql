@@ -7,6 +7,7 @@ query blogposts($slugEq: String, $slugNe: String, $page: Int, $pageSize: Int) {
       attributes {
         Title
         Slug
+        updatedAt
         Author
         DateWritten
         Image {

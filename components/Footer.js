@@ -3,11 +3,18 @@ import Logo from "../public/boxhouse-wordmark.svg";
 import Link from "next/link";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+import Image from "next/image";
 
 const Footer = () => {
   return (
     <footer className={styles.footerContainer}>
-      <img src={Logo.src} className={styles.footerLogo} alt={"Boxhouse Logo"} />
+      <Image
+        src={Logo.src}
+        className={styles.footerLogo}
+        alt={"Boxhouse Logo"}
+        height={50}
+        width={160}
+      />
       <div className={styles.footerContentWrapper}>
         <div className={styles.footerContactWrapper}>
           <h2 className={"m-0 text-white text-xl font-semibold"}>Contact</h2>
@@ -52,7 +59,7 @@ const Footer = () => {
           <Link className={styles.footerLink} href="/about">
             About Us
           </Link>
-          <Link className={styles.footerLink} href="/">
+          <Link className={styles.footerLink} href="/sitemap.xml">
             Site Map
           </Link>
         </nav>

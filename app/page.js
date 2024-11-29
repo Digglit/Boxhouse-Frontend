@@ -2,9 +2,6 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import sectionAImage from "../public/sectionA.svg";
-import placeholderImage from "../public/placeholderImage.jpg";
-import placeholderImage2 from "../public/placeholderImage2.jpg";
-import placeholderImage3 from "../public/placeholderImage3.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleCheck,
@@ -12,31 +9,41 @@ import {
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-import SnowEffect from "../components/SnowBackdrop";
-import PageTransition from "../components/PageTransition";
+// import StarsBackdrop from "../components/StarsBackdrop";
+import { print } from "graphql";
 import { useQuery } from "@apollo/client";
 import postsQuery from "../graphql/getBlogPosts.gql";
-import dateFormatter from "../util/dateFormatter";
+import dateFormatter from "../utils/dateFormatter";
+// import MDSpinner from "react-md-spinner";
 
-export default function Home(props, ref) {
-  const { loading, error, data } = useQuery(postsQuery, {
-    variables: { page: 1, pageSize: 3 },
-  });
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+export const revalidate = 604800;
 
-  if (error) {
-    console.log(error);
-    return <div>Error occurred: {error.message}</div>;
-  }
+export default async function Home() {
+  const response = await fetch(
+    `${
+      process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
+        ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
+        : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
+    }/graphql`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: print(postsQuery),
+        variables: {
+          page: 1,
+          pageSize: 3,
+        },
+      }),
+    }
+  );
 
-  const { blogposts } = data;
-  const finalBlogposts = blogposts.data.map((post) => post.attributes);
-  console.log(finalBlogposts);
+  const fetchData = await response.json();
+  const blogPosts = fetchData.data.blogposts.data;
 
   return (
-    // <PageTransition ref={ref}>
     <>
       <Head>
         <title>Boxhouse Consulting</title>
@@ -65,13 +72,12 @@ export default function Home(props, ref) {
             </button>
           </Link>
         </div>
-        <div className={"snowBackdrop"}>
-          <SnowEffect factor={4} opacity={1} rotate />
+        <div className={"starsBackdrop"}>
+          {/* <StarsBackdrop factor={4} opacity={1} rotate /> */}
         </div>
       </section>
 
       <section className={styles.sectionAContainer}>
-        {/* <img className={styles.sectionAImage} src={sectionAImage.src}/> */}
         <Image
           className={styles.sectionAImage}
           src={sectionAImage.src}
@@ -164,10 +170,28 @@ export default function Home(props, ref) {
 
       <section className={styles.sectionDContainer}>
         <h2 className={styles.sectionDTitle}>Latest Blog Posts</h2>
-        {finalBlogposts.map((post) => (
+        {/* {blogQueryLoading && (
+          <div className="grid grid-flow-row items-center justify-items-center gap-8 col-span-3 py-[50px] bg-[#F0F0F0]">
+            <MDSpinner size={50} singleColor="#004BFA" />
+            <p>Hold on a second... We&#39;re looking for the latest posts.</p>
+          </div>
+        )}
+        {blogQueryError && (
+          <div className="grid grid-flow-row items-center justify-items-center gap-8 col-span-3 py-[50px] bg-[#F0F0F0]">
+            <p>
+              Hmm. It looks like we weren&#39;t able to find these. Try heading
+              over to our blog directly for more details.
+            </p>
+            <Link href="/blog">
+              <button className="contentButton secondaryButton">
+                Visit Boxhouse Blog
+              </button>
+            </Link>
+          </div>
+        )} */}
+        {blogPosts.map(({ attributes: post }) => (
           <Link href={`/blog/${post.Slug}`} key={post.Slug}>
             <div className={styles.sectionDBlogContainer}>
-              {/* <img className={styles.sectionDBlogImage} src={placeholderImage.src}/> */}
               <Image
                 className={styles.sectionDBlogImage}
                 src={`${

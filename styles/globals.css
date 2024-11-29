@@ -27,7 +27,7 @@ body {
 
 .pageHeaderContainer > h1 {
   color: white;
-  font-size: 48px;
+  font-size: 32px;
   margin: 0px;
   /* padding-left: 60px; */
 }
@@ -38,9 +38,9 @@ body {
   }
 
   .pageHeaderContainer > h1 {
-    text-align: center;
-    justify-self: center;
-    font-size: 36px;
+    /* text-align: center; */
+    /* justify-self: center; */
+    font-size: 28px;
   }
 }
 
@@ -52,7 +52,7 @@ body {
   font-size: 14px;
   padding: 0px 30px;
   cursor: pointer;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 
   &:hover {
     background-color: var(--primary-color-hovered);
@@ -67,10 +67,10 @@ body {
   font-size: 14px;
   padding: 0px 40px;
   cursor: pointer;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
 }
 
-.snowBackdrop {
+.starsBackdrop {
   position: absolute;
   z-index: 0;
   height: 100%;
