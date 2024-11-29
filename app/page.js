@@ -9,7 +9,7 @@ import {
   faLock,
 } from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
-// import StarsBackdrop from "../components/StarsBackdrop";
+import StarsBackdrop from "../components/StarsBackdrop";
 import { print } from "graphql";
 import postsQuery from "../graphql/getBlogPosts.gql";
 import dateFormatter from "../utils/dateFormatter";
@@ -71,7 +71,7 @@ export default async function Home() {
           </Link>
         </div>
         <div className={"starsBackdrop"}>
-          {/* <StarsBackdrop factor={4} opacity={1} rotate /> */}
+          <StarsBackdrop factor={4} opacity={1} rotate />
         </div>
       </section>
 
@@ -168,25 +168,6 @@ export default async function Home() {
 
       <section className={styles.sectionDContainer}>
         <h2 className={styles.sectionDTitle}>Latest Blog Posts</h2>
-        {/* {blogQueryLoading && (
-          <div className="grid grid-flow-row items-center justify-items-center gap-8 col-span-3 py-[50px] bg-[#F0F0F0]">
-            <MDSpinner size={50} singleColor="#004BFA" />
-            <p>Hold on a second... We&#39;re looking for the latest posts.</p>
-          </div>
-        )}
-        {blogQueryError && (
-          <div className="grid grid-flow-row items-center justify-items-center gap-8 col-span-3 py-[50px] bg-[#F0F0F0]">
-            <p>
-              Hmm. It looks like we weren&#39;t able to find these. Try heading
-              over to our blog directly for more details.
-            </p>
-            <Link href="/blog">
-              <button className="contentButton secondaryButton">
-                Visit Boxhouse Blog
-              </button>
-            </Link>
-          </div>
-        )} */}
         {blogPosts.map(({ attributes: post }) => (
           <Link href={`/blog/${post.Slug}`} key={post.Slug}>
             <div className={styles.sectionDBlogContainer}>
