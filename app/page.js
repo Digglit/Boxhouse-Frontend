@@ -11,10 +11,8 @@ import {
 import Image from "next/image";
 // import StarsBackdrop from "../components/StarsBackdrop";
 import { print } from "graphql";
-import { useQuery } from "@apollo/client";
 import postsQuery from "../graphql/getBlogPosts.gql";
 import dateFormatter from "../utils/dateFormatter";
-// import MDSpinner from "react-md-spinner";
 
 export const revalidate = 604800;
 

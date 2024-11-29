@@ -2,8 +2,7 @@
 import { Component, createRef } from "react";
 import styles from "../../styles/ScheduleConsultation.module.css";
 import Head from "next/head";
-import PageTransition from "../../components/PageTransition";
-import { industries } from "../../public/industries.json";
+import industries from "../../utils/industries";
 import DatePicker from "react-datepicker";
 import ReCAPTCHA from "react-google-recaptcha";
 
@@ -64,7 +63,7 @@ class ConsultationScheduler extends Component {
       process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
         ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
         : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT;
-    fetch(`route/api/consultations`, {
+    fetch(`${route}/api/consultations`, {
       body: JSON.stringify({
         data: {
           TimeZone: this.state.timeZone,
