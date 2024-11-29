@@ -40,6 +40,7 @@ const PsychQBCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={OverviewMockup.src}
           title="Project Overview"
+          altText="PsychQB Homepage, showing the users questions completed, average grade, and options for them to select to begin an exam."
           body={
             <p className="text-sm whitespace-pre-line">
               PsychQB is a product used to help prepare psychiatry students for
@@ -73,6 +74,9 @@ const PsychQBCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={OverviewMockup.src}
           title="Exam Creator"
+          altText={
+            "PsychQB Homepage, showing the user's questions completed, average grade, and options for them to select to begin an exam."
+          }
           body={
             <p className="text-sm whitespace-pre-line">
               Users were enabled with a variety of tools to create the exams
@@ -91,6 +95,9 @@ const PsychQBCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={GradingMockup.src}
           title="Exam Grade"
+          altText={
+            "PsychQB Exam Grading Page, showing the user's performance summary and a breakdown of their selected exam's grade."
+          }
           body={
             <p className="text-sm whitespace-pre-line">
               Every exam is graded individually and the user is given feedback
@@ -104,6 +111,9 @@ const PsychQBCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={AccountSettingsMockup.src}
           title="Account Settings"
+          altText={
+            "Psych QB account settings page, showing options for managing the user's account."
+          }
           body={
             <p className="text-sm whitespace-pre-line">
               The account settings page enables users to manage their account

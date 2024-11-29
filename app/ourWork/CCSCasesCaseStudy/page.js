@@ -43,6 +43,9 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={CaseListMockup.src}
           title="Project Overview"
+          altText={
+            "Laptop and Mobile Device showing screenshots of the CCS Cases application case selector feature"
+          }
           body={
             <p className="text-sm whitespace-pre-line">
               CCS Cases is a medical education platform used to prepare doctoral
@@ -65,6 +68,7 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={[OldCaseList, OldGrading]}
           title="Initial State of the Project"
+          altText={["CCS Cases old case list", "CCS cases old grading page"]}
           body={
             <p className="text-sm whitespace-pre-line">
               When starting this project, the basic UI design of the project had
@@ -86,6 +90,7 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={ReportCardMockup.src}
           title="Report Card"
+          altText={"CCS Cases report card feature showing a user's performance"}
           body={
             <p className="text-sm whitespace-pre-line">
               In order to give users more insight into their performance and how
@@ -126,6 +131,9 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={CaseListMockup.src}
           title="The Case List"
+          altText={
+            "Laptop and Mobile Device showing screenshots of the CCS Cases application case selector feature"
+          }
           body={
             <p className="text-sm whitespace-pre-line">
               The case list is used for users to select the case they would like
@@ -145,6 +153,9 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={GradingFeedbackMockup.src}
           title="Grading Feedback"
+          altText={
+            "Updated display of the CCS Cases grading feature, showing better organization of the user's performance feedback"
+          }
           body={
             <p className="text-sm whitespace-pre-line">
               After completing a particular case, the user receives feedback
@@ -160,6 +171,9 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           image={AccountSettingsMockup.src}
           title="Account Settings"
+          altText={
+            "CCS Cases account settings page, showing an overview of user information and a variety of themes to select from"
+          }
           body={
             <p className="text-sm whitespace-pre-line">
               Last to update in this project was the account settings page. In

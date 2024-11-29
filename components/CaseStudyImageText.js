@@ -11,9 +11,18 @@ import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
-const CaseStudyImageText = (props, ref) => {
+// props: image, title, body, imagePosition, className
+
+const CaseStudyImageText = ({
+  image,
+  altText,
+  title,
+  body,
+  imagePosition,
+  className,
+}) => {
   const [imageToEnlarge, setImageToEnlarge] = useState(null);
-  const shouldCarouselDisplay = Array.isArray(props.image);
+  const shouldCarouselDisplay = Array.isArray(image);
   const imgRef = useRef();
 
   useEffect(() => {
@@ -34,14 +43,14 @@ const CaseStudyImageText = (props, ref) => {
       grid
       grid-rows-[auto_1fr] md:grid-rows-1
       ${
-        props.imagePosition === "left"
+        imagePosition === "left"
           ? "md:grid-cols-[auto_1fr]"
           : "md:grid-cols-[1fr_auto]"
       }
-      ${props.imagePosition === "left" ? "lg:relative lg:-left-10" : ""}
+      ${imagePosition === "left" ? "lg:relative lg:-left-10" : ""}
       w-[100%]
       mt-[30px] md:mt-0
-      ${props.className ? props.className : ""}
+      ${className ? className : ""}
       `}
     >
       {imageToEnlarge && (
@@ -55,7 +64,7 @@ const CaseStudyImageText = (props, ref) => {
                 <div className="relative w-[100vw] aspect-[16/9] m-auto">
                   <Image
                     src={imageToEnlarge}
-                    alt={"zooming in on this"}
+                    alt={altText}
                     ref={imgRef}
                     fill
                     style={{
@@ -73,7 +82,7 @@ const CaseStudyImageText = (props, ref) => {
           </p>
         </div>
       )}
-      {props.image && shouldCarouselDisplay ? (
+      {image && shouldCarouselDisplay ? (
         <Swiper
           spaceBetween={10}
           breakpoints={{
@@ -88,7 +97,7 @@ const CaseStudyImageText = (props, ref) => {
           pagination={true}
           className="!p-[30px] w-[100%]"
         >
-          {props.image.map((image, index) => (
+          {image.map((image, index) => (
             <SwiperSlide
               key={index}
               className="py-[30px] select-none relative w-[100%] aspect-[16/9]"
@@ -104,13 +113,13 @@ const CaseStudyImageText = (props, ref) => {
               </button>
               <Image
                 src={image.src}
-                alt={`${props.title} ${index}`}
+                alt={altText[index]}
                 className="shadow-lg"
                 fill
                 style={{
                   objectFit: "cover",
                   objectPosition: "center",
-                  aspectRatio: "4/3",
+                  aspectRatio: "16/9",
                 }}
                 sizes={"(max-width: 900px) 100vw, 50vw"}
               />
@@ -118,22 +127,22 @@ const CaseStudyImageText = (props, ref) => {
           ))}
         </Swiper>
       ) : (
-        props.image && (
+        image && (
           <div
             className={`
             justify-self-center
             self-center
             row-start-1
-            ${props.imagePosition === "left" ? "col-start-1" : "md:col-start-2"}
+            ${imagePosition === "left" ? "col-start-1" : "md:col-start-2"}
             relative
-            w-[100%] md:w-[40vw] lg:w-[50vw]
+            w-[100%] md:w-[40vw]
             max-w-[650px]
             `}
           >
-            <div className="relative w-[100%] aspect-[4/3] m-auto">
+            <div className="relative w-[100%] aspect-[16/9] m-auto">
               <Image
-                src={props.image}
-                alt={props.title}
+                src={image}
+                alt={altText}
                 fill
                 style={{
                   layout: "fill",
@@ -158,7 +167,7 @@ const CaseStudyImageText = (props, ref) => {
             items-center
             justify-items-center
             "
-              onClick={() => setImageToEnlarge(props.image)}
+              onClick={() => setImageToEnlarge(image)}
             >
               <FontAwesomeIcon
                 icon={faMagnifyingGlassPlus}
@@ -175,20 +184,20 @@ const CaseStudyImageText = (props, ref) => {
         ${
           shouldCarouselDisplay
             ? "col-start-1"
-            : props.imagePosition === "left"
+            : imagePosition === "left"
             ? "md:col-start-2"
             : "col-start-1"
         }
         self-center
-        ${props.imagePosition && !shouldCarouselDisplay ? "md:w-[90%]" : ""}
-        ${props.imagePosition === "left" ? "justify-self-end" : ""}
+        ${imagePosition && !shouldCarouselDisplay ? "md:w-[90%]" : ""}
+        ${imagePosition === "left" ? "justify-self-end" : ""}
         `}
       >
         <div className="grid grid-cols-[10px_1fr] items-center mb-[20px]">
           <div className="w-[3px] h-[30px] bg-[#004BFA] mr-[5px]" />
-          <h2 className="text-2xl font-medium">{props.title}</h2>
+          <h2 className="text-2xl font-medium">{title}</h2>
         </div>
-        {props.body}
+        {body}
       </div>
     </div>
   );
