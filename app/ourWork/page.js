@@ -11,7 +11,7 @@ import Image from "next/image";
 
 const OurWork = (props, ref) => {
   return (
-    <>
+    <div className="flex-1">
       <Head>
         <title>Our Work</title>
         <meta
@@ -161,7 +161,7 @@ const OurWork = (props, ref) => {
           </button>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

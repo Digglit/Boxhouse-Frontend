@@ -15,7 +15,7 @@ class ConsultationScheduler extends Component {
       pageDisplayed: 1,
       timeZone: "Eastern Standard Time",
       preferredConsultationDate: new Date(
-        new Date().setDate(new Date().getDate() + 1)
+        new Date().setDate(new Date().getDate() + 1),
       )
         .toISOString()
         .split("T")[0],
@@ -102,7 +102,7 @@ class ConsultationScheduler extends Component {
 
   render(props, ref) {
     return (
-      <>
+      <div className="flex-1">
         <Head>
           <title>Schedule a Consultation</title>
           <meta
@@ -408,7 +408,7 @@ class ConsultationScheduler extends Component {
             onChange={this.handleReCAPTCHAChange}
           />
         </div>
-      </>
+      </div>
     );
   }
 }

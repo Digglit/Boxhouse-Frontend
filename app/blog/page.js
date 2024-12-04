@@ -4,31 +4,42 @@ import postsQuery from "../../graphql/getBlogPosts.gql";
 import { print } from "graphql";
 import PrimaryBlogElement from "../../components/Blog/PrimaryBlogElement";
 import SecondaryBlogElement from "../../components/Blog/SecondaryBlogElement";
+import NoPostsMainContent from "../../components/Blog/NoPostsMainContent";
+import PlaceholderBlogElement from "../../components/Blog/PlaceholderBlogElement";
 
 const Blog = async (props, ref) => {
-  const response = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
-        ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
-        : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-    }/graphql`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: print(postsQuery),
-      }),
-    }
-  );
+  // let blogPosts;
 
-  const fetchData = await response.json();
-  const blogPosts = fetchData.data.blogposts.data;
+  // try {
+  //   const response = await fetch(
+  //     `${
+  //       process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
+  //         ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
+  //         : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
+  //     }/graphql`,
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         query: print(postsQuery),
+  //       }),
+  //     }
+  //   );
+  //   const fetchData = await response.json();
+  //   blogPosts = fetchData.data.blogposts.data;
+  // } catch (error) {
+  //   blogPosts = error;
+  // }
+
+  // console.log(blogPosts);
+
+  // console.log(blogPosts.length);
 
   return (
     <>
-      <div className="pageHeaderContainer">
+      <div className="flex-1 bg-[--background-color] pt-[150px]">
         <Head>
           <title>Blog</title>
           <meta
@@ -40,35 +51,17 @@ const Blog = async (props, ref) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <h1>Boxhouse Blog</h1>
-
-        <div className="grid grid-cols-1 grid-rows-[repeat(4,auto)] md:grid-cols-[40%_60%] md:grid-rows-3 gap-[20px] md:w-[calc(100%-20px)] mt-4">
-          <PrimaryBlogElement blogPost={blogPosts[0]} />
-          <SecondaryBlogElement blogPost={blogPosts[1]} />
-          <SecondaryBlogElement blogPost={blogPosts[2]} />
-          <SecondaryBlogElement blogPost={blogPosts[3]} />
+        <div className="grid max-w-[100%] grid-cols-[100%] items-center gap-[40px] px-[20px] md:grid-cols-[40%_calc(60%-40px)] md:px-[40px] xl:grid-cols-[40%_calc(60%-100px)] xl:gap-[100px] xl:px-[100px]">
+          <NoPostsMainContent />
+          <div className="hidden w-[100%] gap-4 md:grid">
+            <PlaceholderBlogElement />
+            <PlaceholderBlogElement />
+            <PlaceholderBlogElement />
+          </div>
         </div>
       </div>
-      {/* {!postsLoading && !postsQueryError && ( */}
-      <MoreBlogPostsSection
-        posts={blogPosts.map((post) => post.attributes).slice(4)}
-        containerStyles={"px-[25px] md:px-[75px] pt-[50px]"}
-      />
-      {/* )} */}
     </>
   );
 };
-
-// export async function getStaticProps() {
-//   // Fetch the list of routes from the API
-//   const res = await fetch("http://localhost:3000/blogPosts.json");
-//   const posts = await res.json();
-
-//   return {
-//     props: {
-//       posts,
-//     },
-//   };
-// }
 
 export default Blog;

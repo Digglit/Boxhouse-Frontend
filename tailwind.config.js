@@ -12,6 +12,7 @@ module.exports = {
         "xl-dark":
           "0 20px 25px -5px rgb(0 0 0 / 0.3), 0 8px 10px -6px rgb(0 0 0 / 0.3);",
         "xl-dark-centered": "0 0 15px rgb(0 0 0 / 0.2)",
+        "primary-shadow": "0 2px 20px rgba(0, 0, 0, 0.25)",
       },
       colors: {
         "boxhouse-primary": "#004BFA",

@@ -35,14 +35,14 @@ export default async function Home() {
           pageSize: 3,
         },
       }),
-    }
+    },
   );
 
   const fetchData = await response.json();
   const blogPosts = fetchData.data.blogposts.data;
 
   return (
-    <>
+    <div className="flex-1">
       <Head>
         <title>Boxhouse Consulting</title>
         <meta
@@ -211,6 +211,6 @@ export default async function Home() {
           </Link>
         </div>
       </section>
-    </>
+    </div>
   );
 }
