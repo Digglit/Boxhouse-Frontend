@@ -39,7 +39,7 @@ const Blog = async (props, ref) => {
 
   return (
     <>
-      <div className="flex-1 bg-[--background-color] pt-[150px]">
+      <div className="flex-1 bg-[--background-color] pb-[50px] pt-[125px] md:pt-[150px]">
         <Head>
           <title>Blog</title>
           <meta

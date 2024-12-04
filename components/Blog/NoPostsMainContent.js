@@ -38,12 +38,12 @@ const NoPostsMainContent = () => {
         Email
       </label>
       <input
-        className="mt-1 block w-[100%] max-w-[400px] p-2 shadow-primary-shadow"
+        className="mt-1 block w-[100%] max-w-[400px] !rounded-[0px] p-2 shadow-primary-shadow"
         placeholder="Ex: Contact@BoxhouseConsulting.com"
         value={email}
         id="emailInput"
         onChange={(e) => setEmail(e.target.value)}
-      ></input>
+      />
       <button
         className="primaryButton mt-4 w-[100%] max-w-[250px]"
         onClick={handleEmailSubmit}

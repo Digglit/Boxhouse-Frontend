@@ -10,7 +10,7 @@ import { sendGTMEvent } from "@next/third-parties/google";
 import Image from "next/image";
 
 const Header = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(window.scrollY !== 0);
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
   const pathname = usePathname();
 
@@ -31,11 +31,7 @@ const Header = () => {
   const [selectedLink, setSelectedLink] = useState(getSelectedLink());
 
   const handleScroll = () => {
-    if (window.scrollY !== 0) {
-      setScrolled(true);
-    } else {
-      setScrolled(false);
-    }
+    setScrolled(window.scrollY !== 0);
   };
 
   useEffect(() => {
