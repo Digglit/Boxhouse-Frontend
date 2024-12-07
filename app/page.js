@@ -181,7 +181,7 @@ export default async function Home() {
             className="grayscale"
           />
         </div>
-        <div className="mx-auto w-[90%] py-[50px] md:py-[75px]">
+        <div className="mx-auto w-[90%] max-w-[500px] py-[50px] md:py-[75px]">
           <NoPostsMainContent colorClass="text-black" />
         </div>
       </section>
@@ -200,7 +200,7 @@ export default async function Home() {
           </Link>
         </div>
       </section> */}
-      <div className="mx-auto mb-[20px] mt-[100px] grid w-[90%] max-w-[1100px] grid-flow-row items-center justify-items-center bg-[--background-color] py-[50px] shadow-primary-shadow md:my-[100px]">
+      <div className="mx-auto mb-[20px] mt-[20px] grid w-[90%] max-w-[1100px] grid-flow-row items-center justify-items-center bg-[--background-color] py-[50px] shadow-primary-shadow md:my-[100px] md:mt-[100px]">
         <h2 className="mb-4 text-[28px] font-medium text-white">
           Ready To Get Started?
         </h2>
