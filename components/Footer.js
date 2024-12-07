@@ -17,10 +17,10 @@ const Footer = () => {
       />
       <div className={styles.footerContentWrapper}>
         <div className={styles.footerContactWrapper}>
-          <h2 className={"m-0 text-white text-xl font-semibold"}>Contact</h2>
+          <h2 className={"m-0 text-xl font-semibold text-white"}>Contact</h2>
           <p
             className={
-              "m-0 text-white text-sm grid grid-flow-col gap-2 items-center justify-items-center"
+              "m-0 grid grid-flow-col items-center justify-items-center gap-2 text-sm text-white"
             }
           >
             <FontAwesomeIcon
@@ -28,11 +28,11 @@ const Footer = () => {
               aria-label="email"
               className="h-4 w-4"
             />{" "}
-            440-276-1462
+            216-423-5924
           </p>
           <p
             className={
-              "m-0 text-white text-sm grid grid-flow-col gap-2 items-center justify-items-center"
+              "m-0 grid grid-flow-col items-center justify-items-center gap-2 text-sm text-white"
             }
           >
             <FontAwesomeIcon
@@ -64,9 +64,8 @@ const Footer = () => {
           </Link>
         </nav>
         <div className={styles.footerHoursWrapper}>
-          <h2 className={"m-0 text-white text-xl font-semibold"}>Hours</h2>
-          <p className={styles.footerText}>Monday - Friday: 9AM - 6PM EST</p>
-          <p className={styles.footerText}>Saturday: 9AM - 1PM EST</p>
+          <h2 className={"m-0 text-xl font-semibold text-white"}>Hours</h2>
+          <p className={styles.footerText}>Monday - Saturday: 8AM - 5PM EST</p>
         </div>
       </div>
       <p className={styles.copyrightText}>© Boxhouse Consulting, 2024</p>

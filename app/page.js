@@ -12,7 +12,8 @@ import Image from "next/image";
 import StarsBackdrop from "../components/StarsBackdrop";
 import { print } from "graphql";
 import postsQuery from "../graphql/getBlogPosts.gql";
-import dateFormatter from "../utils/dateFormatter";
+import BlogImage from "../public/HomepageBlogPlaceholder.jpeg";
+import NoPostsMainContent from "../components/Blog/NoPostsMainContent";
 
 export const revalidate = 604800;
 
@@ -42,7 +43,7 @@ export default async function Home() {
   const blogPosts = fetchData.data.blogposts.data;
 
   return (
-    <div className="flex-1">
+    <div className="flex-1 bg-[#f8f8f8]">
       <Head>
         <title>Boxhouse Consulting</title>
         <meta
@@ -166,38 +167,26 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className={styles.sectionDContainer}>
-        <h2 className={styles.sectionDTitle}>Latest Blog Posts</h2>
-        {blogPosts.map(({ attributes: post }) => (
-          <Link href={`/blog/${post.Slug}`} key={post.Slug}>
-            <div className={styles.sectionDBlogContainer}>
-              <Image
-                className={styles.sectionDBlogImage}
-                src={`${
-                  process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
-                    ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
-                    : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-                }${post.Image.data.attributes.url}`}
-                height={145}
-                width={200}
-                alt={post.Image.data.attributes.alternativeText}
-              />
-              <div className={styles.sectionDBlogContentWrapper}>
-                <h4 className={styles.sectionDBlogTitle}>{post.Title}</h4>
-                <p className={styles.sectionDBlogMeta}>
-                  {post.Author} -{" "}
-                  {dateFormatter(post.DateWritten, "mm dd, yyyy")}
-                </p>
-                <p className={styles.sectionDBlogText}>
-                  {post.BlogContent[0].Body}
-                </p>
-              </div>
-            </div>
-          </Link>
-        ))}
+      <section className="grid grid-rows-[250px_1fr] md:grid-cols-[1fr_1fr] md:grid-rows-[1fr]">
+        <div className="relative">
+          <Image
+            src={BlogImage}
+            alt="Top down view of the hands of group of people collaborating, pointing to a sheet of paper in the center of a table containing graphs and data"
+            fill
+            style={{
+              objectFit: "cover",
+              objectPosition: "center",
+              aspectRatio: "16/9",
+            }}
+            className="grayscale"
+          />
+        </div>
+        <div className="mx-auto w-[90%] py-[50px] md:py-[75px]">
+          <NoPostsMainContent colorClass="text-black" />
+        </div>
       </section>
 
-      <section className={styles.sectionEContainer}>
+      {/* <section className={styles.sectionEContainer}>
         <div className={styles.sectionEContentWrapper}>
           <h2 className={styles.sectionETitle}>Let&apos;s Get Started 🚀</h2>
           <p className={styles.sectionEContentText}>
@@ -210,7 +199,17 @@ export default async function Home() {
             </button>
           </Link>
         </div>
-      </section>
+      </section> */}
+      <div className="mx-auto mb-[20px] mt-[100px] grid w-[90%] max-w-[1100px] grid-flow-row items-center justify-items-center bg-[--background-color] py-[50px] shadow-primary-shadow md:my-[100px]">
+        <h2 className="mb-4 text-[28px] font-medium text-white">
+          Ready To Get Started?
+        </h2>
+        <Link href="/scheduleConsultation">
+          <button className="primaryButton">
+            Schedule a Free Consultation
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

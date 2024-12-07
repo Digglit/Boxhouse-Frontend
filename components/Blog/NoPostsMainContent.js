@@ -2,18 +2,18 @@
 
 import { useState } from "react";
 
-const NoPostsMainContent = () => {
+const NoPostsMainContent = ({ colorClass = "text-white" }) => {
   const [email, setEmail] = useState("");
 
   const handleEmailSubmit = () => {};
 
   return (
     <div className="mx-auto max-w-[600px]">
-      <h1 className="pb-4 text-[28px] font-medium text-white">
+      <h1 className={`pb-4 text-[28px] font-medium ${colorClass}`}>
         Boxhouse Blog Coming Soon
       </h1>
-      <p className="mb-4 font-light text-white">
-        Sorry, we haven&apos;t posted anything yet. We&apos;re in the process of
+      <p className={`mb-4 font-light ${colorClass}`}>
+        We haven&apos;t posted anything yet. We&apos;re in the process of
         developing a blog strategy that will deliver value to your business on a
         regular basis.
         <br />
@@ -32,13 +32,13 @@ const NoPostsMainContent = () => {
         to find out as soon as our content is available.
       </p>
       <label
-        className="text-[14px] font-light text-white opacity-80"
+        className={`text-[14px] font-light ${colorClass} opacity-80`}
         htmlFor="emailInput"
       >
         Email
       </label>
       <input
-        className="mt-1 block w-[100%] max-w-[400px] !rounded-[0px] p-2 shadow-primary-shadow"
+        className="mt-1 block w-[100%] max-w-[400px] !rounded-[0px] p-2 shadow-md"
         placeholder="Ex: Contact@BoxhouseConsulting.com"
         value={email}
         id="emailInput"

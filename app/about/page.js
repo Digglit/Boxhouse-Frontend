@@ -35,7 +35,11 @@ const About = (props, ref) => {
         <h2 className="mb-4 text-[28px] font-medium text-white">
           Ready To Get Started?
         </h2>
-        <button className="primaryButton">Schedule a Free Consultation</button>
+        <Link href="/scheduleConsultation">
+          <button className="primaryButton">
+            Schedule a Free Consultation
+          </button>
+        </Link>
       </div>
     </div>
   );
