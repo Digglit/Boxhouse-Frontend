@@ -1,7 +1,7 @@
 "use client";
 import Head from "next/head";
 import "react-datepicker/dist/react-datepicker.css";
-import ScheduleConsultationForm from "../../components/ScheduleConsultationForm";
+import ScheduleConsultationForm from "../../components/ConsultationScheduler/ScheduleConsultationForm";
 import ConsultationSchedulerImage from "../../public/ConsultationSchedulerImage.jpeg";
 import Image from "next/image";
 
@@ -23,13 +23,6 @@ const ConsultationScheduler = () => {
       </div>
       <div className="grid items-center justify-items-center md:grid-cols-[3fr_2fr]">
         <div className="w-[90%] max-w-[436px] py-16 md:py-0">
-          <h2 className="text-[24px] font-medium">
-            Schedule a Free Consultation
-          </h2>
-          <p className="mb-4 mt-2">
-            We understand that building things that matter makes you a busy
-            person. Let&apos;s find the perfect time to discuss your goals.
-          </p>
           <ScheduleConsultationForm />
         </div>
         <div className="relative row-start-1 h-[200px] w-[100%] md:col-start-2 md:h-[686px]">
