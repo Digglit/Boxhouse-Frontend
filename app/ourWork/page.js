@@ -22,8 +22,8 @@ const OurWork = (props, ref) => {
         <meta name="theme-color" content="#FFFFFE" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="pageHeaderContainer">
-        <h1>Our Work</h1>
+      <div className="bg-[--background-color] pb-[50px] pl-[20px] pt-[100px] md:pl-[100px]">
+        <h1 className="text-[28px] text-white">Our Work</h1>
       </div>
       <div className={styles.workSectionContainer}>
         <div className={styles.workSectionContentWrapper}>

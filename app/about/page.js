@@ -1,8 +1,8 @@
-import styles from "../../styles/AboutUs.module.css";
-import JosephJPG from "../../public/Joseph-Photo-Square.jpeg";
 import Link from "next/link";
 import Head from "next/head";
-import Image from "next/image";
+import WhatAreWeSection from "../../components/AboutUsSections/WhatAreWe";
+import WhereAreWeSection from "../../components/AboutUsSections/WhereAreWe";
+import WhoAreWeSection from "../../components/AboutUsSections/WhoAreWe";
 
 const About = (props, ref) => {
   return (
@@ -18,47 +18,24 @@ const About = (props, ref) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="pageHeaderContainer">
-        <h1>About Us</h1>
+      <div className="bg-[--background-color] pb-[50px] pl-[20px] pt-[100px] md:pl-[100px]">
+        <h1 className="text-[28px] text-white">About Us</h1>
       </div>
-      <div className="clamp-grid grid grid-rows-[auto_auto] sm:grid-rows-[1fr]">
-        <Image
-          alt="Joseph"
-          src={JosephJPG}
-          // height={"100%"}
-          className="h-[100%] justify-self-end object-cover sm:col-start-2 lg:max-w-[450px]"
-        />
-        <div className="h-fit self-center justify-self-center px-8 py-16 sm:col-start-1 sm:row-start-1 sm:w-[80%] sm:p-8">
-          <h2 className="mb-2 text-2xl font-bold">Built To Last</h2>
-          <p className="text-sm font-light md:text-[16px]">
-            “I remember when I was young and thought that when you&apos;re sick
-            you go to the doctor. When your car breaks down you go to the
-            mechanic. When your grass needs cut you call a landscaper. As I got
-            older and grew into adulthood, I learned that many doctors are
-            inattentive. Many mechanics are not trustworthy. Many landscapers
-            lack attention to detail.
-            <br />
-            <br />
-            That&apos;s what Boxhouse strives to overcome. With our passion for
-            software that functions as well as it looks, our goal is to make you
-            glad that you chose us.”
-          </p>
-          <p className="mt-4 text-sm font-light md:text-[16px]">
-            - Joseph Marella, Founder
-          </p>
-        </div>
+      <WhatAreWeSection />
+      <WhereAreWeSection />
+      <WhoAreWeSection />
+      <div className="mx-auto my-[100px] w-[90%] max-w-[500px] text-center">
+        <h2 className="mb-4 text-[28px] font-medium">How We Are</h2>
+        <p>
+          We&apos;re doing great, thanks for wondering. Our focus is on making
+          sure that you feel the same about your business.
+        </p>
       </div>
-      <div className={styles.getStartedContainer}>
-        <div className={styles.getStartedContentWrapper}>
-          <h2 className={styles.getStartedTitle}>Ready to get started?</h2>
-          <div className={styles.getStartedButtonWrapper}>
-            <Link href="/scheduleConsultation">
-              <button className="primaryButton">
-                Schedule a Free Consultation
-              </button>
-            </Link>
-          </div>
-        </div>
+      <div className="mx-auto mb-[20px] mt-[100px] grid w-[90%] max-w-[1100px] grid-flow-row items-center justify-items-center bg-[--background-color] py-[50px] shadow-primary-shadow md:my-[100px]">
+        <h2 className="mb-4 text-[28px] font-medium text-white">
+          Ready To Get Started?
+        </h2>
+        <button className="primaryButton">Schedule a Free Consultation</button>
       </div>
     </div>
   );

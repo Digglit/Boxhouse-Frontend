@@ -51,7 +51,7 @@ const Blog = async (props, ref) => {
           <link rel="icon" href="/favicon.ico" />
         </Head>
 
-        <div className="grid max-w-[100%] grid-cols-[100%] items-center gap-[40px] px-[20px] md:grid-cols-[40%_calc(60%-40px)] md:px-[40px] xl:grid-cols-[40%_calc(60%-100px)] xl:gap-[100px] xl:px-[100px]">
+        <div className="grid max-w-[100%] grid-cols-[100%] items-center gap-[40px] px-[20px] md:grid-cols-[45%_calc(55%-40px)] md:px-[40px] xl:grid-cols-[50%_calc(50%-100px)] xl:gap-[100px] xl:px-[100px]">
           <NoPostsMainContent />
           <div className="hidden w-[100%] gap-4 md:grid">
             <PlaceholderBlogElement />

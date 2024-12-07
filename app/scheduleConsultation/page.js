@@ -18,7 +18,7 @@ const ConsultationScheduler = () => {
         <meta name="theme-color" content="#FFFFFE" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className="bg-[--background-color] pb-[50px] pl-[50px] pt-[100px]">
+      <div className="bg-[--background-color] pb-[50px] pl-[20px] pt-[100px] md:pl-[100px]">
         <h1 className="text-[28px] text-white">Consultation Scheduler</h1>
       </div>
       <div className="grid items-center justify-items-center md:grid-cols-[3fr_2fr]">
