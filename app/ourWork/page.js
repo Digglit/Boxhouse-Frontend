@@ -27,21 +27,20 @@ const OurWork = (props, ref) => {
       </div>
       <div className={styles.workSectionContainer}>
         <div className={styles.workSectionContentWrapper}>
-          <h1 className={styles.workSectionTitle}>CCS Cases</h1>
-          <p className={styles.workSectionText}>
+          <h1 className={"text-[28px] font-medium"}>CCS Cases</h1>
+          <p className={"my-4"}>
             CCS Cases is an industry-leading software platform used to prepare
-            med school students for the CCS Cases portion of the step 3 exam.
-            This exam is considered a right of passage for doctors as they work
-            to complete their residency programs. After completing the step 3
-            USMLE exam, students are eligible to obtain their medical license.
+            med school students for the CCS portion of the step 3 exam.
             <br />
             <br />
-            The software we helped to develop allows students to prepare for
-            their exam by simulating a variety of different cases. These cases
-            are medical environments in which students must order the correct
-            exams and medications to successfully treat the patient. After
-            completing the simulation, students receive feedback and a case
-            grade which they can use to evaluate their performance.
+            Boxhouse played a key role in helping our client bring their
+            partially completed application to the finish line, bringing that
+            application to market, and later revamping it to help our client
+            better serve their customers.
+            <br />
+            <br />
+            CCS Cases has been a big success, helping tens of thousands of
+            students all over the world become the doctors of tomorrow.
           </p>
           <Link href="/ourWork/CCSCasesCaseStudy">
             <button className={"primaryButton"}>View Case Study</button>
@@ -76,8 +75,8 @@ const OurWork = (props, ref) => {
           />
         </div>
         <div className={styles.workSectionContentWrapper}>
-          <h1 className={styles.workSectionTitle}>PsychQB</h1>
-          <p className={styles.workSectionText}>
+          <h1 className={"text-[28px] font-medium"}>PsychQB</h1>
+          <p className={"my-4"}>
             PsychQB is a product used to help prepare psychiatry students for
             the PRITE and ABPN exams.
             <br />
@@ -94,8 +93,8 @@ const OurWork = (props, ref) => {
       </div>
       <div className={styles.workSectionContainer}>
         <div className={styles.workSectionContentWrapper}>
-          <h1 className={styles.workSectionTitle}>UltrasoundCards</h1>
-          <p className={styles.workSectionText}>
+          <h1 className={"text-[28px] font-medium"}>UltrasoundCards</h1>
+          <p className={"my-4"}>
             UltrasoundCards is a flashcard application used by ultrasonography
             students to study for the ARDMS exams. ARDMS is a medical board who
             offers a broad classification of standardized exams in
@@ -143,8 +142,10 @@ const OurWork = (props, ref) => {
           />
         </div>
         <div className={styles.workSectionContentWrapper}>
-          <h1 className={styles.workSectionTitle}>UltrasoundCards Marketing</h1>
-          <p className={styles.workSectionText}>
+          <h1 className={"text-[28px] font-medium"}>
+            UltrasoundCards Marketing
+          </h1>
+          <p className={"my-4"}>
             In addition to the UltrasoundCards application, Boxhouse was
             responsible for developing the marketing application. There are a
             few key features to this site, it includes a blog, modifiable

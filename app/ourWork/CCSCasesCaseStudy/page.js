@@ -17,7 +17,7 @@ import Image from "next/image";
 const CCSCasesCaseStudy = (props, ref) => {
   return (
     <div className="overflow-hidden">
-      <div className="relative w-[100%] h-[200px] md:h-[250px] shadow-inner">
+      <div className="relative h-[200px] w-[100%] shadow-inner md:h-[250px]">
         <Image
           src={CCSCasesImage.src}
           alt="CCS Cases Collage of many screenshots of the platform"
@@ -32,7 +32,7 @@ const CCSCasesCaseStudy = (props, ref) => {
       </div>
 
       {/* Case Study Body */}
-      <div className="px-[5%] md:px-[10%] m-auto">
+      <div className="m-auto px-[5%] md:px-[10%]">
         <Link href="/ourWork">
           <button className="primaryButton my-[30px]">
             Back To Case Studies
@@ -47,12 +47,12 @@ const CCSCasesCaseStudy = (props, ref) => {
             "Laptop and Mobile Device showing screenshots of the CCS Cases application case selector feature"
           }
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               CCS Cases is a medical education platform used to prepare doctoral
-              residents for the CCS portion of the USMLE step 3 exam. This exam
-              is considered a right of passage for doctors entering the field,
-              as passing the exam results in the individual receiving their
-              medical license and ability to practice medicine independently.
+              residents for the CCS portion of the USMLE step 3 exam. The exam
+              simulates real world medical environments, enabling students to
+              evaluate the presentation of a patient and order the appropriate
+              exams and treatment.
               <br />
               <br />
               Our client first approached us for this project with the goal of
@@ -70,7 +70,7 @@ const CCSCasesCaseStudy = (props, ref) => {
           title="Initial State of the Project"
           altText={["CCS Cases old case list", "CCS cases old grading page"]}
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               When starting this project, the basic UI design of the project had
               already been laid out. However, it lacked many of the essential
               functional requirements necessary to facilitate the move to the
@@ -85,14 +85,14 @@ const CCSCasesCaseStudy = (props, ref) => {
               and was quickly preferred over the java-based platform.
             </p>
           }
-          className="md:mt-[50px] md:mb-[50px]"
+          className="md:mb-[50px] md:mt-[50px]"
         />
         <CaseStudyImageText
           image={ReportCardMockup.src}
           title="Report Card"
           altText={"CCS Cases report card feature showing a user's performance"}
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               In order to give users more insight into their performance and how
               they compared to other users, we worked with our client to
               introduce the report card feature. This feature gives users a more
@@ -105,7 +105,7 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           title="Overhauling the UI"
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               After the initial success of the project, our client was
               interested in improving users&apos; experiences on the platform
               with a more intuitive and inviting UI. Boxhouse was asked to
@@ -126,7 +126,7 @@ const CCSCasesCaseStudy = (props, ref) => {
               platform. Read on to learn more about the changes we made.
             </p>
           }
-          className="mt-[50px]  md:mt-[75px] mb-[50px] md:mb-[75px]"
+          className="mb-[50px] mt-[50px] md:mb-[75px] md:mt-[75px]"
         />
         <CaseStudyImageText
           image={CaseListMockup.src}
@@ -135,7 +135,7 @@ const CCSCasesCaseStudy = (props, ref) => {
             "Laptop and Mobile Device showing screenshots of the CCS Cases application case selector feature"
           }
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               The case list is used for users to select the case they would like
               to practice. Each case represents a different scenario for the
               user to practice their diagnostic proficiency and reach the
@@ -157,7 +157,7 @@ const CCSCasesCaseStudy = (props, ref) => {
             "Updated display of the CCS Cases grading feature, showing better organization of the user's performance feedback"
           }
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               After completing a particular case, the user receives feedback
               elaborating on what was done correctly and what could be improved
               upon. During this redesign we worked with our client to introduce
@@ -175,7 +175,7 @@ const CCSCasesCaseStudy = (props, ref) => {
             "CCS Cases account settings page, showing an overview of user information and a variety of themes to select from"
           }
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               Last to update in this project was the account settings page. In
               this overhaul, we strove to give users the ability to customize
               their experience to better meet their needs. This included many
@@ -187,7 +187,7 @@ const CCSCasesCaseStudy = (props, ref) => {
         <CaseStudyImageText
           title="Final Words"
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               Our experience working on CCS Cases was one of many challenges and
               even more successes. Having the opportunity to impact the future
               of tens of thousands of doctors all over the world has given us a
