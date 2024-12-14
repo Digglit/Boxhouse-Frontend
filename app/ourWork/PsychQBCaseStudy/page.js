@@ -14,7 +14,7 @@ import Image from "next/image";
 const PsychQBCaseStudy = (props, ref) => {
   return (
     <div className="overflow-hidden">
-      <div className="relative w-[100%] h-[200px] md:h-[250px] shadow-inner">
+      <div className="relative h-[200px] w-[100%] shadow-inner md:h-[250px]">
         <Image
           src={PsychQBImage.src}
           alt="Psych QB Collage of many screenshots of the platform"
@@ -29,7 +29,7 @@ const PsychQBCaseStudy = (props, ref) => {
       </div>
 
       {/* Case Study Body */}
-      <div className="px-[5%] md:px-[10%] m-auto">
+      <div className="m-auto px-[5%] md:px-[10%]">
         <Link href="/ourWork">
           <button className="primaryButton my-[30px]">
             Back To Case Studies
@@ -42,7 +42,7 @@ const PsychQBCaseStudy = (props, ref) => {
           title="Project Overview"
           altText="PsychQB Homepage, showing the users questions completed, average grade, and options for them to select to begin an exam."
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               PsychQB is a product used to help prepare psychiatry students for
               the PRITE and ABPN exams. The application enables users to create
               exams across a variety of categories with tools to help them
@@ -59,7 +59,7 @@ const PsychQBCaseStudy = (props, ref) => {
         <CaseStudyImageText
           title="Initial State of the Project"
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               Upon getting started on this project, there was some groundwork
               laid but ultimately the initial attempt to get the project going
               had failed. Boxhouse was tasked with taking the current code,
@@ -78,7 +78,7 @@ const PsychQBCaseStudy = (props, ref) => {
             "PsychQB Homepage, showing the user's questions completed, average grade, and options for them to select to begin an exam."
           }
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               Users were enabled with a variety of tools to create the exams
               that they needed to study most. We included various categories,
               allowing students to curate their exam more towards their desired
@@ -99,7 +99,7 @@ const PsychQBCaseStudy = (props, ref) => {
             "PsychQB Exam Grading Page, showing the user's performance summary and a breakdown of their selected exam's grade."
           }
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               Every exam is graded individually and the user is given feedback
               elaborating on what they selected correctly or incorrectly, as
               well as some information as to why the correct answer is in fact
@@ -115,7 +115,7 @@ const PsychQBCaseStudy = (props, ref) => {
             "Psych QB account settings page, showing options for managing the user's account."
           }
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               The account settings page enables users to manage their account
               from within the application. We enabled users to manage their
               subscriptions and receipt history all within this page.
@@ -131,7 +131,7 @@ const PsychQBCaseStudy = (props, ref) => {
         <CaseStudyImageText
           title="Final Thoughts"
           body={
-            <p className="text-sm whitespace-pre-line">
+            <p className="whitespace-pre-line text-sm">
               PsychQB has been an insightful application for us to work on here
               at Boxhouse. It was an opportunity for us to refine our skillset,
               and work on pivoting off some already established code.
@@ -140,7 +140,7 @@ const PsychQBCaseStudy = (props, ref) => {
               <br />
               <br />
               If you&apos;d like to learn more about developing your own
-              web-based applications, give us a call today at 440-276-1462 or
+              web-based applications, give us a call today at 216-423-5924 or
               schedule a free consultation through our online consultation
               scheduler! If you&apos;d like to view the software live for
               yourself, you can do so by visiting{" "}

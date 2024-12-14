@@ -194,7 +194,7 @@ const CCSCasesCaseStudy = (props, ref) => {
               great appreciation for the rigorous difficulty of their studies.
               If you&apos;d like to learn more about how the team here at
               Boxhouse can bring your vision to life, reach out today by giving
-              us a call at 440-276-1462 or scheduling a consultation with our
+              us a call at 216-423-5924 or scheduling a consultation with our
               online consultation scheduler.
               <br />
               <br />

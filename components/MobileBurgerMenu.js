@@ -28,7 +28,7 @@ const MobileBurgerMenu = ({ selectedLink, toggleMenu }) => {
     <>
       <motion.div
         className={
-          "fixed z-1 top-0 left-0 w-[100%] h-[100vh] bg-black bg-opacity-50"
+          "z-1 fixed left-0 top-0 h-[100vh] w-[100%] bg-black bg-opacity-50"
         }
         onClick={toggleMenu}
         initial={{ opacity: 0 }}
@@ -37,18 +37,18 @@ const MobileBurgerMenu = ({ selectedLink, toggleMenu }) => {
         transition={{ duration: 0.4 }}
       />
       <motion.div
-        className={"bg-white fixed z-10 top-0 left-0 h-[300px] w-[100%] grid"}
+        className={"fixed left-0 top-0 z-30 grid h-[300px] w-[100%] bg-white"}
         initial={{ y: "-100%" }}
         animate={{ y: 0 }}
         exit={{ y: "-100%" }}
         transition={{ duration: 0.3 }}
       >
         <button
-          className="absolute top-0 right-0 p-5"
+          className="absolute right-0 top-0 p-5"
           aria-label="Close hamburger menu"
           onClick={toggleMenu}
         >
-          <FontAwesomeIcon icon={faX} className="text-lg h-4 w-4" />
+          <FontAwesomeIcon icon={faX} className="h-4 w-4 text-lg" />
         </button>
         <Link
           onClick={toggleMenu}
@@ -69,7 +69,7 @@ const MobileBurgerMenu = ({ selectedLink, toggleMenu }) => {
           className={"grid justify-items-center"}
         >
           <span
-            className={selectedLink === 0 ? "!text-black bold" : "!text-black"}
+            className={selectedLink === 0 ? "bold !text-black" : "!text-black"}
           >
             Home
           </span>
@@ -80,7 +80,7 @@ const MobileBurgerMenu = ({ selectedLink, toggleMenu }) => {
           className={"grid justify-items-center"}
         >
           <span
-            className={selectedLink === 1 ? "!text-black bold" : "!text-black"}
+            className={selectedLink === 1 ? "bold !text-black" : "!text-black"}
           >
             Our Work
           </span>
@@ -91,7 +91,7 @@ const MobileBurgerMenu = ({ selectedLink, toggleMenu }) => {
           className={"grid justify-items-center"}
         >
           <span
-            className={selectedLink === 2 ? "!text-black bold" : "!text-black"}
+            className={selectedLink === 2 ? "bold !text-black" : "!text-black"}
           >
             About Us
           </span>
@@ -102,7 +102,7 @@ const MobileBurgerMenu = ({ selectedLink, toggleMenu }) => {
           className={"grid justify-items-center"}
         >
           <span
-            className={selectedLink === 3 ? "!text-black bold" : "!text-black"}
+            className={selectedLink === 3 ? "bold !text-black" : "!text-black"}
           >
             Blog
           </span>

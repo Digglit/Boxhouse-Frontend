@@ -2,18 +2,17 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import sectionAImage from "../public/sectionA.svg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircleCheck,
-  faMobileScreen,
-  faLock,
-} from "@fortawesome/free-solid-svg-icons";
 import Image from "next/image";
 import StarsBackdrop from "../components/StarsBackdrop";
 import { print } from "graphql";
 import postsQuery from "../graphql/getBlogPosts.gql";
 import BlogImage from "../public/HomepageBlogPlaceholder.jpeg";
 import NoPostsMainContent from "../components/Blog/NoPostsMainContent";
+import GridTopLeft from "../public/HomeGridTopLeft.jpeg";
+import GridTopRight from "../public/HomeGridTopRight.jpeg";
+import GridBottomLeft from "../public/HomeGridBottomLeft.jpeg";
+import GridBottomRight from "../public/HomeGridBottomRight.jpeg";
+import HomepageChecklistsSection from "../components/HomepageChecklistsSection/HomepageChecklistsSection";
 
 export const revalidate = 604800;
 
@@ -76,98 +75,89 @@ export default async function Home() {
         </div>
       </section>
 
-      <section className={styles.sectionAContainer}>
-        <Image
-          className={styles.sectionAImage}
-          src={sectionAImage.src}
-          alt="illustration of a Boxhouse developer writing code"
-          width={500}
-          height={480}
-        />
-        <div className={styles.sectionATextContainer}>
-          <h2 className="contentTextTitle">What We Do</h2>
-          <p className="contentTextParagraph">
-            Boxhouse Consulting is a for-hire software team specializing in
-            developing custom web-based applications that help businesses
-            succeed. From internal tools to customer-facing software services,
-            we have the skills and experience to bring your vision to life.
+      <section className="m-auto grid w-[90%] max-w-[1300px] grid-rows-[250px_auto] gap-[20px] bg-[#f8f8f8] py-[50px] md:grid-cols-[1fr_1fr] md:grid-rows-[1fr] md:gap-[50px] md:py-[100px] lg:gap-[100px]">
+        <div className="grid grid-cols-[8fr_5fr] gap-4">
+          <div className="grid grid-rows-[5fr-4fr] gap-4">
+            <div className="relative">
+              <Image
+                src={GridTopLeft}
+                alt=""
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  aspectRatio: "16/9",
+                }}
+              />
+            </div>
+            <div className="relative">
+              <Image
+                src={GridBottomLeft}
+                alt=""
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  aspectRatio: "16/9",
+                }}
+              />
+            </div>
+          </div>
+          <div className="grid grid-rows-[1fr_2fr] gap-4">
+            <div className="relative">
+              <Image
+                src={GridTopRight}
+                alt=""
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  aspectRatio: "16/9",
+                }}
+              />
+            </div>
+            <div className="relative">
+              <Image
+                src={GridBottomRight}
+                alt=""
+                fill
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  aspectRatio: "16/9",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="py-[20px] lg:py-[50px]">
+          <h2 className="text-[28px] font-medium">What We Do</h2>
+          <p className="my-4 max-w-[500px]">
+            Boxhouse builds <strong>custom web-based software</strong> to
+            streamline your business operations and improve customer
+            experiences.
+            <br />
+            <br />
+            We provide <strong>end-to-end solutions</strong>, from initial
+            consultation and project planning to final deployment and ongoing
+            hosting.
+            <br />
+            <br />
+            With a <strong>focus on quality and customer experience</strong>,
+            Boxhouse ensures your business has the tools it needs to thrive.
           </p>
           <Link
             href="/about"
             aria-label="Link for the user to learn more about Boxhouse Consulting"
           >
-            <button className="contentButton primaryButton">
-              Learn About Boxhouse
-            </button>
+            <button className="primaryButton">Learn About Boxhouse</button>
           </Link>
         </div>
       </section>
 
-      <section className={styles.sectionBContainer}>
-        <div className={styles.sectionBContainerWrapper}>
-          <FontAwesomeIcon
-            icon={faCircleCheck}
-            className={styles.sectionBIcon}
-          />
-          <h3 className={styles.sectionBTitle}>Reliability</h3>
-          <p className={styles.sectionBText}>
-            Unpredictable software can be frustrating and lead to unexpected
-            outcomes. At Boxhouse, you can trust that you will consistently see
-            great results.
-          </p>
-        </div>
-        <div className={styles.sectionBContainerWrapper}>
-          <FontAwesomeIcon
-            icon={faMobileScreen}
-            className={styles.sectionBIcon}
-          />
-          <h3 className={styles.sectionBTitle}>Responsiveness</h3>
-          <p className={styles.sectionBText}>
-            Our web applications work on all devices, including desktop, tablet,
-            and mobile. This ensures a seamless and visually appealing
-            experience for all users.
-          </p>
-        </div>
-        <div className={styles.sectionBContainerWrapper}>
-          <FontAwesomeIcon icon={faLock} className={styles.sectionBIcon} />
-          <h3 className={styles.sectionBTitle}>Security</h3>
-          <p className={styles.sectionBText}>
-            We prioritize data security with end-to-end encryption and
-            industry-leading practices in all of our web applications.
-          </p>
-        </div>
-      </section>
+      <HomepageChecklistsSection />
 
-      <section className={styles.sectionCContainer}>
-        <div className={styles.sectionCContentWrapper}>
-          <h2 className="contentTextTitle">What We Build</h2>
-          <div className={styles.sectionCItemsWrapper}>
-            {[
-              "Employee Portals",
-              "Asset Management Systems",
-              "Employee Management Applications",
-              "Order Management Applications",
-              "Customer Service Applications",
-              "Patient Portals",
-              "Ecommerce Web Applications",
-              "Workflow Management Software",
-              "Inventory Management Systems",
-              "Custom Web Solutions",
-            ].map((item, index) => (
-              <div className={styles.sectionCItem} key={item}>
-                <p className={styles.sectionCItemTitle}>{item}</p>
-              </div>
-            ))}
-          </div>
-          <Link href="/scheduleConsultation">
-            <button className="contentButton primaryButton">
-              Schedule a Free Consultation
-            </button>
-          </Link>
-        </div>
-      </section>
-
-      <section className="grid grid-rows-[250px_1fr] md:grid-cols-[1fr_1fr] md:grid-rows-[1fr]">
+      <section className="m-auto my-[60px] grid w-[90%] max-w-[1300px] grid-rows-[250px_1fr] md:my-[100px] md:grid-cols-[1fr_1fr] md:grid-rows-[1fr] md:gap-[100px]">
         <div className="relative">
           <Image
             src={BlogImage}
@@ -181,26 +171,12 @@ export default async function Home() {
             className="grayscale"
           />
         </div>
-        <div className="mx-auto w-[90%] max-w-[500px] py-[50px] md:py-[75px]">
+        <div className="max-w-[500px] pt-[50px] md:py-[50px]">
           <NoPostsMainContent colorClass="text-black" />
         </div>
       </section>
 
-      {/* <section className={styles.sectionEContainer}>
-        <div className={styles.sectionEContentWrapper}>
-          <h2 className={styles.sectionETitle}>Let&apos;s Get Started 🚀</h2>
-          <p className={styles.sectionEContentText}>
-            Ready to build the software of your dreams? Schedule a free
-            consultation today using our online consultation scheduler.
-          </p>
-          <Link href="/scheduleConsultation">
-            <button className="contentButton primaryButton">
-              Schedule a Free Consultation
-            </button>
-          </Link>
-        </div>
-      </section> */}
-      <div className="mx-auto mb-[20px] mt-[20px] grid w-[90%] max-w-[1100px] grid-flow-row items-center justify-items-center bg-[--background-color] py-[50px] shadow-primary-shadow md:my-[100px] md:mt-[100px]">
+      <div className="mx-auto mb-[20px] mt-[20px] grid w-[90%] max-w-[1300px] grid-flow-row items-center justify-items-center bg-[--background-color] py-[50px] shadow-primary-shadow md:my-[100px] md:mt-[100px]">
         <h2 className="mb-4 text-[28px] font-medium text-white">
           Ready To Get Started?
         </h2>

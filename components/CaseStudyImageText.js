@@ -1,6 +1,3 @@
-{
-  /* eslint-disable @next/next/no-img-element */
-}
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper";
 
@@ -10,8 +7,6 @@ import { faMagnifyingGlassPlus } from "@fortawesome/free-solid-svg-icons";
 import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-
-// props: image, title, body, imagePosition, className
 
 const CaseStudyImageText = ({
   image,
@@ -39,29 +34,21 @@ const CaseStudyImageText = ({
 
   return (
     <div
-      className={`
-      grid
-      grid-rows-[auto_1fr] md:grid-rows-1
-      ${
+      className={`grid grid-rows-[auto_1fr] md:grid-rows-1 ${
         imagePosition === "left"
           ? "md:grid-cols-[auto_1fr]"
           : "md:grid-cols-[1fr_auto]"
-      }
-      ${imagePosition === "left" ? "lg:relative lg:-left-10" : ""}
-      w-[100%]
-      mt-[30px] md:mt-0
-      ${className ? className : ""}
-      `}
+      } ${imagePosition === "left" ? "lg:relative lg:-left-10" : ""} mt-[30px] w-[100%] md:mt-0 ${className ? className : ""} `}
     >
       {imageToEnlarge && (
         <div
-          className="fixed top-0 left-0 w-[100%] h-[100vh] bg-white z-[1000] touch-none grid grid-rows-[1fr_auto]"
+          className="fixed left-0 top-0 z-[1000] grid h-[100vh] w-[100%] touch-none grid-rows-[1fr_auto] bg-white"
           onClick={() => setImageToEnlarge(null)}
         >
           <TransformWrapper wheel={{ smoothStep: 0.02 }}>
             <TransformComponent>
-              <div className="h-[calc(100vh-44px)] w-[100vw] bg-white grid items-center">
-                <div className="relative w-[100vw] aspect-[16/9] m-auto">
+              <div className="grid h-[calc(100vh-44px)] w-[100vw] items-center bg-white">
+                <div className="relative m-auto aspect-[16/9] w-[100vw]">
                   <Image
                     src={imageToEnlarge}
                     alt={altText}
@@ -95,15 +82,15 @@ const CaseStudyImageText = ({
           }}
           modules={[Pagination]}
           pagination={true}
-          className="!p-[30px] w-[100%]"
+          className="w-[100%] !p-[30px]"
         >
           {image.map((image, index) => (
             <SwiperSlide
               key={index}
-              className="py-[30px] select-none relative w-[100%] aspect-[16/9]"
+              className="relative aspect-[16/9] w-[100%] select-none py-[30px]"
             >
               <button
-                className="absolute top-[10px] right-[10px] h-[30px] w-[30px] bg-white border-[1px] shadow-xl border-[#004BFA] grid items-center justify-items-center select-none z-20"
+                className="absolute right-[10px] top-[10px] z-20 grid h-[30px] w-[30px] select-none items-center justify-items-center border-[1px] border-[#004BFA] bg-white shadow-xl"
                 onClick={() => setImageToEnlarge(image.src)}
               >
                 <FontAwesomeIcon
@@ -129,17 +116,9 @@ const CaseStudyImageText = ({
       ) : (
         image && (
           <div
-            className={`
-            justify-self-center
-            self-center
-            row-start-1
-            ${imagePosition === "left" ? "col-start-1" : "md:col-start-2"}
-            relative
-            w-[100%] md:w-[40vw]
-            max-w-[650px]
-            `}
+            className={`row-start-1 self-center justify-self-center ${imagePosition === "left" ? "col-start-1" : "md:col-start-2"} relative w-[100%] max-w-[650px] md:w-[40vw]`}
           >
-            <div className="relative w-[100%] aspect-[16/9] m-auto">
+            <div className="relative m-auto aspect-[16/9] w-[100%]">
               <Image
                 src={image}
                 alt={altText}
@@ -153,20 +132,7 @@ const CaseStudyImageText = ({
               />
             </div>
             <button
-              className="
-            absolute
-            top-[10px]
-            right-[10px]
-            h-[35px] md:h-[40px]
-            w-[35px] md:w-[40px]
-            bg-white
-            border-[1px]
-            shadow-xl
-            border-[#004BFA]
-            grid
-            items-center
-            justify-items-center
-            "
+              className="absolute right-[10px] top-[10px] grid h-[35px] w-[35px] items-center justify-items-center border-[1px] border-[#004BFA] bg-white shadow-xl md:h-[40px] md:w-[40px]"
               onClick={() => setImageToEnlarge(image)}
             >
               <FontAwesomeIcon
@@ -180,21 +146,16 @@ const CaseStudyImageText = ({
 
       {/* Text Wrapper */}
       <div
-        className={`
-        ${
+        className={` ${
           shouldCarouselDisplay
             ? "col-start-1"
             : imagePosition === "left"
-            ? "md:col-start-2"
-            : "col-start-1"
-        }
-        self-center
-        ${imagePosition && !shouldCarouselDisplay ? "md:w-[90%]" : ""}
-        ${imagePosition === "left" ? "justify-self-end" : ""}
-        `}
+              ? "md:col-start-2"
+              : "col-start-1"
+        } self-center ${imagePosition && !shouldCarouselDisplay ? "md:w-[90%]" : ""} ${imagePosition === "left" ? "justify-self-end" : ""} `}
       >
-        <div className="grid grid-cols-[10px_1fr] items-center mb-[20px]">
-          <div className="w-[3px] h-[30px] bg-[#004BFA] mr-[5px]" />
+        <div className="mb-[20px] grid grid-cols-[10px_1fr] items-center">
+          <div className="mr-[5px] h-[30px] w-[3px] bg-[#004BFA]" />
           <h2 className="text-2xl font-medium">{title}</h2>
         </div>
         {body}
