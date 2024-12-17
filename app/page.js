@@ -1,7 +1,5 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import Link from "next/link";
-import sectionAImage from "../public/sectionA.svg";
 import Image from "next/image";
 import StarsBackdrop from "../components/StarsBackdrop";
 import { print } from "graphql";
@@ -43,17 +41,6 @@ export default async function Home() {
 
   return (
     <div className="flex-1 bg-[#f8f8f8]">
-      <Head>
-        <title>Boxhouse Consulting</title>
-        <meta
-          name="description"
-          content="Boxhouse Consulting is a for-hire software team specializing in web-based application development"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#FFFFFE" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <section className={styles.heroContainer}>
         <div className={styles.heroTextContainer}>
           <h1 className={styles.heroTextTitle}>

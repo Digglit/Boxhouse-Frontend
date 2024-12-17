@@ -1,5 +1,4 @@
 "use client";
-import Head from "next/head";
 import "react-datepicker/dist/react-datepicker.css";
 import ScheduleConsultationForm from "../../components/ConsultationScheduler/ScheduleConsultationForm";
 import ConsultationSchedulerImage from "../../public/ConsultationSchedulerImage.jpeg";
@@ -8,16 +7,6 @@ import Image from "next/image";
 const ConsultationScheduler = () => {
   return (
     <div className="flex-1">
-      <Head>
-        <title>Schedule a Consultation</title>
-        <meta
-          name="description"
-          content="Boxhouse Consulting is a for-hire software team specializing in web-based application development"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="theme-color" content="#FFFFFE" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <div className="bg-[--background-color] pb-[50px] pl-[20px] pt-[100px] md:pl-[100px]">
         <h1 className="text-[28px] text-white">Consultation Scheduler</h1>
       </div>

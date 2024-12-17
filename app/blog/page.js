@@ -1,4 +1,3 @@
-import Head from "next/head";
 import MoreBlogPostsSection from "../../components/Blog/MoreBlogPostsSection";
 import postsQuery from "../../graphql/getBlogPosts.gql";
 import { print } from "graphql";
@@ -40,17 +39,6 @@ const Blog = async (props, ref) => {
   return (
     <>
       <div className="flex-1 bg-[--background-color] pb-[50px] pt-[125px] md:pt-[150px]">
-        <Head>
-          <title>Blog</title>
-          <meta
-            name="description"
-            content="Boxhouse Consulting is a for-hire software team specializing in web-based application development"
-          />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
-          <meta name="theme-color" content="#FFFFFE" />
-          <link rel="icon" href="/favicon.ico" />
-        </Head>
-
         <div className="grid max-w-[100%] grid-cols-[100%] items-center gap-[40px] px-[20px] md:grid-cols-[45%_calc(55%-40px)] md:px-[40px] xl:grid-cols-[50%_calc(50%-100px)] xl:gap-[100px] xl:px-[100px]">
           <NoPostsMainContent />
           <div className="hidden w-[100%] gap-4 md:grid">

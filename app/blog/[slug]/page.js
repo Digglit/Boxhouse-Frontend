@@ -1,5 +1,4 @@
 // import { useRouter } from 'next/router'
-import Head from "next/head";
 import Link from "next/link";
 import MoreBlogPostsSection from "../../../components/Blog/MoreBlogPostsSection";
 import CaseStudyConsultFooter from "../../../components/CaseStudyConsultFooter";
@@ -34,7 +33,7 @@ export async function generateStaticParams() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ query: graphqlQuery }),
-    }
+    },
   );
 
   if (!response.ok) {
@@ -65,7 +64,7 @@ const fetchPostData = async (slug) => {
         query: print(postsQuery),
         variables: { slugEq: slug },
       }),
-    }
+    },
   );
 
   const postDataParsedJSON = await postDataResponse.json();
@@ -91,7 +90,7 @@ const fetchMoreBlogPosts = async () => {
           pageSize: 3,
         },
       }),
-    }
+    },
   );
 
   const moreBlogPostsFetchData = await moreBlogPostsResponse.json();
@@ -105,7 +104,7 @@ const BlogPost = async ({ params }) => {
   const moreBlogPosts = await fetchMoreBlogPosts();
 
   const stringifiedBlogData = postData.BlogContent.map((contentSection) =>
-    contentSection.Body.split("\\n").join(" ")
+    contentSection.Body.split("\\n").join(" "),
   ).join(" ");
 
   const { minutes } = readingTime(stringifiedBlogData);
@@ -119,10 +118,6 @@ const BlogPost = async ({ params }) => {
 
   return (
     <div className="pt-[100px]">
-      <Head>
-        <title>{postData.Title}</title>
-      </Head>
-
       {/* Post Content Wrapper */}
 
       <div className="m-auto w-[90%] max-w-[768px]">
@@ -131,7 +126,7 @@ const BlogPost = async ({ params }) => {
             Back to Blog
           </button>
         </Link>
-        <div className="relative h-[150px] md:h-[250px] mb-[30px] shadow-xl">
+        <div className="relative mb-[30px] h-[150px] shadow-xl md:h-[250px]">
           <Image
             src={`${
               process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
@@ -161,9 +156,9 @@ const BlogPost = async ({ params }) => {
             key={`${contentSection.Header} - contentSections - ${index}`}
           >
             {contentSection.Header !== null && (
-              <div className="grid grid-cols-[10px_1fr] items-center mb-[20px]">
-                <div className="w-[3px] h-[30px] bg-[#004BFA] mr-[5px]" />
-                <h2 className="text-xl md:text-2xl font-medium">
+              <div className="mb-[20px] grid grid-cols-[10px_1fr] items-center">
+                <div className="mr-[5px] h-[30px] w-[3px] bg-[#004BFA]" />
+                <h2 className="text-xl font-medium md:text-2xl">
                   {contentSection.Header}
                 </h2>
               </div>
@@ -172,7 +167,7 @@ const BlogPost = async ({ params }) => {
               <>
                 {paragraph === "" && <br />}
                 {paragraph !== "" && (
-                  <p className="text-sm whitespace-pre-line" key={index}>
+                  <p className="whitespace-pre-line text-sm" key={index}>
                     {paragraph}
                   </p>
                 )}
