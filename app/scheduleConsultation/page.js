@@ -22,6 +22,7 @@ const ConsultationScheduler = () => {
             src={ConsultationSchedulerImage}
             alt="Team of consultations collaborating on a laptop computer"
             fill
+            priority
             style={{
               layout: "fill",
               objectFit: "cover",
