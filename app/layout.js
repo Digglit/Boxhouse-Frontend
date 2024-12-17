@@ -1,8 +1,6 @@
 // app/layout.js
 "use client";
 import "../styles/globals.css"; // Import global styles here
-import { ApolloProvider } from "@apollo/client";
-import client from "../apolloClient";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Roboto } from "next/font/google";
@@ -19,9 +17,7 @@ export default function RootLayout({ children }) {
       <GoogleTagManager gtmId="GTM-MDB259RN" />
       <body className={`${roboto.className} flex min-h-screen flex-col`}>
         <Header />
-        <ApolloProvider client={client}>
-          <main className="flex flex-1">{children}</main>
-        </ApolloProvider>
+        <main className="flex flex-1">{children}</main>
         <Footer />
       </body>
     </html>
