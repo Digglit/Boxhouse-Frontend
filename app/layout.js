@@ -1,5 +1,3 @@
-// app/layout.js
-"use client";
 import "../styles/globals.css"; // Import global styles here
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -10,6 +8,38 @@ const roboto = Roboto({
   subsets: ["latin"],
   weight: ["300", "400", "500", "700"],
 });
+
+export const metadata = {
+  title: {
+    default: "Boxhouse Consulting | Custom Web Software Solutions",
+    template: "%s | Boxhouse Consulting",
+  },
+  description:
+    "Unlocking business potential by driving growth through custom web software solutions.",
+  openGraph: {
+    title: "Boxhouse Consulting | Custom Web Software Solutions",
+    description:
+      "Unlocking business potential by driving growth through custom web software solutions.",
+    url: "https://www.BoxhouseConsulting.com",
+    siteName: "Boxhouse Consulting",
+    images: [
+      {
+        url: "/BoxhouseLogo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Boxhouse Consulting Logo",
+      },
+    ],
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Boxhouse Consulting | Custom Web Software Solutions",
+    description:
+      "Unlocking business potential by driving growth through custom web software solutions.",
+    images: ["/BoxhouseLogo.jpg"],
+  },
+};
 
 export default function RootLayout({ children }) {
   return (

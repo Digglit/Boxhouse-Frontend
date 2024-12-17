@@ -6,6 +6,10 @@ import SecondaryBlogElement from "../../components/Blog/SecondaryBlogElement";
 import NoPostsMainContent from "../../components/Blog/NoPostsMainContent";
 import PlaceholderBlogElement from "../../components/Blog/PlaceholderBlogElement";
 
+export const metadata = {
+  title: "Blog",
+};
+
 const Blog = async (props, ref) => {
   // let blogPosts;
 

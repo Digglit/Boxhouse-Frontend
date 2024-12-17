@@ -6,6 +6,10 @@ import USCMarketingImage from "../../public/USC-Marketing-Mockup.png";
 import Link from "next/link";
 import Image from "next/image";
 
+export const metadata = {
+  title: "Our Work",
+};
+
 const OurWork = (props, ref) => {
   return (
     <div className="flex-1">

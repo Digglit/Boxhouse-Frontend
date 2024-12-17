@@ -3,6 +3,10 @@ import WhatAreWeSection from "../../components/AboutUsSections/WhatAreWe";
 import WhereAreWeSection from "../../components/AboutUsSections/WhereAreWe";
 import WhoAreWeSection from "../../components/AboutUsSections/WhoAreWe";
 
+export const metadata = {
+  title: "About Us",
+};
+
 const About = (props, ref) => {
   return (
     <div className="flex-1">
