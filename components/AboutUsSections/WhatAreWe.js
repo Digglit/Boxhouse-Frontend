@@ -41,6 +41,7 @@ const WhatAreWeSection = () => {
           src={BoxhouseBox}
           fill
           alt={"The box from the Boxhouse Consulting logo"}
+          priority
         />
       </div>
     </div>
