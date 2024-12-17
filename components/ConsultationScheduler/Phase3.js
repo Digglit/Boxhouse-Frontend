@@ -9,10 +9,13 @@ const Phase3 = ({ formState, setFormStateValue, changePage }) => {
       key="consultation scheduler page 3"
     >
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Current Project Stage</label>
+        <label className={styles.inputLabel} htmlFor="currentProjectStage">
+          Current Project Stage
+        </label>
         <select
           className={styles.selectDropdown}
           autoFocus
+          id="currentProjectStage"
           value={formState.currentProjectStage}
           onChange={(e) =>
             setFormStateValue({ currentProjectStage: e.target.value })
@@ -32,10 +35,13 @@ const Phase3 = ({ formState, setFormStateValue, changePage }) => {
         </select>
       </div>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Ideal Completion Date</label>
+        <label className={styles.inputLabel} htmlFor="idealCompletionDate">
+          Ideal Completion Date
+        </label>
         <input
           className={styles.dateInput}
           type="date"
+          id="idealCompletionDate"
           min={
             new Date(formState.preferredConsultationDate)
               .toISOString()
@@ -48,13 +54,14 @@ const Phase3 = ({ formState, setFormStateValue, changePage }) => {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>
+        <label className={styles.inputLabel} htmlFor="projectDescription">
           A brief description of your project (
           {formState.projectDescription.length} / 2,048 characters)
         </label>
         <textarea
           maxLength={2048}
           className={styles.textArea}
+          id="projectDescription"
           type="text"
           value={formState.projectDescription}
           onChange={(e) =>
@@ -63,12 +70,13 @@ const Phase3 = ({ formState, setFormStateValue, changePage }) => {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>
+        <label className={styles.inputLabel} htmlFor="referrer">
           Where did you hear about us?
         </label>
         <select
           className={styles.selectDropdown}
           value={formState.referrer}
+          id="referrer"
           onChange={(e) => setFormStateValue({ referrer: e.target.value })}
         >
           <option value="Google">Google</option>

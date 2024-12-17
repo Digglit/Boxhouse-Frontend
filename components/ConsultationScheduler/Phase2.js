@@ -10,11 +10,14 @@ const Phase2 = ({ formState, setFormStateValue, changePage }) => {
       key="consultation scheduler page 2"
     >
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Name</label>
+        <label className={styles.inputLabel} htmlFor="name">
+          Name
+        </label>
         <input
           className={styles.textInput}
           type="text"
           maxLength={128}
+          id="name"
           autoFocus
           required
           value={formState.name}
@@ -22,11 +25,14 @@ const Phase2 = ({ formState, setFormStateValue, changePage }) => {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Company</label>
+        <label className={styles.inputLabel} htmlFor="company">
+          Company
+        </label>
         <input
           className={styles.textInput}
           type="text"
           maxLength={256}
+          id="company"
           required
           value={formState.company}
           onChange={(e) => setFormStateValue({ company: e.target.value })}
@@ -37,12 +43,14 @@ const Phase2 = ({ formState, setFormStateValue, changePage }) => {
           className={`text-[14px] ${
             formState.industryError ? "text-red-700" : ""
           }`}
+          htmlFor="industry"
         >
           Industry
         </label>
         <select
           className={styles.selectDropdown}
           value={formState.industry}
+          id="industry"
           onChange={(e) =>
             setFormStateValue({
               industry: e.target.value,
@@ -70,10 +78,13 @@ const Phase2 = ({ formState, setFormStateValue, changePage }) => {
                   )} */}
       </div>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Email</label>
+        <label className={styles.inputLabel} htmlFor="email">
+          Email
+        </label>
         <input
           className={styles.textInput}
           type="email"
+          id="email"
           maxLength={256}
           required
           value={formState.email}
@@ -81,11 +92,14 @@ const Phase2 = ({ formState, setFormStateValue, changePage }) => {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Confirm Email</label>
+        <label className={styles.inputLabel} htmlFor="confirmEmail">
+          Confirm Email
+        </label>
         <input
           className={styles.textInput}
           type="email"
           maxLength={256}
+          id="confirmEmail"
           required
           value={formState.confirmEmail}
           onChange={(e) => setFormStateValue({ confirmEmail: e.target.value })}

@@ -9,11 +9,14 @@ const Phase1 = ({ formState, setFormStateValue, changePage }) => {
       key="consultation scheduler page 1"
     >
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Time Zone</label>
+        <label className={styles.inputLabel} htmlFor="timeZone">
+          Time Zone
+        </label>
         <select
           autoFocus
           className={styles.selectDropdown}
           value={formState.timeZone}
+          id="timeZone"
           onChange={(e) => setFormStateValue({ timeZone: e.target.value })}
         >
           <option value="Eastern Standard Time">
@@ -37,10 +40,16 @@ const Phase1 = ({ formState, setFormStateValue, changePage }) => {
         </select>
       </div>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Preferred Consultation Date</label>
+        <label
+          className={styles.inputLabel}
+          htmlFor="preferredConsultationDate"
+        >
+          Preferred Consultation Date
+        </label>
         <input
           className={styles.dateInput}
           type="date"
+          id="preferredConsultationDate"
           min={
             new Date(new Date().setDate(new Date().getDate() + 1))
               .toISOString()
@@ -59,10 +68,16 @@ const Phase1 = ({ formState, setFormStateValue, changePage }) => {
         />
       </div>
       <div className={styles.inputWrapper}>
-        <label className={styles.inputLabel}>Time</label>
+        <label
+          className={styles.inputLabel}
+          htmlFor="preferredConsultationTime"
+        >
+          Time
+        </label>
         <select
           className={styles.selectDropdown}
           value={formState.preferredConsultationTime}
+          id="preferredConsultationTime"
           onChange={(e) =>
             setFormStateValue({ preferredConsultationTime: e.target.value })
           }
