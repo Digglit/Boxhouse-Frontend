@@ -10,6 +10,7 @@ const roboto = Roboto({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://www.boxhouseconsulting.com"),
   title: {
     default: "Boxhouse Consulting | Custom Web Software Solutions",
     template: "%s | Boxhouse Consulting",
