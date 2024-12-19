@@ -2,7 +2,9 @@ import Link from "next/link";
 
 const SuccessFormState = ({ formState }) => {
   const getFormattedConsultationDate = () => {
-    const date = new Date(formState.preferredConsultationDate);
+    const date = new Date(
+      `${formState.preferredConsultationDate}T${formState.preferredConsultationTime}`,
+    );
     const options = { month: "long", day: "numeric", year: "numeric" };
     return date.toLocaleDateString("en-US", options);
   };

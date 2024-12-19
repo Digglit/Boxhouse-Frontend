@@ -58,7 +58,9 @@ class ScheduleConsultationForm extends Component {
   };
 
   formatDate = (dateInput) => {
-    const date = new Date(dateInput);
+    const date = new Date(
+      `${dateInput}T${this.state.preferredConsultationTime}`,
+    );
     const options = { month: "long", day: "numeric", year: "numeric" };
     return date.toLocaleDateString("en-US", options);
   };
