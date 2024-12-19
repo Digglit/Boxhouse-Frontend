@@ -57,6 +57,36 @@ class ScheduleConsultationForm extends Component {
     }
   };
 
+  formatDate = (dateInput) => {
+    const date = new Date(dateInput);
+    const options = { month: "long", day: "numeric", year: "numeric" };
+    return date.toLocaleDateString("en-US", options);
+  };
+
+  getFormattedConsultationTime = () => {
+    const date = new Date(
+      `${this.state.preferredConsultationDate}T${this.state.preferredConsultationTime}`,
+    );
+    const options = { hour: "numeric", minute: "numeric" };
+    const time = date.toLocaleTimeString("en-US", options);
+    switch (this.state.timeZone) {
+      case "Eastern Standard Time":
+        return `${time} EST`;
+      case "Central Standard Time":
+        return `${time} CST`;
+      case "Mountain Standard Time":
+        return `${time} MST`;
+      case "Pacific Standard Time":
+        return `${time} PST`;
+      case "Alaska Standard Time":
+        return `${time} AKST`;
+      case "Hawaii Standard Time":
+        return `${time} HST`;
+      default:
+        return `${time}`;
+    }
+  };
+
   submitConsultationHandler = async () => {
     this.setState({ pageDisplayed: "Loading" });
     const captchaToken = await this.recaptchaRef.current.executeAsync();
@@ -87,8 +117,27 @@ class ScheduleConsultationForm extends Component {
       },
     })
       .then(async (res) => {
-        if (res.ok) this.setState({ pageDisplayed: "Success" });
-        else {
+        if (res.ok) {
+          this.setState({ pageDisplayed: "Success" });
+          fetch("/api/consultationSignup", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              email: this.state.email,
+              date: this.formatDate(this.state.preferredConsultationDate),
+              time: this.getFormattedConsultationTime(),
+              name: this.state.name,
+              company: this.state.company,
+              industry: this.state.industry,
+              stage: this.state.currentProjectStage,
+              completionDate: this.formatDate(this.state.idealCompletionDate),
+              description: this.state.projectDescription,
+              referrer: this.state.referrer,
+            }),
+          });
+        } else {
           this.setState({ pageDisplayed: "Error" });
         }
       })

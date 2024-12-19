@@ -1,4 +1,3 @@
-import "react-datepicker/dist/react-datepicker.css";
 import ScheduleConsultationForm from "../../components/ConsultationScheduler/ScheduleConsultationForm";
 import ConsultationSchedulerImage from "../../public/ConsultationSchedulerImage.jpeg";
 import Image from "next/image";

@@ -39,6 +39,15 @@ const NoPostsMainContent = ({ colorClass = "text-white" }) => {
       );
       if (response.ok) {
         setStateDisplayed("Success");
+        fetch("/api/emailListSignup", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+          }),
+        });
       } else {
         setStateDisplayed("Input");
         setError("There was an error subscribing you. Please try again later.");
@@ -65,7 +74,7 @@ const NoPostsMainContent = ({ colorClass = "text-white" }) => {
         Enter your email below or follow us on{" "}
         <a
           className="font-bold text-[--primary-color] underline"
-          href="https://www.LinkedIn.com"
+          href="https://www.linkedin.com/company/boxhouse-consulting"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -83,7 +92,7 @@ const NoPostsMainContent = ({ colorClass = "text-white" }) => {
               Email
             </label>
             <input
-              className="mt-1 block w-[100%] max-w-[400px] !rounded-[0px] p-2 shadow-md"
+              className="mt-1 block w-[100%] max-w-[400px] !rounded-[0px] p-2 text-black shadow-md"
               placeholder="Ex: Contact@BoxhouseConsulting.com"
               value={email}
               id="emailInput"
