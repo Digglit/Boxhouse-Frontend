@@ -15,29 +15,29 @@ import HomepageChecklistsSection from "../components/HomepageChecklistsSection/H
 export const revalidate = 604800;
 
 export default async function Home() {
-  const response = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
-        ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
-        : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-    }/graphql`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: print(postsQuery),
-        variables: {
-          page: 1,
-          pageSize: 3,
-        },
-      }),
-    },
-  );
+  // const response = await fetch(
+  //   `${
+  //     process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
+  //       ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
+  //       : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
+  //   }/graphql`,
+  //   {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       query: print(postsQuery),
+  //       variables: {
+  //         page: 1,
+  //         pageSize: 3,
+  //       },
+  //     }),
+  //   },
+  // );
 
-  const fetchData = await response.json();
-  const blogPosts = fetchData.data.blogposts.data;
+  // const fetchData = await response.json();
+  // const blogPosts = fetchData.data.blogposts.data;
 
   return (
     <div className="flex-1 bg-[#f8f8f8]">
