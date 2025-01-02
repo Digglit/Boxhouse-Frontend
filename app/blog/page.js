@@ -8,6 +8,7 @@ import PlaceholderBlogElement from "../../components/Blog/PlaceholderBlogElement
 import Image from "next/image";
 import HiringFreelancerImage from "../../public/HiringFreelancersBlogImage.jpeg";
 import EmailSignupImage from "../../public/BlogEmailSignupImage.jpeg";
+import EmailListSignupForm from "../../components/Blog/EmailListSignupForm";
 
 export const metadata = {
   title: "Blog",
@@ -117,19 +118,7 @@ const Blog = async (props, ref) => {
               Join our list to get need-to-know updates delivered fresh to your
               inbox—simple, strategic, and worth it.
             </p>
-            <form>
-              <label htmlFor="email" className="text-[14px] opacity-80">
-                Email
-              </label>
-              <br />
-              <input
-                type="email"
-                id="email"
-                className="mb-5 mt-1 h-[40px] w-[100%] max-w-[475px] shadow-md"
-              />
-              <br />
-              <button className="primaryButton w-[200px]">Sign Up</button>
-            </form>
+            <EmailListSignupForm />
           </div>
           <div className="relative row-start-1 h-[100%] w-[100%] md:col-start-2">
             <Image
