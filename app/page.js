@@ -3,7 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import StarsBackdrop from "../components/StarsBackdrop";
 import { print } from "graphql";
-import postsQuery from "../graphql/getBlogPosts.gql";
+import postsQuery from "../graphql/getBlogFromSlug.gql";
 import BlogImage from "../public/HomepageBlogPlaceholder.jpeg";
 import NoPostsMainContent from "../components/Blog/NoPostsMainContent";
 import GridTopLeft from "../public/HomeGridTopLeft.jpeg";

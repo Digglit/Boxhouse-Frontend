@@ -1,0 +1,20 @@
+query blogposts($slug: String) {
+  blogposts(filters: { Slug: { eq: $slug } }) {
+    data {
+      attributes {
+        Title
+        Author
+        DateWritten
+        Image {
+          data {
+            attributes {
+              url
+              alternativeText
+            }
+          }
+        }
+        BlogContent
+      }
+    }
+  }
+}

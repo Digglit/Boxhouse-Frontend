@@ -30,6 +30,7 @@
     "react-checkmark": "^2.1.1",
     "react-dom": "^19.0.0",
     "react-google-recaptcha": "^3.1.0",
+    "react-markdown": "^8.0.6",
     "react-spinners": "^0.15.0",
     "react-zoom-pan-pinch": "^3.5.1",
     "reading-time": "^1.5.0",

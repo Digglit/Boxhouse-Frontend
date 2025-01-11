@@ -1,5 +1,5 @@
 import MoreBlogPostsSection from "../../components/Blog/MoreBlogPostsSection";
-import postsQuery from "../../graphql/getBlogPosts.gql";
+import postsQuery from "../../graphql/getBlogFromSlug.gql";
 import { print } from "graphql";
 import PrimaryBlogElement from "../../components/Blog/PrimaryBlogElement";
 import SecondaryBlogElement from "../../components/Blog/SecondaryBlogElement";
@@ -9,6 +9,7 @@ import Image from "next/image";
 import HiringFreelancerImage from "../../public/HiringFreelancersBlogImage.jpeg";
 import EmailSignupImage from "../../public/BlogEmailSignupImage.jpeg";
 import EmailListSignupForm from "../../components/Blog/EmailListSignupForm";
+import Link from "next/link";
 
 export const metadata = {
   title: "Blog",
@@ -94,7 +95,9 @@ const Blog = async (props, ref) => {
               top freelancing platforms, Upwork, Fiverr, and Toptal and teach
               you everything you need to hire a rockstar.
             </p>
-            <button className="primaryButton w-[200px]">Read More</button>
+            <Link href="/blog/how-to-hire-rockstar-freelancers">
+              <button className="primaryButton w-[200px]">Read More</button>
+            </Link>
           </div>
         </div>
         <div className="grid-row-3 grid gap-y-6">
@@ -108,11 +111,10 @@ const Blog = async (props, ref) => {
           <div className="col-start-1 pt-[40px] md:py-[70px]">
             <h2 className="text-[24px] font-medium">Complexity Simplified</h2>
             <p className="my-4 max-w-[475px]">
-              <strong>Let&apos;s be honest:</strong> there&apos;s no shortage of
-              email lists out there. But if you&apos;re tired of the fluff,
-              enjoy our content, and just want insights that{" "}
-              <strong>save time</strong> and <strong>drive growth</strong>, this
-              one&apos;s for you.
+              Let&apos;s be honest: there&apos;s no shortage of email lists out
+              there. But if you&apos;re tired of the fluff, enjoy our content,
+              and just want insights that <strong>save time</strong> and{" "}
+              <strong>drive growth</strong>, this one&apos;s for you.
               <br />
               <br />
               Join our list to get need-to-know updates delivered fresh to your

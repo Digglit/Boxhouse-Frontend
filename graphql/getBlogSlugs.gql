@@ -1,0 +1,9 @@
+query GetAllSlugs {
+  blogposts {
+    data {
+      attributes {
+        Slug
+      }
+    }
+  }
+}

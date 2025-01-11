@@ -1,42 +1,27 @@
-// import { useRouter } from 'next/router'
 import Link from "next/link";
 import MoreBlogPostsSection from "../../../components/Blog/MoreBlogPostsSection";
 import CaseStudyConsultFooter from "../../../components/CaseStudyConsultFooter";
-import { print } from "graphql";
-import postsQuery from "../../../graphql/getBlogPosts.gql";
 import dateFormatter from "../../../utils/dateFormatter";
-import readingTime from "reading-time";
 import Image from "next/image";
+import fetchBlogFromSlug from "../../../utils/fetchBlogFromSlug";
+import serverEndpoint from "../../../utils/serverEndpoint";
+import getBlogSlugs from "../../../graphql/getBlogSlugs.gql";
+import { print } from "graphql";
+import ReactMarkdown from "react-markdown";
+import formatLongDate from "../../../utils/formatLongDate";
+import "../../../styles/blogPostMarkdown.css";
 
 export async function generateStaticParams() {
-  const graphqlQuery = `
-    query GetAllSlugs {
-      blogposts {
-        data {
-          attributes {
-            Slug
-          }
-        }
-      }
-    }
-  `;
-
-  const response = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
-        ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
-        : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-    }/graphql`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ query: graphqlQuery }),
+  const response = await fetch(`${serverEndpoint}/graphql`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
     },
-  );
+    body: JSON.stringify({ query: print(getBlogSlugs) }),
+  });
 
   if (!response.ok) {
+    console.log(response);
     throw new Error("Failed to fetch slugs for blog posts");
   }
 
@@ -48,79 +33,15 @@ export async function generateStaticParams() {
   return slugs;
 }
 
-const fetchPostData = async (slug) => {
-  const postDataResponse = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
-        ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
-        : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-    }/graphql`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: print(postsQuery),
-        variables: { slugEq: slug },
-      }),
-    },
-  );
-
-  const postDataParsedJSON = await postDataResponse.json();
-  return postDataParsedJSON.data.blogposts.data[0].attributes;
-};
-
-const fetchMoreBlogPosts = async () => {
-  const moreBlogPostsResponse = await fetch(
-    `${
-      process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
-        ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
-        : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-    }/graphql`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: print(postsQuery),
-        variables: {
-          page: 1,
-          pageSize: 3,
-        },
-      }),
-    },
-  );
-
-  const moreBlogPostsFetchData = await moreBlogPostsResponse.json();
-  return moreBlogPostsFetchData.data.blogposts.data;
-};
-
 const BlogPost = async ({ params }) => {
   const { slug } = await params;
-
-  const postData = await fetchPostData(slug);
-  const moreBlogPosts = await fetchMoreBlogPosts();
-
-  const stringifiedBlogData = postData.BlogContent.map((contentSection) =>
-    contentSection.Body.split("\\n").join(" "),
-  ).join(" ");
-
-  const { minutes } = readingTime(stringifiedBlogData);
-  // ->
-  // stats: {
-  //   text: '1 min read',
-  //   minutes: 1,
-  //   time: 60000,
-  //   words: 200
-  // }
+  const postData = await fetchBlogFromSlug(slug);
 
   return (
-    <div className="pt-[100px]">
+    <div className="flex-1 pt-[100px]">
       {/* Post Content Wrapper */}
 
-      <div className="m-auto w-[90%] max-w-[768px]">
+      <div className="m-auto w-[90%] max-w-[870px]">
         <Link href="/blog">
           <button className="primaryButton mb-8 !px-[60px]">
             Back to Blog
@@ -144,50 +65,28 @@ const BlogPost = async ({ params }) => {
             priority
           />
         </div>
-        <h1 className="text-2xl md:text-3xl">{postData.Title}</h1>
-        <p className="text-sm">
-          {postData.Author} -{" "}
-          {dateFormatter(postData.DateWritten, "mm/dd/yyyy")} | Read Time:
-          {` ${Math.ceil(minutes)}`} Minutes
+        <h1 className="text-2xl font-bold">{postData.Title}</h1>
+        <p className="mb-4 text-sm">
+          {formatLongDate(postData.DateWritten)} | {postData.Author}
         </p>
-        {postData.BlogContent.map((contentSection, index) => (
-          <div
-            className="mt-8"
-            key={`${contentSection.Header} - contentSections - ${index}`}
-          >
-            {contentSection.Header !== null && (
-              <div className="mb-[20px] grid grid-cols-[10px_1fr] items-center">
-                <div className="mr-[5px] h-[30px] w-[3px] bg-[#004BFA]" />
-                <h2 className="text-xl font-medium md:text-2xl">
-                  {contentSection.Header}
-                </h2>
-              </div>
-            )}
-            {contentSection.Body.split("\\n").map((paragraph, index) => (
-              <>
-                {paragraph === "" && <br />}
-                {paragraph !== "" && (
-                  <p className="whitespace-pre-line text-sm" key={index}>
-                    {paragraph}
-                  </p>
-                )}
-              </>
-            ))}
-            {/* <p className="text-sm whitespace-pre-line">{contentSection.Body}</p> */}
-            {/* {contentSection.note && (
-              <p className="text-sm mt-8">{contentSection.note}</p>
-            )} */}
-          </div>
-        ))}
-        <CaseStudyConsultFooter />
-        <MoreBlogPostsSection
-          posts={moreBlogPosts.map((post) => post.attributes)}
-        />
-        <Link href="/blog">
-          <button className="primaryButton mb-4 !px-[60px]">
+        <div className="blogPostMarkdownWrapper">
+          <ReactMarkdown>{postData.BlogContent}</ReactMarkdown>
+        </div>
+        <div className="my-[60px] grid grid-flow-row items-center justify-items-center gap-y-[25px] bg-[var(--background-color)] py-[50px] shadow-primary-shadow">
+          <h2 className="text-2xl text-white md:text-3xl">
+            Let Us Give You A Hand
+          </h2>
+          <Link href="/scheduleConsultation">
+            <button className="primaryButton">
+              Schedule a Free Consultation
+            </button>
+          </Link>
+        </div>
+        {/* <Link href="/blog">
+          <button className="primaryButton mb-8 !px-[60px]">
             Back to Blog
           </button>
-        </Link>
+        </Link> */}
       </div>
       {/* End Post Content Wrapper */}
     </div>

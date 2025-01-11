@@ -27,6 +27,11 @@ const nextConfig = {
         port: "1337",
         pathname: "/uploads/**",
       },
+      {
+        protocol: "https",
+        hostname: "webapi.boxhouseconsulting.com",
+        pathname: "/uploads/**",
+      },
     ],
   },
   reactStrictMode: true,

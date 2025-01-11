@@ -1,0 +1,28 @@
+.blogPostMarkdownWrapper {
+  & p {
+    margin-bottom: 1em;
+  }
+
+  & h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 0.5em;
+  }
+
+  & h3 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0.5em;
+  }
+
+  & ul {
+    list-style: disc;
+    margin-left: 1.5em;
+    margin-bottom: 1em;
+  }
+
+  & li::marker {
+    color: var(--primary-color);
+  }
+}

@@ -1,4 +1,3 @@
-// formatMode will come through as something like dd/mm/yyyy or mm/dd/yyyy
 const dateFormatter = (dateString, formatMode) => {
   const date = new Date(dateString);
   const day = date.getDate();
