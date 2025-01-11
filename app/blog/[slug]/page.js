@@ -38,57 +38,45 @@ const BlogPost = async ({ params }) => {
   const postData = await fetchBlogFromSlug(slug);
 
   return (
-    <div className="flex-1 pt-[100px]">
-      {/* Post Content Wrapper */}
-
-      <div className="m-auto w-[90%] max-w-[870px]">
-        <Link href="/blog">
-          <button className="primaryButton mb-8 !px-[60px]">
-            Back to Blog
+    <div className="m-auto w-[90%] max-w-[870px] flex-1 pt-[100px]">
+      <Link href="/blog">
+        <button className="primaryButton mb-8 !px-[60px]">Back to Blog</button>
+      </Link>
+      <div className="relative mb-[30px] h-[150px] shadow-xl md:h-[250px]">
+        <Image
+          src={`${
+            process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
+              ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
+              : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
+          }${postData.Image.data.attributes.url}`}
+          alt={postData.Image.data.attributes.alternativeText}
+          fill
+          style={{
+            layout: "fill",
+            objectFit: "cover",
+            objectPosition: "center",
+          }}
+          sizes={"(max-width: 900px) 100vw, 768px"}
+          priority
+        />
+      </div>
+      <h1 className="text-2xl font-bold">{postData.Title}</h1>
+      <p className="mb-4 text-sm">
+        {formatLongDate(postData.DateWritten)} | {postData.Author}
+      </p>
+      <div className="blogPostMarkdownWrapper">
+        <ReactMarkdown>{postData.BlogContent}</ReactMarkdown>
+      </div>
+      <div className="my-[60px] grid grid-flow-row items-center justify-items-center gap-y-[25px] bg-[var(--background-color)] py-[50px] shadow-primary-shadow">
+        <h2 className="text-2xl text-white md:text-3xl">
+          Let Us Give You A Hand
+        </h2>
+        <Link href="/scheduleConsultation">
+          <button className="primaryButton">
+            Schedule a Free Consultation
           </button>
         </Link>
-        <div className="relative mb-[30px] h-[150px] shadow-xl md:h-[250px]">
-          <Image
-            src={`${
-              process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
-                ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
-                : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-            }${postData.Image.data.attributes.url}`}
-            alt={postData.Image.data.attributes.alternativeText}
-            fill
-            style={{
-              layout: "fill",
-              objectFit: "cover",
-              objectPosition: "center",
-            }}
-            sizes={"(max-width: 900px) 100vw, 768px"}
-            priority
-          />
-        </div>
-        <h1 className="text-2xl font-bold">{postData.Title}</h1>
-        <p className="mb-4 text-sm">
-          {formatLongDate(postData.DateWritten)} | {postData.Author}
-        </p>
-        <div className="blogPostMarkdownWrapper">
-          <ReactMarkdown>{postData.BlogContent}</ReactMarkdown>
-        </div>
-        <div className="my-[60px] grid grid-flow-row items-center justify-items-center gap-y-[25px] bg-[var(--background-color)] py-[50px] shadow-primary-shadow">
-          <h2 className="text-2xl text-white md:text-3xl">
-            Let Us Give You A Hand
-          </h2>
-          <Link href="/scheduleConsultation">
-            <button className="primaryButton">
-              Schedule a Free Consultation
-            </button>
-          </Link>
-        </div>
-        {/* <Link href="/blog">
-          <button className="primaryButton mb-8 !px-[60px]">
-            Back to Blog
-          </button>
-        </Link> */}
       </div>
-      {/* End Post Content Wrapper */}
     </div>
   );
 };
