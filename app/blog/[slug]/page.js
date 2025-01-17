@@ -23,15 +23,13 @@ export async function generateStaticParams() {
   }
 
   const result = await response.json();
-  console.log(result);
-  return [];
-  // const slugs = result.map((post) => ({
-  //   slug: post.attributes.Slug,
-  // }));
+  const slugs = result.data.blogposts.map((post) => ({
+    slug: post.Slug,
+  }));
 
-  // console.log(slugs);
+  console.log(slugs);
 
-  // return slugs;
+  return slugs;
 }
 
 const BlogPost = async ({ params }) => {
