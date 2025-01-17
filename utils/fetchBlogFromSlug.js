@@ -11,12 +11,12 @@ const fetchBlogFromSlug = async (slug) => {
       },
       body: JSON.stringify({
         query: print(getBlogFromSlug),
-        variables: { slugEq: slug },
+        variables: { slug: slug },
       }),
     });
 
     const postDataParsedJSON = await postDataResponse.json();
-    return postDataParsedJSON.data.blogposts.data[0].attributes;
+    return postDataParsedJSON.data.blogposts[0];
   } catch (error) {
     console.log(error);
     return error;

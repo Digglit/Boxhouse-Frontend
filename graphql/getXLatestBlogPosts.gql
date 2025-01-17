@@ -1,0 +1,17 @@
+query blogposts {
+  blogposts(
+    sort: "DateWritten:desc" # Sort by DateWritten in descending order
+    pagination: { page: 1, pageSize: 4 } # Limit to 4 results
+  ) {
+    documentId
+    Title
+    Author
+    DateWritten
+    Slug
+    Image {
+      url
+      alternativeText
+    }
+    PostBodyPreview
+  }
+}

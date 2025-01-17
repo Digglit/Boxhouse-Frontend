@@ -1,15 +1,12 @@
 import Link from "next/link";
-import MoreBlogPostsSection from "../../../components/Blog/MoreBlogPostsSection";
-import CaseStudyConsultFooter from "../../../components/CaseStudyConsultFooter";
-import dateFormatter from "../../../utils/dateFormatter";
 import Image from "next/image";
 import fetchBlogFromSlug from "../../../utils/fetchBlogFromSlug";
-import serverEndpoint from "../../../utils/serverEndpoint";
-import getBlogSlugs from "../../../graphql/getBlogSlugs.gql";
-import { print } from "graphql";
 import ReactMarkdown from "react-markdown";
 import formatLongDate from "../../../utils/formatLongDate";
 import "../../../styles/blogPostMarkdown.css";
+import getBlogSlugs from "../../../graphql/getBlogSlugs.gql";
+import serverEndpoint from "../../../utils/serverEndpoint";
+import { print } from "graphql";
 
 export async function generateStaticParams() {
   const response = await fetch(`${serverEndpoint}/graphql`, {
@@ -21,16 +18,20 @@ export async function generateStaticParams() {
   });
 
   if (!response.ok) {
-    console.log(response);
+    console.log(await response.json());
     throw new Error("Failed to fetch slugs for blog posts");
   }
 
   const result = await response.json();
-  const slugs = result.data.blogposts.data.map((post) => ({
-    slug: post.attributes.Slug,
-  }));
+  console.log(result);
+  return [];
+  // const slugs = result.map((post) => ({
+  //   slug: post.attributes.Slug,
+  // }));
 
-  return slugs;
+  // console.log(slugs);
+
+  // return slugs;
 }
 
 const BlogPost = async ({ params }) => {
@@ -38,7 +39,7 @@ const BlogPost = async ({ params }) => {
   const postData = await fetchBlogFromSlug(slug);
 
   return (
-    <div className="m-auto w-[90%] max-w-[870px] flex-1 pt-[100px]">
+    <div className="m-auto w-[90%] max-w-[870px] pt-[100px]">
       <Link href="/blog">
         <button className="primaryButton mb-8 !px-[60px]">Back to Blog</button>
       </Link>
@@ -48,8 +49,8 @@ const BlogPost = async ({ params }) => {
             process.env.NEXT_PUBLIC_IS_PRODUCTION === "true"
               ? process.env.NEXT_PUBLIC_PROD_WEBSERVER_ENDPOINT
               : process.env.NEXT_PUBLIC_LOCAL_WEBSERVER_ENDPOINT
-          }${postData.Image.data.attributes.url}`}
-          alt={postData.Image.data.attributes.alternativeText}
+          }${postData.Image.url}`}
+          alt={postData.Image.alternativeText}
           fill
           style={{
             layout: "fill",
@@ -68,7 +69,7 @@ const BlogPost = async ({ params }) => {
         <ReactMarkdown>{postData.BlogContent}</ReactMarkdown>
       </div>
       <div className="my-[60px] grid grid-flow-row items-center justify-items-center gap-y-[25px] bg-[var(--background-color)] py-[50px] shadow-primary-shadow">
-        <h2 className="text-2xl text-white md:text-3xl">
+        <h2 className="text-2xl font-medium text-white md:text-3xl">
           Let Us Give You A Hand
         </h2>
         <Link href="/scheduleConsultation">
