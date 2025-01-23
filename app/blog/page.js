@@ -11,7 +11,7 @@ export const metadata = {
 };
 
 const Blog = async () => {
-  const blogPosts = await fetchXRecentBlogPosts(4);
+  const blogPosts = await fetchXRecentBlogPosts();
 
   const placeholderBlogs = [
     "Post Coming Soon...",
