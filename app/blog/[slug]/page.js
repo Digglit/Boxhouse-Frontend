@@ -64,7 +64,9 @@ const BlogPost = async ({ params }) => {
         {formatLongDate(postData.DateWritten)} | {postData.Author}
       </p>
       <div className="blogPostMarkdownWrapper">
-        <ReactMarkdown>{postData.BlogContent}</ReactMarkdown>
+        <ReactMarkdown linkTarget={"_blank"}>
+          {postData.BlogContent}
+        </ReactMarkdown>
       </div>
       <div className="my-[60px] grid grid-flow-row items-center justify-items-center gap-y-[25px] bg-[var(--background-color)] py-[50px] shadow-primary-shadow">
         <h2 className="text-2xl font-medium text-white md:text-3xl">
