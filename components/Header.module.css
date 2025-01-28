@@ -93,6 +93,7 @@
 
 .selectedLink {
   color: var(--primary-color) !important;
+  font-weight: bold;
 }
 
 .burgerButton {

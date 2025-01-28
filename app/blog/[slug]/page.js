@@ -55,7 +55,7 @@ const BlogPost = async ({ params }) => {
             objectFit: "cover",
             objectPosition: "center",
           }}
-          sizes={"(max-width: 900px) 100vw, 768px"}
+          sizes={"(max-width: 975px) 90vw, 870px"}
           priority
         />
       </div>

@@ -15,6 +15,8 @@ const HeroSecondaryPostElement = ({ post }) => {
               objectFit: "cover",
               objectPosition: "center",
             }}
+            sizes={"(max-width: 768px) 0px, 155px"}
+            priority
           />
         </div>
         <div className="self-center p-4">

@@ -16,6 +16,8 @@ const HeroPrimaryPostElement = ({ post }) => {
               objectPosition: "center",
               aspectRatio: "16/9",
             }}
+            sizes={"(max-width: 768px) 95vw, 36vw"}
+            priority
           />
         </div>
         <div className="self-center px-4 py-5">
