@@ -9,7 +9,7 @@ const HeroPrimaryPostElement = ({ post }) => {
         <div className="relative h-[150px] w-[100%] md:h-[200px]">
           <Image
             src={`https://webapi.boxhouseconsulting.com${post.Image.url}`}
-            alt="Hiring Freelancers"
+            alt={post.Image.alternativeText}
             fill
             style={{
               objectFit: "cover",

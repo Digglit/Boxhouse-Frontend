@@ -9,7 +9,7 @@ const HeroSecondaryPostElement = ({ post }) => {
         <div className="relative hidden md:block md:aspect-square">
           <Image
             src={`https://webapi.boxhouseconsulting.com${post.Image.url}`}
-            alt="Hiring Freelancers"
+            alt={post.Image.alternativeText}
             fill
             style={{
               objectFit: "cover",
